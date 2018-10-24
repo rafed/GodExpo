@@ -5,6 +5,12 @@ import (
 	"os"
 )
 
+type variable struct {
+	name    string
+	varType string
+	count   int
+}
+
 func isDir(filename string) bool {
 	fi, err := os.Stat(filename)
 	return err == nil && fi.IsDir()

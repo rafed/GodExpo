@@ -10,6 +10,14 @@ import (
 	"strings"
 )
 
+type class struct {
+	PkgName    string
+	StructName string
+	Attributes []variable
+	Methods    []method
+	Pos        token.Position
+}
+
 func classAnalyzeDir(dirname string, classes []class) []class {
 	filepath.Walk(dirname, func(path string, info os.FileInfo, err error) error {
 		if err == nil && !info.IsDir() && strings.HasSuffix(path, ".go") {
@@ -38,7 +46,7 @@ func classAnalyzeFile(fname string, classes []class) []class {
 		}
 
 		structName := t.Name.Name
-		var attributes []attribute
+		var attributes []variable
 
 		x, ok := t.Type.(*ast.StructType)
 		if !ok {
@@ -50,7 +58,7 @@ func classAnalyzeFile(fname string, classes []class) []class {
 				continue
 			}
 
-			a := attribute{
+			a := variable{
 				name:    i.Names[0].Name,
 				varType: recvString(i.Type),
 			}

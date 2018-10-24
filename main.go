@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"go/token"
 	"os"
 )
 
@@ -22,31 +21,9 @@ func usage() {
 	fmt.Println("gometrics [a directory]")
 }
 
-type attribute struct {
-	name    string
-	varType string
-}
-
-type class struct {
-	PkgName    string
-	StructName string
-	Attributes []attribute
-	Methods    []method
-	Pos        token.Position
-}
-
-type method struct {
-	PkgName    string
-	StructName string
-	FuncName   string
-	Complexity int
-	VarStruct  int
-	VarOutside int
-	Pos        token.Position
-}
-
 func analyze(paths []string) {
 	var classes []class
+	var methods []method
 
 	for _, path := range paths {
 		if isDir(path) {
@@ -56,14 +33,33 @@ func analyze(paths []string) {
 		}
 	}
 
-	for _, class := range classes {
-		fmt.Printf("Position: %s\n", class.Pos)
-		fmt.Printf("Package: %s\n", class.PkgName)
-		fmt.Printf("\tName: %s\n", class.StructName)
-
-		for _, a := range class.Attributes {
-			fmt.Printf("\t\tatttribute: %s || %s\n", a.name, a.varType)
+	for _, path := range paths {
+		if isDir(path) {
+			methods = methodAnalyzeDir(path, methods)
+		} else {
+			methods = methodAnalyzeFile(path, methods)
 		}
 	}
+
+	// for _, class := range classes {
+	// 	fmt.Printf("Position: %s\n", class.Pos)
+	// 	fmt.Printf("Package: %s\n", class.PkgName)
+	// 	fmt.Printf("\tName: %s\n", class.StructName)
+
+	// 	for _, a := range class.Attributes {
+	// 		fmt.Printf("\t\tatttribute: %s || %s\n", a.name, a.varType)
+	// 	}
+	// }
+
+	// for _, method := range methods {
+	// 	fmt.Printf("Position: %s\n", method.Pos)
+	// 	// fmt.Printf("Package: %s\n", method.PkgName)
+	// 	fmt.Printf("\tName: %s\n", method.FuncName)
+	// 	// fmt.Printf("\tComplexity: %d\n", method.Complexity)
+
+	// 	for _, a := range method.OwnVars {
+	// 		fmt.Printf("\t\tvar: %s || %s\n", a.name, a.varType)
+	// 	}
+	// }
 
 }
