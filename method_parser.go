@@ -18,8 +18,7 @@ type method struct {
 	Complexity     int
 	Receiver       variable
 	Parameters     []variable
-	AllVars        []variable
-	LocalVars      []variable
+	Selectors      []selector
 	AccessedOwn    int
 	AccessedOthers int
 	Pos            token.Position
@@ -46,17 +45,17 @@ func methodAnalyzeFile(fname string, methods []method) []method {
 	for _, decl := range f.Decls {
 		if fn, ok := decl.(*ast.FuncDecl); ok {
 
-			varAll := allVariableVisitor{}
-			varLocal := localVariableVisitor{}
-
-			if fn.Recv == nil {
+			if fn.Recv == nil || fn.Recv.List[0].Names == nil {
 				continue
 			}
+
+			// Get receivers
 			rcv := variable{
 				name:    fn.Recv.List[0].Names[0].Name,
 				varType: recvString(fn.Recv.List[0].Type),
 			}
 
+			// Get parameters
 			var params []variable
 			for _, l := range fn.Type.Params.List {
 				temp := variable{
@@ -66,32 +65,49 @@ func methodAnalyzeFile(fname string, methods []method) []method {
 				params = append(params, temp)
 			}
 
+			// Get selectors
+			varAll := allSelectorVisitor{}
 			ast.Walk(&varAll, fn.Body)
-			ast.Walk(&varLocal, fn.Body)
 
-			fmt.Print("*** ")
-			fmt.Println(funcName(fn))
-			for _, n := range varAll.variables {
-				fmt.Printf("%s (%s): %d\n", n.name, n.varType, n.count)
+			for i, n := range varAll.selectors {
+				varAll.selectors[i].line = findLine(fname, fset.Position(n.pos).Line)
 			}
-			fmt.Println()
+
+			accessOwn, accessOthers := countAccess(rcv.name, varAll.selectors)
 
 			methods = append(methods, method{
-				PkgName:    f.Name.Name,
-				FuncName:   funcName(fn),
-				Receiver:   rcv,
-				Parameters: params,
-				AllVars:    varAll.variables,
-				LocalVars:  varLocal.variables,
-				Complexity: complexity(fn),
-				Pos:        fset.Position(fn.Pos()),
+				PkgName:        f.Name.Name,
+				FuncName:       funcName(fn),
+				Receiver:       rcv,
+				Parameters:     params,
+				Selectors:      varAll.selectors,
+				Complexity:     complexity(fn),
+				AccessedOwn:    accessOwn,
+				AccessedOthers: accessOthers,
+				Pos:            fset.Position(fn.Pos()),
 			})
+		}
+	}
+	return methods
+}
 
+func countAccess(recv string, selectors []selector) (int, int) {
+	accessOwn := 0
+	accessOthers := 0
+
+	for _, s := range selectors {
+		if !isVariable(s.line, s.left, s.right) {
+			break
 		}
 
+		if s.left == recv {
+			accessOwn++
+		} else {
+			accessOthers++
+		}
 	}
 
-	return methods
+	return accessOwn, accessOthers
 }
 
 func funcName(fn *ast.FuncDecl) string {
@@ -102,27 +118,4 @@ func funcName(fn *ast.FuncDecl) string {
 		}
 	}
 	return fn.Name.Name
-}
-
-func complexity(fn *ast.FuncDecl) int {
-	v := complexityVisitor{}
-	ast.Walk(&v, fn)
-	return v.Complexity
-}
-
-type complexityVisitor struct {
-	// Complexity is the cyclomatic complexity
-	Complexity int
-}
-
-func (v *complexityVisitor) Visit(n ast.Node) ast.Visitor {
-	switch n := n.(type) {
-	case *ast.FuncDecl, *ast.IfStmt, *ast.ForStmt, *ast.RangeStmt, *ast.CaseClause, *ast.CommClause:
-		v.Complexity++
-	case *ast.BinaryExpr:
-		if n.Op == token.LAND || n.Op == token.LOR {
-			v.Complexity++
-		}
-	}
-	return v
 }

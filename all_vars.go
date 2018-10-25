@@ -1,84 +1,56 @@
 package main
 
-import "go/ast"
+import (
+	"go/ast"
+	"go/token"
+)
 
-type allVariableVisitor struct {
-	variables []variable
+type selector struct {
+	left  string
+	right string
+	pos   token.Pos
+	line  string
 }
 
-func (v *allVariableVisitor) Visit(n ast.Node) ast.Visitor {
+type allSelectorVisitor struct {
+	selectors []selector
+}
+
+func (v *allSelectorVisitor) Visit(n ast.Node) ast.Visitor {
 	if n == nil {
 		return v
 	}
 
-	v.findAllVariables(n)
+	if selectorExp, ok := n.(*ast.SelectorExpr); ok {
+		if va, ok := selectorExp.X.(*ast.Ident); ok {
+			if va.Obj == nil {
+				return v
+			}
+
+			if va.Obj.Kind.String() == "var" {
+				newSelector := selector{
+					left:  va.Name,
+					right: selectorExp.Sel.Name,
+					pos:   va.Pos(),
+				}
+				v.add(newSelector)
+			}
+		}
+	}
 	return v
-
 }
 
-func (v *allVariableVisitor) findAllVariables(n ast.Node) {
-	if n == nil {
-		return
+func (v *allSelectorVisitor) add(s selector) {
+	if !v.exists(s.left) {
+		v.selectors = append(v.selectors, s)
 	}
-
-	ident, ok := n.(*ast.Ident)
-	if !ok {
-		return
-	}
-	if ident.Name == "_" || ident.Name == "" {
-		return
-	}
-
-	v.add(ident)
 }
 
-func (v *allVariableVisitor) exists(name string) bool {
-	for _, n := range v.variables {
-		if n.name == name {
+func (v *allSelectorVisitor) exists(name string) bool {
+	for _, n := range v.selectors {
+		if n.left == name {
 			return true
 		}
 	}
-
 	return false
-}
-
-func (v *allVariableVisitor) increment(name string) {
-	for i, n := range v.variables {
-		if n.name == name {
-			v.variables[i].count++
-			break
-		}
-	}
-}
-
-func (v *allVariableVisitor) addNew(name string, varType string) {
-	v.variables = append(v.variables, variable{
-		name:    name,
-		varType: varType,
-		count:   1,
-	})
-}
-
-func (v *allVariableVisitor) add(ident *ast.Ident) {
-	name := ident.Name
-
-	if ident.Obj == nil {
-		println("other vars: ", name)
-		return
-	}
-
-	varType := ident.Obj.Kind.String()
-
-	// println(name, "*************", ident.Obj.Kind)
-	// if ident.Obj.Kind == 4 {
-	// 	varType = ident.Obj.Name
-	// } else {
-	// 	varType = "yo"
-	// }
-
-	if v.exists(name) {
-		v.increment(name)
-	} else {
-		v.addNew(name, varType)
-	}
 }
