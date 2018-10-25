@@ -51,15 +51,15 @@ func analyze(paths []string) {
 	// 	}
 	// }
 
-	// for _, method := range methods {
-	// 	fmt.Printf("Position: %s\n", method.Pos)
-	// 	// fmt.Printf("Package: %s\n", method.PkgName)
-	// 	fmt.Printf("\tName: %s\n", method.FuncName)
-	// 	// fmt.Printf("\tComplexity: %d\n", method.Complexity)
+	for _, method := range methods {
+		fmt.Printf("Position: %s\n", method.Pos)
+		// fmt.Printf("Package: %s\n", method.PkgName)
+		fmt.Printf("\tName: %s\n", method.FuncName)
+		// fmt.Printf("\tComplexity: %d\n", method.Complexity)
 
-	// 	for _, a := range method.OwnVars {
-	// 		fmt.Printf("\t\tvar: %s || %s\n", a.name, a.varType)
-	// 	}
-	// }
+		// for _, a := range method.OwnVars {
+		// 	fmt.Printf("\t\tvar: %s || %s\n", a.name, a.varType)
+		// }
+	}
 
 }
