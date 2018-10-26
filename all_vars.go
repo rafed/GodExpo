@@ -12,6 +12,10 @@ type selector struct {
 	line  string
 }
 
+func (s *selector) toString() string {
+	return s.left + "." + s.right
+}
+
 type allSelectorVisitor struct {
 	selectors []selector
 }

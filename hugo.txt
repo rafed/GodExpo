@@ -1,0 +1,7625 @@
+Package: cache
+StructName: Partition
+Attributes:
+	Key || string
+	Load || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: cache
+StructName: Lazy
+Attributes:
+	initSync || BADRECV
+	initErr || error
+	cache || BADRECV
+	load || BADRECV
+WMC: 3
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: init()
+		Complexity: 1
+	FuncName: Get()
+		Complexity: 2
+
+Package: cache
+StructName: PartitionedLazyCache
+Attributes:
+	partitions || BADRECV
+WMC: 4
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Get()
+		Complexity: 4
+
+Package: commands
+StructName: benchmarkCmd
+Attributes:
+	benchmarkTimes || int
+	cpuProfileFile || string
+	memProfileFile || string
+WMC: 11
+NDC: 0
+NP: 0
+ATFD: 1
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: benchmark()
+		Complexity: 11
+
+Package: commands
+StructName: checkCmd
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: checkCmd
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: commandeerHugoState
+Attributes:
+	hugo || *BADRECV
+	fsCreate || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: commandeer
+Attributes:
+	logger || *BADRECV
+	changeDetector || *fileChangeDetector
+	destinationFs || BADRECV
+	h || *hugoBuilderCommon
+	ftch || flagsToConfigHandler
+	visitedURLs || *BADRECV
+	doWithCommandeer || BADRECV
+	configFiles || BADRECV
+	debounce || BADRECV
+	serverPorts || BADRECV
+	languagesConfigured || bool
+	languages || BADRECV
+	doLiveReload || bool
+	fastRenderMode || bool
+	showErrorInBrowser || bool
+	configured || bool
+	paused || bool
+	buildErr || error
+WMC: 222
+NDC: 24
+NP: 300
+ATFD: 11
+TCC: 0.080000
+God: true
+Methods:
+	FuncName: errCount()
+		Complexity: 1
+	FuncName: getErrorWithContext()
+		Complexity: 4
+	FuncName: Set()
+		Complexity: 2
+	FuncName: initFs()
+		Complexity: 1
+	FuncName: loadConfig()
+		Complexity: 29
+	FuncName: createLogger()
+		Complexity: 12
+	FuncName: fullBuild()
+		Complexity: 14
+	FuncName: build()
+		Complexity: 5
+	FuncName: serverBuild()
+		Complexity: 3
+	FuncName: copyStatic()
+		Complexity: 1
+	FuncName: doWithPublishDirs()
+		Complexity: 6
+	FuncName: copyStaticTo()
+		Complexity: 6
+	FuncName: firstPathSpec()
+		Complexity: 1
+	FuncName: timeTrack()
+		Complexity: 2
+	FuncName: getDirList()
+		Complexity: 27
+	FuncName: resetAndBuildSites()
+		Complexity: 2
+	FuncName: buildSites()
+		Complexity: 1
+	FuncName: handleBuildErr()
+		Complexity: 3
+	FuncName: rebuildSites()
+		Complexity: 4
+	FuncName: partialReRender()
+		Complexity: 2
+	FuncName: fullRebuild()
+		Complexity: 6
+	FuncName: newWatcher()
+		Complexity: 13
+	FuncName: handleEvents()
+		Complexity: 58
+	FuncName: isThemeVsHugoVersionMismatch()
+		Complexity: 8
+	FuncName: serve()
+		Complexity: 11
+
+Package: commands
+StructName: fileChangeDetector
+Attributes:
+	current || BADRECV
+	prev || BADRECV
+	irrelevantRe || *BADRECV
+WMC: 13
+NDC: 0
+NP: 6
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: OnFileClose()
+		Complexity: 1
+	FuncName: changed()
+		Complexity: 5
+	FuncName: filterIrrelevant()
+		Complexity: 3
+	FuncName: PrepareNew()
+		Complexity: 4
+
+Package: commands
+StructName: commandsBuilder
+Attributes:
+	commands || BADRECV
+WMC: 10
+NDC: 0
+NP: 28
+ATFD: 2
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: newBenchmarkCmd()
+		Complexity: 1
+	FuncName: addCommands()
+		Complexity: 1
+	FuncName: addAll()
+		Complexity: 1
+	FuncName: build()
+		Complexity: 1
+	FuncName: newBuilderCmd()
+		Complexity: 1
+	FuncName: newHugoCmd()
+		Complexity: 3
+	FuncName: newServerCmd()
+		Complexity: 1
+	FuncName: newServerCmdSignaled()
+		Complexity: 1
+
+Package: commands
+StructName: baseCmd
+Attributes:
+	cmd || *BADRECV
+WMC: 2
+NDC: 1
+NP: 1
+ATFD: 0
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: getCommand()
+		Complexity: 1
+	FuncName: flagsToConfig()
+		Complexity: 1
+
+Package: commands
+StructName: baseBuilderCmd
+Attributes:
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: getCmmandsBuilder()
+		Complexity: 1
+
+Package: commands
+StructName: hugoCmd
+Attributes:
+	c || *commandeer
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: nilCommand
+Attributes:
+WMC: 2
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: getCommand()
+		Complexity: 1
+	FuncName: flagsToConfig()
+		Complexity: 1
+
+Package: commands
+StructName: hugoBuilderCommon
+Attributes:
+	source || string
+	baseURL || string
+	buildWatch || bool
+	gc || bool
+	logging || bool
+	verbose || bool
+	verboseLog || bool
+	debug || bool
+	quiet || bool
+	cfgFile || string
+	logFile || string
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: handleFlags()
+		Complexity: 1
+
+Package: commands
+StructName: configCmd
+Attributes:
+WMC: 6
+NDC: 0
+NP: 0
+ATFD: 1
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: printConfig()
+		Complexity: 6
+
+Package: commands
+StructName: convertCmd
+Attributes:
+	outputDir || string
+	unsafe || bool
+WMC: 22
+NDC: 0
+NP: 1
+ATFD: 4
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: convertContents()
+		Complexity: 8
+	FuncName: convertAndSavePage()
+		Complexity: 14
+
+Package: commands
+StructName: parsedFile
+Attributes:
+	frontMatterFormat || BADRECV
+	frontMatterSource || BADRECV
+	frontMatter || BADRECV
+	content || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: envCmd
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: genCmd
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: genautocompleteCmd
+Attributes:
+	autocompleteTarget || string
+	autocompleteType || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: genChromaStyles
+Attributes:
+	style || string
+	highlightStyle || string
+	linesStyle || string
+WMC: 4
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: generate()
+		Complexity: 4
+
+Package: commands
+StructName: genDocCmd
+Attributes:
+	gendocdir || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: genDocsHelper
+Attributes:
+	target || string
+WMC: 3
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: generate()
+		Complexity: 3
+
+Package: commands
+StructName: genManCmd
+Attributes:
+	genmandir || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: commandError
+Attributes:
+	s || string
+	userError || bool
+WMC: 2
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Error()
+		Complexity: 1
+	FuncName: isUserError()
+		Complexity: 1
+
+Package: commands
+StructName: Response
+Attributes:
+	Result || *BADRECV
+	Err || error
+	Cmd || *BADRECV
+WMC: 2
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: IsUserError()
+		Complexity: 2
+
+Package: commands
+StructName: countingStatFs
+Attributes:
+	statCounter || uint64
+WMC: 3
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Stat()
+		Complexity: 3
+
+Package: commands
+StructName: dynamicEvents
+Attributes:
+	ContentEvents || BADRECV
+	AssetEvents || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: importCmd
+Attributes:
+WMC: 64
+NDC: 0
+NP: 21
+ATFD: 1
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: importFromJekyll()
+		Complexity: 16
+	FuncName: getJekyllDirInfo()
+		Complexity: 6
+	FuncName: retrieveJekyllPostDir()
+		Complexity: 7
+	FuncName: createSiteFromJekyll()
+		Complexity: 6
+	FuncName: loadJekyllConfig()
+		Complexity: 6
+	FuncName: createConfigFromJekyll()
+		Complexity: 7
+	FuncName: copyJekyllFilesAndFolders()
+		Complexity: 16
+
+Package: commands
+StructName: limitCmd
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: listCmd
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: newCmd
+Attributes:
+	contentEditor || string
+	contentType || string
+WMC: 5
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: newContent()
+		Complexity: 5
+
+Package: commands
+StructName: newSiteCmd
+Attributes:
+	configFormat || string
+WMC: 14
+NDC: 0
+NP: 1
+ATFD: 1
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: doNewSite()
+		Complexity: 11
+	FuncName: newSite()
+		Complexity: 3
+
+Package: commands
+StructName: newThemeCmd
+Attributes:
+WMC: 9
+NDC: 0
+NP: 1
+ATFD: 3
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: newTheme()
+		Complexity: 7
+	FuncName: createThemeMD()
+		Complexity: 2
+
+Package: commands
+StructName: releaseCommandeer
+Attributes:
+	cmd || *BADRECV
+	version || string
+	skipPublish || bool
+	try || bool
+WMC: 4
+NDC: 0
+NP: 3
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: getCommand()
+		Complexity: 1
+	FuncName: flagsToConfig()
+		Complexity: 1
+	FuncName: release()
+		Complexity: 2
+
+Package: commands
+StructName: serverCmd
+Attributes:
+	stop || BADRECV
+	disableLiveReload || bool
+	navigateToChanged || bool
+	renderToDisk || bool
+	serverAppend || bool
+	serverInterface || string
+	serverPort || int
+	liveReloadPort || int
+	serverWatch || bool
+	noHTTPCache || bool
+	disableFastRender || bool
+	disableBrowserError || bool
+WMC: 41
+NDC: 0
+NP: 1
+ATFD: 2
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: server()
+		Complexity: 29
+	FuncName: fixURL()
+		Complexity: 12
+
+Package: commands
+StructName: filesOnlyFs
+Attributes:
+	fs || BADRECV
+WMC: 2
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Open()
+		Complexity: 2
+
+Package: commands
+StructName: noDirFile
+Attributes:
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Readdir()
+		Complexity: 1
+
+Package: commands
+StructName: fileServer
+Attributes:
+	baseURLs || BADRECV
+	roots || BADRECV
+	errorTemplate || BADRECV
+	c || *commandeer
+	s || *serverCmd
+WMC: 22
+NDC: 0
+NP: 0
+ATFD: 2
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: createEndpoint()
+		Complexity: 22
+
+Package: commands
+StructName: data
+Attributes:
+	TestName || string
+	CLIBaseURL || string
+	CfgBaseURL || string
+	AppendPort || bool
+	Port || int
+	Result || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: commands
+StructName: staticSyncer
+Attributes:
+	c || *commandeer
+WMC: 12
+NDC: 1
+NP: 1
+ATFD: 4
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: isStatic()
+		Complexity: 1
+	FuncName: syncsStaticEvents()
+		Complexity: 11
+
+Package: commands
+StructName: versionCmd
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: collections
+StructName: tstSlicerIn1
+Attributes:
+	name || string
+WMC: 5
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Slice()
+		Complexity: 4
+	FuncName: Name()
+		Complexity: 1
+
+Package: collections
+StructName: tstSlicerIn2
+Attributes:
+	name || string
+WMC: 5
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Slice()
+		Complexity: 4
+	FuncName: Name()
+		Complexity: 1
+
+Package: collections
+StructName: tstSlicer
+Attributes:
+	name || string
+WMC: 4
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Slice()
+		Complexity: 4
+
+Package: herrors
+StructName: LineMatcher
+Attributes:
+	FileError || FileError
+	LineNumber || int
+	Offset || int
+	Line || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: herrors
+StructName: ErrorContext
+Attributes:
+	Filename || string
+	Lines || BADRECV
+	Pos || int
+	LineNumber || int
+	ColumnNumber || int
+	ChromaLexer || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: herrors
+StructName: ErrorWithFileContext
+Attributes:
+	cause || error
+WMC: 2
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Error()
+		Complexity: 1
+	FuncName: Cause()
+		Complexity: 1
+
+Package: herrors
+StructName: fileError
+Attributes:
+	offset || int
+	lineNumber || int
+	columnNumber || int
+	fileType || string
+	cause || error
+WMC: 7
+NDC: 1
+NP: 15
+ATFD: 0
+TCC: 0.066667
+God: false
+Methods:
+	FuncName: LineNumber()
+		Complexity: 1
+	FuncName: Offset()
+		Complexity: 1
+	FuncName: ColumnNumber()
+		Complexity: 1
+	FuncName: Type()
+		Complexity: 1
+	FuncName: Error()
+		Complexity: 2
+	FuncName: Cause()
+		Complexity: 1
+
+Package: herrors
+StructName: fileErrorWithLineOffset
+Attributes:
+	offset || int
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: LineNumber()
+		Complexity: 1
+
+Package: hugio
+StructName: ReadSeekerNoOpCloser
+Attributes:
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Close()
+		Complexity: 1
+
+Package: hugio
+StructName: multiWriteCloser
+Attributes:
+	closers || BADRECV
+WMC: 3
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Close()
+		Complexity: 3
+
+Package: loggers
+StructName: Logger
+Attributes:
+	ErrorCounter || *BADRECV
+	errors || *BADRECV
+WMC: 4
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Errors()
+		Complexity: 2
+	FuncName: Reset()
+		Complexity: 2
+
+Package: loggers
+StructName: ansiCleaner
+Attributes:
+	w || BADRECV
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Write()
+		Complexity: 1
+
+Package: maps
+StructName: Scratch
+Attributes:
+	values || BADRECV
+	mu || BADRECV
+WMC: 15
+NDC: 15
+NP: 15
+ATFD: 0
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: Add()
+		Complexity: 6
+	FuncName: Set()
+		Complexity: 1
+	FuncName: Delete()
+		Complexity: 1
+	FuncName: Get()
+		Complexity: 1
+	FuncName: SetInMap()
+		Complexity: 2
+	FuncName: GetSortedMapValues()
+		Complexity: 4
+
+Package: types
+StructName: EvictingStringQueue
+Attributes:
+	size || int
+	vals || BADRECV
+	set || BADRECV
+	mu || BADRECV
+WMC: 10
+NDC: 6
+NP: 10
+ATFD: 0
+TCC: 0.600000
+God: false
+Methods:
+	FuncName: Add()
+		Complexity: 3
+	FuncName: Contains()
+		Complexity: 1
+	FuncName: Peek()
+		Complexity: 2
+	FuncName: PeekAll()
+		Complexity: 2
+	FuncName: PeekAllSet()
+		Complexity: 2
+
+Package: types
+StructName: KeyValueStr
+Attributes:
+	Key || string
+	Value || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: types
+StructName: KeyValues
+Attributes:
+	Key || BADRECV
+	Values || BADRECV
+WMC: 2
+NDC: 1
+NP: 1
+ATFD: 0
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: KeyString()
+		Complexity: 1
+	FuncName: String()
+		Complexity: 1
+
+Package: privacy
+StructName: Service
+Attributes:
+	Disable || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: privacy
+StructName: Config
+Attributes:
+	Disqus || Disqus
+	GoogleAnalytics || GoogleAnalytics
+	Instagram || Instagram
+	Twitter || Twitter
+	Vimeo || Vimeo
+	YouTube || YouTube
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: privacy
+StructName: Disqus
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: privacy
+StructName: GoogleAnalytics
+Attributes:
+	UseSessionStorage || bool
+	RespectDoNotTrack || bool
+	AnonymizeIP || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: privacy
+StructName: Instagram
+Attributes:
+	Simple || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: privacy
+StructName: Twitter
+Attributes:
+	EnableDNT || bool
+	Simple || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: privacy
+StructName: Vimeo
+Attributes:
+	Simple || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: privacy
+StructName: YouTube
+Attributes:
+	PrivacyEnhanced || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: services
+StructName: Config
+Attributes:
+	Disqus || Disqus
+	GoogleAnalytics || GoogleAnalytics
+	Instagram || Instagram
+	Twitter || Twitter
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: services
+StructName: Disqus
+Attributes:
+	Shortname || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: services
+StructName: GoogleAnalytics
+Attributes:
+	ID || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: services
+StructName: Instagram
+Attributes:
+	DisableInlineCSS || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: services
+StructName: Twitter
+Attributes:
+	DisableInlineCSS || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: create
+StructName: archetypeMap
+Attributes:
+	contentFiles || BADRECV
+	otherFiles || BADRECV
+	siteUsed || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: create
+StructName: ArchetypeFileData
+Attributes:
+	Type || string
+	Date || string
+	Site || *BADRECV
+	Name || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: deps
+StructName: Deps
+Attributes:
+	Log || *BADRECV
+	DistinctErrorLog || *BADRECV
+	Tmpl || BADRECV
+	TextTmpl || BADRECV
+	Fs || *BADRECV
+	SourceSpec || *BADRECV
+	ResourceSpec || *BADRECV
+	Cfg || BADRECV
+	Translate || BADRECV
+	Language || *BADRECV
+	OutputFormatsConfig || BADRECV
+	templateProvider || ResourceProvider
+	WithTemplate || BADRECV
+	translationProvider || ResourceProvider
+	Metrics || BADRECV
+	Timeout || BADRECV
+	BuildStartListeners || *Listeners
+WMC: 10
+NDC: 0
+NP: 3
+ATFD: 1
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: TemplateHandler()
+		Complexity: 1
+	FuncName: LoadResources()
+		Complexity: 3
+	FuncName: ForLanguage()
+		Complexity: 6
+
+Package: deps
+StructName: globalErrHandler
+Attributes:
+	buildErrors || BADRECV
+WMC: 5
+NDC: 1
+NP: 1
+ATFD: 0
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: SendError()
+		Complexity: 4
+	FuncName: StartErrorCollector()
+		Complexity: 1
+
+Package: deps
+StructName: Listeners
+Attributes:
+	listeners || BADRECV
+WMC: 3
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Add()
+		Complexity: 1
+	FuncName: Notify()
+		Complexity: 2
+
+Package: deps
+StructName: DepsCfg
+Attributes:
+	Logger || *BADRECV
+	Fs || *BADRECV
+	Language || *BADRECV
+	Cfg || BADRECV
+	MediaTypes || BADRECV
+	OutputFormats || BADRECV
+	TemplateProvider || ResourceProvider
+	WithTemplate || BADRECV
+	TranslationProvider || ResourceProvider
+	Running || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: ContentSpec
+Attributes:
+	BlackFriday || *BlackFriday
+	footnoteAnchorPrefix || string
+	footnoteReturnLinkContents || string
+	summaryLength || int
+	BuildFuture || bool
+	BuildExpired || bool
+	BuildDrafts || bool
+	Highlight || BADRECV
+	defatultPygmentsOpts || BADRECV
+	cfg || BADRECV
+WMC: 64
+NDC: 5
+NP: 78
+ATFD: 5
+TCC: 0.064103
+God: false
+Methods:
+	FuncName: getHTMLRenderer()
+		Complexity: 13
+	FuncName: markdownRender()
+		Complexity: 2
+	FuncName: getMmarkHTMLRenderer()
+		Complexity: 4
+	FuncName: mmarkRender()
+		Complexity: 1
+	FuncName: RenderBytes()
+		Complexity: 8
+	FuncName: TruncateWordsByRune()
+		Complexity: 7
+	FuncName: TruncateWordsToWholeSentence()
+		Complexity: 8
+	FuncName: truncateWordsToWholeSentenceOld()
+		Complexity: 7
+	FuncName: render()
+		Complexity: 1
+	FuncName: renderWithMmark()
+		Complexity: 1
+	FuncName: chromaFormatterFromOptions()
+		Complexity: 8
+	FuncName: parsePygmentsOpts()
+		Complexity: 2
+	FuncName: createPygmentsOptionsString()
+		Complexity: 2
+
+Package: helpers
+StructName: BlackFriday
+Attributes:
+	Smartypants || bool
+	SmartypantsQuotesNBSP || bool
+	AngledQuotes || bool
+	Fractions || bool
+	HrefTargetBlank || bool
+	NofollowLinks || bool
+	NoreferrerLinks || bool
+	SmartDashes || bool
+	LatexDashes || bool
+	TaskLists || bool
+	PlainIDAnchors || bool
+	Extensions || BADRECV
+	ExtensionsMask || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: RenderingContext
+Attributes:
+	Content || BADRECV
+	PageFmt || string
+	DocumentID || string
+	DocumentName || string
+	Config || *BlackFriday
+	RenderTOC || bool
+	Cfg || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: HugoHTMLRenderer
+Attributes:
+	cs || *ContentSpec
+WMC: 13
+NDC: 1
+NP: 3
+ATFD: 0
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: BlockCode()
+		Complexity: 4
+	FuncName: ListItem()
+		Complexity: 5
+	FuncName: List()
+		Complexity: 4
+
+Package: helpers
+StructName: HugoMmarkHTMLRenderer
+Attributes:
+	cs || *ContentSpec
+	Cfg || BADRECV
+WMC: 4
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: BlockCode()
+		Complexity: 4
+
+Package: helpers
+StructName: test
+Attributes:
+	enabled || bool
+	input || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+	max || int
+	truncated || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+	max || int
+	truncated || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: data
+Attributes:
+	testFlag || int
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: data
+Attributes:
+	testFlag || int
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: data
+Attributes:
+	testFlag || int
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: input
+Attributes:
+	in || BADRECV
+	expect || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: DistinctLogger
+Attributes:
+	logger || LogPrinter
+	m || BADRECV
+WMC: 5
+NDC: 0
+NP: 3
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Println()
+		Complexity: 1
+	FuncName: Printf()
+		Complexity: 1
+	FuncName: print()
+		Complexity: 3
+
+Package: helpers
+StructName: HugoVersion
+Attributes:
+	Number || float32
+	PatchLevel || int
+	Suffix || string
+WMC: 6
+NDC: 6
+NP: 15
+ATFD: 0
+TCC: 0.400000
+God: false
+Methods:
+	FuncName: String()
+		Complexity: 1
+	FuncName: Version()
+		Complexity: 1
+	FuncName: ReleaseVersion()
+		Complexity: 1
+	FuncName: Next()
+		Complexity: 1
+	FuncName: Prev()
+		Complexity: 1
+	FuncName: NextPatchLevel()
+		Complexity: 1
+
+Package: helpers
+StructName: filepathBridge
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	inPath || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+	expected || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+	expected || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+	expectedResult || bool
+	expectedErr || error
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+	expectedResult || bool
+	expectedErr || error
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	inPath || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	input || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	expectedDir || string
+	expectedErr || error
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	filename || string
+	expectedErr || error
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	filename || string
+	expectedErr || error
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: PathSpec
+Attributes:
+	ProcessingStats || *ProcessingStats
+	Fs || *BADRECV
+	Cfg || BADRECV
+WMC: 71
+NDC: 1
+NP: 120
+ATFD: 1
+TCC: 0.008333
+God: false
+Methods:
+	FuncName: MakeSegment()
+		Complexity: 1
+	FuncName: MakePath()
+		Complexity: 1
+	FuncName: MakePathSanitized()
+		Complexity: 2
+	FuncName: UnicodeSanitize()
+		Complexity: 21
+	FuncName: GetFirstThemeDir()
+		Complexity: 2
+	FuncName: GetThemesDir()
+		Complexity: 2
+	FuncName: GetRelativeThemeDir()
+		Complexity: 2
+	FuncName: PermalinkForBaseURL()
+		Complexity: 2
+	FuncName: URLize()
+		Complexity: 1
+	FuncName: URLizeFilename()
+		Complexity: 1
+	FuncName: URLEscape()
+		Complexity: 2
+	FuncName: AbsURL()
+		Complexity: 11
+	FuncName: RelURL()
+		Complexity: 15
+	FuncName: PrependBasePath()
+		Complexity: 3
+	FuncName: URLizeAndPrep()
+		Complexity: 1
+	FuncName: URLPrep()
+		Complexity: 4
+
+Package: helpers
+StructName: ProcessingStats
+Attributes:
+	Name || string
+	Pages || uint64
+	PaginatorPages || uint64
+	Static || uint64
+	ProcessedImages || uint64
+	Files || uint64
+	Aliases || uint64
+	Sitemaps || uint64
+	Cleaned || uint64
+WMC: 5
+NDC: 0
+NP: 6
+ATFD: 1
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: toVals()
+		Complexity: 1
+	FuncName: Incr()
+		Complexity: 1
+	FuncName: Add()
+		Complexity: 1
+	FuncName: Table()
+		Complexity: 2
+
+Package: helpers
+StructName: processingStatsTitleVal
+Attributes:
+	name || string
+	val || uint64
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: highlighters
+Attributes:
+	cs || *ContentSpec
+	ignoreCache || bool
+	cacheDir || string
+WMC: 21
+NDC: 1
+NP: 3
+ATFD: 1
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: chromaHighlight()
+		Complexity: 6
+	FuncName: pygmentsHighlight()
+		Complexity: 13
+	FuncName: injectCodeTag()
+		Complexity: 2
+
+Package: helpers
+StructName: chromaInfo
+Attributes:
+	classes || bool
+	lineNumbers || bool
+	lineNumbersInTable || bool
+	highlightRangesLen || int
+	highlightRangesStr || string
+	baseLineNumber || int
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: pathBridge
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	host || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: helpers
+StructName: test
+Attributes:
+	ugly || bool
+	input || string
+	output || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugofs
+StructName: realFilenameInfo
+Attributes:
+	realFilename || string
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: RealFilename()
+		Complexity: 1
+
+Package: hugofs
+StructName: BasePathRealFilenameFs
+Attributes:
+WMC: 8
+NDC: 1
+NP: 1
+ATFD: 0
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: Stat()
+		Complexity: 4
+	FuncName: LstatIfPossible()
+		Complexity: 4
+
+Package: hugofs
+StructName: Fs
+Attributes:
+	Source || BADRECV
+	Destination || BADRECV
+	Os || BADRECV
+	WorkingDir || *BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugofs
+StructName: md5HashingFs
+Attributes:
+	hashReceiver || FileHashReceiver
+WMC: 7
+NDC: 1
+NP: 6
+ATFD: 0
+TCC: 0.166667
+God: false
+Methods:
+	FuncName: Create()
+		Complexity: 2
+	FuncName: OpenFile()
+		Complexity: 3
+	FuncName: wrapFile()
+		Complexity: 1
+	FuncName: Name()
+		Complexity: 1
+
+Package: hugofs
+StructName: hashingFile
+Attributes:
+	hashReceiver || FileHashReceiver
+	h || BADRECV
+WMC: 3
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Write()
+		Complexity: 2
+	FuncName: Close()
+		Complexity: 1
+
+Package: hugofs
+StructName: testHashReceiver
+Attributes:
+	sum || string
+	name || string
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: OnFileClose()
+		Complexity: 1
+
+Package: hugofs
+StructName: languageCompositeFs
+Attributes:
+WMC: 3
+NDC: 0
+NP: 0
+ATFD: 1
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Open()
+		Complexity: 3
+
+Package: hugofs
+StructName: LanguageFileInfo
+Attributes:
+	lang || string
+	baseDir || string
+	realFilename || string
+	relFilename || string
+	name || string
+	realName || string
+	virtualName || string
+	translationBaseName || string
+	weight || int
+WMC: 7
+NDC: 0
+NP: 21
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Filename()
+		Complexity: 1
+	FuncName: Path()
+		Complexity: 1
+	FuncName: RealName()
+		Complexity: 1
+	FuncName: BaseDir()
+		Complexity: 1
+	FuncName: Lang()
+		Complexity: 1
+	FuncName: TranslationBaseName()
+		Complexity: 1
+	FuncName: Name()
+		Complexity: 1
+
+Package: hugofs
+StructName: languageFile
+Attributes:
+	fs || *LanguageFs
+WMC: 4
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Readdir()
+		Complexity: 4
+
+Package: hugofs
+StructName: LanguageFs
+Attributes:
+	basePath || string
+	lang || string
+	nameMarker || string
+	languages || BADRECV
+WMC: 24
+NDC: 0
+NP: 21
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Lang()
+		Complexity: 1
+	FuncName: Stat()
+		Complexity: 3
+	FuncName: Open()
+		Complexity: 3
+	FuncName: LstatIfPossible()
+		Complexity: 4
+	FuncName: realPath()
+		Complexity: 2
+	FuncName: realName()
+		Complexity: 4
+	FuncName: newLanguageFileInfo()
+		Complexity: 7
+
+Package: hugofs
+StructName: noLstatFs
+Attributes:
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: LstatIfPossible()
+		Complexity: 1
+
+Package: hugofs
+StructName: noOpFs
+Attributes:
+WMC: 12
+NDC: 0
+NP: 66
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Create()
+		Complexity: 1
+	FuncName: Mkdir()
+		Complexity: 1
+	FuncName: MkdirAll()
+		Complexity: 1
+	FuncName: Open()
+		Complexity: 1
+	FuncName: OpenFile()
+		Complexity: 1
+	FuncName: Remove()
+		Complexity: 1
+	FuncName: RemoveAll()
+		Complexity: 1
+	FuncName: Rename()
+		Complexity: 1
+	FuncName: Stat()
+		Complexity: 1
+	FuncName: Name()
+		Complexity: 1
+	FuncName: Chmod()
+		Complexity: 1
+	FuncName: Chtimes()
+		Complexity: 1
+
+Package: hugofs
+StructName: RootMappingFs
+Attributes:
+	rootMapToReal || *BADRECV
+	virtualRoots || BADRECV
+WMC: 13
+NDC: 0
+NP: 10
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Stat()
+		Complexity: 3
+	FuncName: isRoot()
+		Complexity: 2
+	FuncName: Open()
+		Complexity: 3
+	FuncName: LstatIfPossible()
+		Complexity: 3
+	FuncName: realName()
+		Complexity: 2
+
+Package: hugofs
+StructName: rootMappingFile
+Attributes:
+	fs || *RootMappingFs
+	name || string
+WMC: 11
+NDC: 1
+NP: 6
+ATFD: 0
+TCC: 0.166667
+God: false
+Methods:
+	FuncName: Readdir()
+		Complexity: 5
+	FuncName: Readdirnames()
+		Complexity: 3
+	FuncName: Name()
+		Complexity: 1
+	FuncName: Close()
+		Complexity: 2
+
+Package: hugofs
+StructName: rootMappingFileInfo
+Attributes:
+	name || string
+WMC: 6
+NDC: 0
+NP: 15
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Name()
+		Complexity: 1
+	FuncName: Size()
+		Complexity: 1
+	FuncName: Mode()
+		Complexity: 1
+	FuncName: ModTime()
+		Complexity: 1
+	FuncName: IsDir()
+		Complexity: 1
+	FuncName: Sys()
+		Complexity: 1
+
+Package: hugolib
+StructName: aliasHandler
+Attributes:
+	t || BADRECV
+	log || *BADRECV
+	allowRoot || bool
+WMC: 26
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: renderAlias()
+		Complexity: 6
+	FuncName: targetPathAlias()
+		Complexity: 20
+
+Package: hugolib
+StructName: Author
+Attributes:
+	GivenName || string
+	FamilyName || string
+	DisplayName || string
+	Thumbnail || string
+	Image || string
+	ShortBio || string
+	LongBio || string
+	Email || string
+	Social || AuthorSocial
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: SiteConfig
+Attributes:
+	Privacy || BADRECV
+	Services || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: ConfigSourceDescriptor
+Attributes:
+	Fs || BADRECV
+	Filename || string
+	Path || string
+	WorkingDir || string
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: configFilenames()
+		Complexity: 1
+
+Package: hugolib
+StructName: dataDir
+Attributes:
+	sources || BADRECV
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: addSource()
+		Complexity: 1
+
+Package: hugolib
+StructName: fileInfo
+Attributes:
+	bundleTp || bundleDirType
+	overriddenLang || string
+	disabled || bool
+WMC: 7
+NDC: 0
+NP: 6
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Lang()
+		Complexity: 2
+	FuncName: Filename()
+		Complexity: 3
+	FuncName: isOwner()
+		Complexity: 1
+	FuncName: isContentFile()
+		Complexity: 1
+
+Package: filesystems
+StructName: BaseFs
+Attributes:
+	PublishFs || BADRECV
+	themeFs || BADRECV
+	AbsThemeDirs || BADRECV
+WMC: 3
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: RelContentDir()
+		Complexity: 3
+
+Package: filesystems
+StructName: SourceFilesystems
+Attributes:
+	Content || *SourceFilesystem
+	Data || *SourceFilesystem
+	I18n || *SourceFilesystem
+	Layouts || *SourceFilesystem
+	Archetypes || *SourceFilesystem
+	Assets || *SourceFilesystem
+	Resources || *SourceFilesystem
+	Work || *SourceFilesystem
+	Static || BADRECV
+WMC: 19
+NDC: 3
+NP: 45
+ATFD: 1
+TCC: 0.066667
+God: false
+Methods:
+	FuncName: ContentStaticAssetFs()
+		Complexity: 1
+	FuncName: StaticFs()
+		Complexity: 3
+	FuncName: StatResource()
+		Complexity: 4
+	FuncName: IsStatic()
+		Complexity: 3
+	FuncName: IsContent()
+		Complexity: 1
+	FuncName: IsLayout()
+		Complexity: 1
+	FuncName: IsData()
+		Complexity: 1
+	FuncName: IsAsset()
+		Complexity: 1
+	FuncName: IsI18n()
+		Complexity: 1
+	FuncName: MakeStaticPathRelative()
+		Complexity: 3
+
+Package: filesystems
+StructName: SourceFilesystem
+Attributes:
+	Fs || BADRECV
+	SourceFs || BADRECV
+	Dirnames || BADRECV
+	PublishFolder || string
+WMC: 12
+NDC: 3
+NP: 6
+ATFD: 0
+TCC: 0.500000
+God: false
+Methods:
+	FuncName: MakePathRelative()
+		Complexity: 3
+	FuncName: RealFilename()
+		Complexity: 3
+	FuncName: Contains()
+		Complexity: 3
+	FuncName: RealDirs()
+		Complexity: 3
+
+Package: filesystems
+StructName: sourceFilesystemsBuilder
+Attributes:
+	p || *BADRECV
+	result || *SourceFilesystems
+	themeFs || BADRECV
+	hasTheme || bool
+	absThemeDirs || BADRECV
+WMC: 52
+NDC: 6
+NP: 10
+ATFD: 4
+TCC: 0.600000
+God: false
+Methods:
+	FuncName: Build()
+		Complexity: 13
+	FuncName: createFs()
+		Complexity: 15
+	FuncName: createRootMappingFs()
+		Complexity: 7
+	FuncName: existsInSource()
+		Complexity: 1
+	FuncName: createStaticFs()
+		Complexity: 16
+
+Package: hugolib
+StructName: gitInfo
+Attributes:
+	contentDir || string
+	repo || *BADRECV
+WMC: 2
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: forPage()
+		Complexity: 2
+
+Package: hugolib
+StructName: HugoInfo
+Attributes:
+	Version || BADRECV
+	Generator || BADRECV
+	CommitHash || string
+	BuildDate || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: HugoSites
+Attributes:
+	Sites || BADRECV
+	multilingual || *Multilingual
+	multihost || bool
+	running || bool
+	ContentChanges || *contentChangeMap
+	gitInfo || *gitInfo
+WMC: 175
+NDC: 157
+NP: 435
+ATFD: 21
+TCC: 0.360920
+God: false
+Methods:
+	FuncName: pickOneAndLogTheRest()
+		Complexity: 8
+	FuncName: IsMultihost()
+		Complexity: 2
+	FuncName: LanguageSet()
+		Complexity: 2
+	FuncName: NumLogErrors()
+		Complexity: 2
+	FuncName: PrintProcessingStats()
+		Complexity: 2
+	FuncName: langSite()
+		Complexity: 2
+	FuncName: GetContentPage()
+		Complexity: 5
+	FuncName: initGitInfo()
+		Complexity: 3
+	FuncName: reset()
+		Complexity: 2
+	FuncName: resetLogs()
+		Complexity: 2
+	FuncName: createSitesFromConfig()
+		Complexity: 6
+	FuncName: toSiteInfos()
+		Complexity: 2
+	FuncName: renderCrossSitesArtifacts()
+		Complexity: 6
+	FuncName: assignMissingTranslations()
+		Complexity: 7
+	FuncName: createMissingPages()
+		Complexity: 21
+	FuncName: removePageByFilename()
+		Complexity: 2
+	FuncName: setupTranslations()
+		Complexity: 11
+	FuncName: Pages()
+		Complexity: 1
+	FuncName: findPagesByKindNotIn()
+		Complexity: 1
+	FuncName: findPagesByKindIn()
+		Complexity: 1
+	FuncName: findAllPagesByKind()
+		Complexity: 1
+	FuncName: findAllPagesByKindNotIn()
+		Complexity: 1
+	FuncName: findPagesByShortcode()
+		Complexity: 2
+	FuncName: Build()
+		Complexity: 20
+	FuncName: init()
+		Complexity: 6
+	FuncName: initRebuild()
+		Complexity: 6
+	FuncName: process()
+		Complexity: 2
+	FuncName: assemble()
+		Complexity: 18
+	FuncName: render()
+		Complexity: 15
+	FuncName: GC()
+		Complexity: 16
+
+Package: hugolib
+StructName: BuildCfg
+Attributes:
+	ResetState || bool
+	CreateSitesFromConfig || bool
+	SkipRender || bool
+	whatChanged || *whatChanged
+	PartialReRender || bool
+	RecentlyVisited || BADRECV
+WMC: 6
+NDC: 0
+NP: 0
+ATFD: 1
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: shouldRender()
+		Complexity: 6
+
+Package: hugolib
+StructName: contentChangeMap
+Attributes:
+	mu || BADRECV
+	branches || BADRECV
+	leafs || BADRECV
+	pathSpec || *BADRECV
+	symContent || BADRECV
+	symContentMu || BADRECV
+WMC: 22
+NDC: 1
+NP: 10
+ATFD: 2
+TCC: 0.100000
+God: false
+Methods:
+	FuncName: add()
+		Complexity: 4
+	FuncName: handleBundles()
+		Complexity: 2
+	FuncName: resolveAndRemove()
+		Complexity: 11
+	FuncName: addSymbolicLinkMapping()
+		Complexity: 2
+	FuncName: GetSymbolicLinkMappings()
+		Complexity: 3
+
+Package: hugolib
+StructName: testSiteBuildErrorAsserter
+Attributes:
+	name || string
+	assert || *BADRECV
+WMC: 3
+NDC: 1
+NP: 3
+ATFD: 1
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: getFileError()
+		Complexity: 1
+	FuncName: assertLineNumber()
+		Complexity: 1
+	FuncName: assertErrorMessage()
+		Complexity: 1
+
+Package: hugolib
+StructName: multiSiteTestBuilder
+Attributes:
+	configData || BADRECV
+	config || string
+	configFormat || string
+WMC: 2
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: WithNewConfig()
+		Complexity: 1
+	FuncName: WithNewConfigData()
+		Complexity: 1
+
+Package: hugolib
+StructName: Image
+Attributes:
+	URL || string
+	Title || string
+	Caption || string
+	AltText || string
+	GeoLocation || string
+	License || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: Video
+Attributes:
+	ThumbnailLoc || string
+	Title || string
+	Description || string
+	ContentLoc || string
+	PlayerLoc || string
+	Duration || string
+	ExpirationDate || string
+	Rating || string
+	ViewCount || string
+	PublicationDate || string
+	FamilyFriendly || string
+	Restriction || string
+	GalleryLoc || string
+	Price || string
+	RequiresSubscription || string
+	Uploader || string
+	Live || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: MenuEntry
+Attributes:
+	URL || string
+	Page || *Page
+	Name || string
+	Menu || string
+	Identifier || string
+	title || string
+	Pre || BADRECV
+	Post || BADRECV
+	Weight || int
+	Parent || string
+	Children || Menu
+WMC: 24
+NDC: 2
+NP: 21
+ATFD: 1
+TCC: 0.095238
+God: false
+Methods:
+	FuncName: HasChildren()
+		Complexity: 1
+	FuncName: KeyName()
+		Complexity: 2
+	FuncName: hopefullyUniqueID()
+		Complexity: 3
+	FuncName: IsEqual()
+		Complexity: 2
+	FuncName: IsSameResource()
+		Complexity: 3
+	FuncName: marshallMap()
+		Complexity: 10
+	FuncName: Title()
+		Complexity: 3
+
+Package: hugolib
+StructName: menuSorter
+Attributes:
+	menu || Menu
+	by || menuEntryBy
+WMC: 3
+NDC: 1
+NP: 3
+ATFD: 0
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: Len()
+		Complexity: 1
+	FuncName: Swap()
+		Complexity: 1
+	FuncName: Less()
+		Complexity: 1
+
+Package: hugolib
+StructName: Multilingual
+Attributes:
+	Languages || BADRECV
+	DefaultLang || *BADRECV
+	langMap || BADRECV
+	langMapInit || BADRECV
+WMC: 3
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Language()
+		Complexity: 2
+	FuncName: enabled()
+		Complexity: 1
+
+Package: hugolib
+StructName: orderedMap
+Attributes:
+	keys || BADRECV
+	m || BADRECV
+WMC: 12
+NDC: 0
+NP: 28
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Add()
+		Complexity: 2
+	FuncName: Get()
+		Complexity: 1
+	FuncName: Contains()
+		Complexity: 1
+	FuncName: Keys()
+		Complexity: 1
+	FuncName: Len()
+		Complexity: 1
+	FuncName: getShortcode()
+		Complexity: 2
+	FuncName: getShortcodeRenderer()
+		Complexity: 2
+	FuncName: getString()
+		Complexity: 2
+
+Package: hugolib
+StructName: Page
+Attributes:
+	Kind || string
+	Pages || Pages
+	Resources || BADRECV
+	resourcesMetadata || BADRECV
+	translations || Pages
+	translationKey || string
+	params || BADRECV
+	contentv || BADRECV
+	summary || BADRECV
+	TableOfContents || BADRECV
+	pageWithoutContent || *PageWithoutContent
+	Aliases || BADRECV
+	Images || BADRECV
+	Videos || BADRECV
+	truncated || bool
+	Draft || bool
+	Status || string
+	Markup || string
+	extension || string
+	contentType || string
+	Layout || string
+	selfLayout || string
+	linkTitle || string
+	isCJKLanguage || bool
+	plain || string
+	plainWords || BADRECV
+	renderingConfig || *BADRECV
+	pageMenus || PageMenus
+	GitInfo || *BADRECV
+	sections || BADRECV
+	parent || *Page
+	origOnCopy || *Page
+	subSections || Pages
+	s || *Site
+	Site || *SiteInfo
+	title || string
+	Description || string
+	Keywords || BADRECV
+	data || BADRECV
+	Sitemap || Sitemap
+	frontMatterURL || string
+	permalink || string
+	relPermalink || string
+	relTargetPathBase || string
+	resourcePath || string
+	headless || bool
+	layoutDescriptor || BADRECV
+	scratch || *BADRECV
+	language || *BADRECV
+	lang || string
+	forceRender || bool
+	outputFormats || BADRECV
+	mainPageOutput || *PageOutput
+	targetPathDescriptorPrototype || *targetPathDescriptor
+WMC: 460
+NDC: 118
+NP: 8256
+ATFD: 28
+TCC: 0.014293
+God: true
+Methods:
+	FuncName: Slice()
+		Complexity: 1
+	FuncName: Group()
+		Complexity: 2
+	FuncName: Data()
+		Complexity: 1
+	FuncName: initContent()
+		Complexity: 7
+	FuncName: withoutContent()
+		Complexity: 1
+	FuncName: Content()
+		Complexity: 1
+	FuncName: Truncated()
+		Complexity: 1
+	FuncName: content()
+		Complexity: 1
+	FuncName: Summary()
+		Complexity: 1
+	FuncName: Sites()
+		Complexity: 2
+	FuncName: SearchKeywords()
+		Complexity: 2
+	FuncName: PubDate()
+		Complexity: 2
+	FuncName: RSSLink()
+		Complexity: 2
+	FuncName: createLayoutDescriptor()
+		Complexity: 4
+	FuncName: resetContent()
+		Complexity: 1
+	FuncName: IsNode()
+		Complexity: 1
+	FuncName: IsHome()
+		Complexity: 1
+	FuncName: IsSection()
+		Complexity: 1
+	FuncName: IsPage()
+		Complexity: 1
+	FuncName: BundleType()
+		Complexity: 5
+	FuncName: MediaType()
+		Complexity: 1
+	FuncName: Plain()
+		Complexity: 1
+	FuncName: initPlain()
+		Complexity: 2
+	FuncName: PlainWords()
+		Complexity: 1
+	FuncName: initPlainWords()
+		Complexity: 2
+	FuncName: Param()
+		Complexity: 4
+	FuncName: traverseDirect()
+		Complexity: 2
+	FuncName: traverseNested()
+		Complexity: 3
+	FuncName: Author()
+		Complexity: 2
+	FuncName: Authors()
+		Complexity: 6
+	FuncName: UniqueID()
+		Complexity: 1
+	FuncName: setUserDefinedSummary()
+		Complexity: 3
+	FuncName: setAutoSummary()
+		Complexity: 2
+	FuncName: renderContent()
+		Complexity: 1
+	FuncName: getRenderingConfig()
+		Complexity: 4
+	FuncName: IsRenderable()
+		Complexity: 1
+	FuncName: Type()
+		Complexity: 3
+	FuncName: Section()
+		Complexity: 4
+	FuncName: ReadFrom()
+		Complexity: 3
+	FuncName: WordCount()
+		Complexity: 1
+	FuncName: ReadingTime()
+		Complexity: 1
+	FuncName: FuzzyWordCount()
+		Complexity: 1
+	FuncName: initContentPlainAndMeta()
+		Complexity: 1
+	FuncName: initContentAndMeta()
+		Complexity: 1
+	FuncName: initMeta()
+		Complexity: 6
+	FuncName: HasShortcode()
+		Complexity: 2
+	FuncName: AllTranslations()
+		Complexity: 1
+	FuncName: IsTranslated()
+		Complexity: 1
+	FuncName: Translations()
+		Complexity: 3
+	FuncName: TranslationKey()
+		Complexity: 3
+	FuncName: LinkTitle()
+		Complexity: 2
+	FuncName: shouldBuild()
+		Complexity: 1
+	FuncName: IsDraft()
+		Complexity: 1
+	FuncName: IsFuture()
+		Complexity: 2
+	FuncName: IsExpired()
+		Complexity: 2
+	FuncName: URL()
+		Complexity: 3
+	FuncName: Permalink()
+		Complexity: 2
+	FuncName: RelPermalink()
+		Complexity: 2
+	FuncName: Name()
+		Complexity: 2
+	FuncName: Title()
+		Complexity: 1
+	FuncName: Params()
+		Complexity: 1
+	FuncName: subResourceTargetPathFactory()
+		Complexity: 1
+	FuncName: initMainOutputFormat()
+		Complexity: 3
+	FuncName: setContentInit()
+		Complexity: 8
+	FuncName: prepareForRender()
+		Complexity: 9
+	FuncName: updateMetaData()
+		Complexity: 69
+	FuncName: GetParam()
+		Complexity: 1
+	FuncName: getParamToLower()
+		Complexity: 1
+	FuncName: getParam()
+		Complexity: 12
+	FuncName: HasMenuCurrent()
+		Complexity: 14
+	FuncName: IsMenuCurrent()
+		Complexity: 9
+	FuncName: isSameAsDescendantMenu()
+		Complexity: 5
+	FuncName: Menus()
+		Complexity: 9
+	FuncName: shouldRenderTo()
+		Complexity: 1
+	FuncName: RawContent()
+		Complexity: 2
+	FuncName: FullFilePath()
+		Complexity: 1
+	FuncName: absoluteSourceRef()
+		Complexity: 4
+	FuncName: prepareLayouts()
+		Complexity: 4
+	FuncName: prepareData()
+		Complexity: 10
+	FuncName: updatePageDates()
+		Complexity: 11
+	FuncName: copy()
+		Complexity: 3
+	FuncName: Hugo()
+		Complexity: 1
+	FuncName: GetPage()
+		Complexity: 1
+	FuncName: decodeRefArgs()
+		Complexity: 7
+	FuncName: Ref()
+		Complexity: 5
+	FuncName: RelRef()
+		Complexity: 5
+	FuncName: String()
+		Complexity: 2
+	FuncName: Scratch()
+		Complexity: 2
+	FuncName: Language()
+		Complexity: 1
+	FuncName: Lang()
+		Complexity: 2
+	FuncName: isNewTranslation()
+		Complexity: 9
+	FuncName: shouldAddLanguagePrefix()
+		Complexity: 6
+	FuncName: initLanguage()
+		Complexity: 5
+	FuncName: LanguagePrefix()
+		Complexity: 1
+	FuncName: addLangPathPrefixIfFlagSet()
+		Complexity: 4
+	FuncName: setValuesForKind()
+		Complexity: 7
+	FuncName: pathOrTitle()
+		Complexity: 2
+	FuncName: Next()
+		Complexity: 1
+	FuncName: Prev()
+		Complexity: 1
+	FuncName: DummyPageMethodWithArgForTest()
+		Complexity: 1
+	FuncName: DummyPageMethodReturnThreeValueForTest()
+		Complexity: 1
+	FuncName: DummyPageMethodReturnErrorOnlyForTest()
+		Complexity: 1
+	FuncName: dummyPageMethodReturnTwoValueForTest()
+		Complexity: 1
+	FuncName: mapContent()
+		Complexity: 20
+	FuncName: parse()
+		Complexity: 6
+	FuncName: errorf()
+		Complexity: 3
+	FuncName: errWithFileContext()
+		Complexity: 1
+	FuncName: Render()
+		Complexity: 2
+	FuncName: OutputFormats()
+		Complexity: 2
+	FuncName: AlternativeOutputFormats()
+		Complexity: 1
+	FuncName: createTargetPathDescriptor()
+		Complexity: 2
+	FuncName: initTargetPathDescriptor()
+		Complexity: 7
+	FuncName: initURLs()
+		Complexity: 4
+	FuncName: initPaths()
+		Complexity: 3
+	FuncName: createTargetPath()
+		Complexity: 4
+	FuncName: createRelativeTargetPath()
+		Complexity: 3
+	FuncName: createRelativePermalinkForOutputFormat()
+		Complexity: 1
+	FuncName: createRelativeTargetPathForOutputFormat()
+		Complexity: 3
+	FuncName: Paginator()
+		Complexity: 1
+	FuncName: Paginate()
+		Complexity: 1
+	FuncName: Parent()
+		Complexity: 1
+	FuncName: CurrentSection()
+		Complexity: 4
+	FuncName: FirstSection()
+		Complexity: 7
+	FuncName: InSection()
+		Complexity: 5
+	FuncName: IsDescendant()
+		Complexity: 4
+	FuncName: IsAncestor()
+		Complexity: 4
+	FuncName: Eq()
+		Complexity: 2
+	FuncName: Sections()
+		Complexity: 1
+	FuncName: setPagePages()
+		Complexity: 1
+
+Package: hugolib
+StructName: pageInit
+Attributes:
+	languageInit || BADRECV
+	pageMenusInit || BADRECV
+	pageMetaInit || BADRECV
+	renderingConfigInit || BADRECV
+	withoutContentInit || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: pageContentInit
+Attributes:
+	contentInitMu || BADRECV
+	contentInit || BADRECV
+	plainInit || BADRECV
+	plainWordsInit || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: PageMeta
+Attributes:
+	wordCount || int
+	fuzzyWordCount || int
+	readingTime || int
+	Weight || int
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: Position
+Attributes:
+	PrevPage || *Page
+	NextPage || *Page
+	PrevInSection || *Page
+	NextInSection || *Page
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: summaryContent
+Attributes:
+	summary || BADRECV
+	content || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: refArgs
+Attributes:
+	Path || string
+	Lang || string
+	OutputFormat || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: pageCacheEntry
+Attributes:
+	in || BADRECV
+	out || Pages
+WMC: 4
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: matches()
+		Complexity: 4
+
+Package: hugolib
+StructName: pageCache
+Attributes:
+	m || BADRECV
+WMC: 12
+NDC: 0
+NP: 3
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: clear()
+		Complexity: 1
+	FuncName: get()
+		Complexity: 2
+	FuncName: getP()
+		Complexity: 9
+
+Package: hugolib
+StructName: PageGroup
+Attributes:
+	Key || BADRECV
+WMC: 6
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Slice()
+		Complexity: 6
+
+Package: hugolib
+StructName: mapKeyByInt
+Attributes:
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Less()
+		Complexity: 1
+
+Package: hugolib
+StructName: mapKeyByStr
+Attributes:
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Less()
+		Complexity: 1
+
+Package: hugolib
+StructName: pageGroupTestObject
+Attributes:
+	path || string
+	weight || int
+	date || string
+	param || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: pageSorter
+Attributes:
+	pages || Pages
+	by || pageBy
+WMC: 3
+NDC: 1
+NP: 3
+ATFD: 0
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: Len()
+		Complexity: 1
+	FuncName: Swap()
+		Complexity: 1
+	FuncName: Less()
+		Complexity: 1
+
+Package: hugolib
+StructName: pageContent
+Attributes:
+	renderable || bool
+	workContent || BADRECV
+	shortcodeState || *shortcodeHandler
+	source || rawPageContent
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: rawPageContent
+Attributes:
+	hasSummaryDivider || bool
+	parsed || BADRECV
+	posMainContent || int
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: PageOutput
+Attributes:
+	paginator || *Pager
+	paginatorInit || BADRECV
+	resources || BADRECV
+	resourcesInit || BADRECV
+	targetPathDescriptor || targetPathDescriptor
+	outputFormat || BADRECV
+WMC: 48
+NDC: 0
+NP: 55
+ATFD: 5
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: targetPath()
+		Complexity: 2
+	FuncName: copyWithFormat()
+		Complexity: 2
+	FuncName: copy()
+		Complexity: 1
+	FuncName: layouts()
+		Complexity: 4
+	FuncName: Render()
+		Complexity: 6
+	FuncName: AlternativeOutputFormats()
+		Complexity: 4
+	FuncName: deleteResource()
+		Complexity: 1
+	FuncName: Resources()
+		Complexity: 4
+	FuncName: renderResources()
+		Complexity: 5
+	FuncName: Paginator()
+		Complexity: 8
+	FuncName: Paginate()
+		Complexity: 11
+
+Package: hugolib
+StructName: OutputFormat
+Attributes:
+	Rel || string
+	f || BADRECV
+	p || *Page
+WMC: 4
+NDC: 2
+NP: 6
+ATFD: 0
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: Name()
+		Complexity: 1
+	FuncName: MediaType()
+		Complexity: 1
+	FuncName: Permalink()
+		Complexity: 1
+	FuncName: RelPermalink()
+		Complexity: 1
+
+Package: hugolib
+StructName: targetPathDescriptor
+Attributes:
+	PathSpec || *BADRECV
+	Type || BADRECV
+	Kind || string
+	Sections || BADRECV
+	BaseName || string
+	Dir || string
+	LangPrefix || string
+	IsMultihost || bool
+	URL || string
+	Addends || string
+	ExpandedPermalink || string
+	UglyURLs || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: PageWithoutContent
+Attributes:
+WMC: 8
+NDC: 0
+NP: 28
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Content()
+		Complexity: 1
+	FuncName: Truncated()
+		Complexity: 1
+	FuncName: Summary()
+		Complexity: 1
+	FuncName: WordCount()
+		Complexity: 1
+	FuncName: ReadingTime()
+		Complexity: 1
+	FuncName: FuzzyWordCount()
+		Complexity: 1
+	FuncName: Plain()
+		Complexity: 1
+	FuncName: PlainWords()
+		Complexity: 1
+
+Package: hugolib
+StructName: siteContentProcessor
+Attributes:
+	site || *Site
+	handleContent || contentHandler
+	ctx || BADRECV
+	fileBundlesChan || BADRECV
+	fileSinglesChan || BADRECV
+	fileAssetsChan || BADRECV
+	numWorkers || int
+	pagesChan || BADRECV
+	partialBuild || bool
+WMC: 36
+NDC: 3
+NP: 21
+ATFD: 1
+TCC: 0.142857
+God: false
+Methods:
+	FuncName: processBundle()
+		Complexity: 3
+	FuncName: processSingle()
+		Complexity: 3
+	FuncName: processAssets()
+		Complexity: 3
+	FuncName: closeInput()
+		Complexity: 1
+	FuncName: process()
+		Complexity: 24
+	FuncName: readAndConvertContentFile()
+		Complexity: 1
+	FuncName: readAndConvertContentBundle()
+		Complexity: 1
+
+Package: hugolib
+StructName: capturer
+Attributes:
+	seen || BADRECV
+	seenMu || BADRECV
+	handler || captureResultHandler
+	sourceSpec || *BADRECV
+	fs || BADRECV
+	logger || *BADRECV
+	filenames || BADRECV
+	contentChanges || *contentChangeMap
+	sem || BADRECV
+WMC: 112
+NDC: 1
+NP: 105
+ATFD: 2
+TCC: 0.009524
+God: false
+Methods:
+	FuncName: capturePartial()
+		Complexity: 12
+	FuncName: capture()
+		Complexity: 3
+	FuncName: handleNestedDir()
+		Complexity: 3
+	FuncName: handleBranchDir()
+		Complexity: 13
+	FuncName: handleDir()
+		Complexity: 25
+	FuncName: handleNonBundle()
+		Complexity: 6
+	FuncName: copyOrHandleSingle()
+		Complexity: 2
+	FuncName: createBundleDirs()
+		Complexity: 12
+	FuncName: collectFiles()
+		Complexity: 6
+	FuncName: readDir()
+		Complexity: 9
+	FuncName: newFileInfo()
+		Complexity: 1
+	FuncName: isSeen()
+		Complexity: 2
+	FuncName: resolveRealPath()
+		Complexity: 2
+	FuncName: resolveRealPathIn()
+		Complexity: 14
+	FuncName: lstatIfPossible()
+		Complexity: 2
+
+Package: hugolib
+StructName: captureResultHandlerChain
+Attributes:
+	handlers || BADRECV
+WMC: 8
+NDC: 3
+NP: 3
+ATFD: 0
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: handleSingles()
+		Complexity: 3
+	FuncName: handleBundles()
+		Complexity: 2
+	FuncName: handleCopyFiles()
+		Complexity: 3
+
+Package: hugolib
+StructName: bundleDirs
+Attributes:
+	tp || bundleDirType
+	bundles || BADRECV
+	langOverrides || BADRECV
+	c || *capturer
+WMC: 10
+NDC: 3
+NP: 3
+ATFD: 2
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: addBundleContentFile()
+		Complexity: 5
+	FuncName: addBundleFiles()
+		Complexity: 4
+	FuncName: addBundleHeader()
+		Complexity: 1
+
+Package: hugolib
+StructName: bundleDir
+Attributes:
+	tp || bundleDirType
+	fi || *fileInfo
+	resources || BADRECV
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: clone()
+		Complexity: 1
+
+Package: hugolib
+StructName: storeFilenames
+Attributes:
+	filenames || BADRECV
+	copyNames || BADRECV
+	dirKeys || BADRECV
+WMC: 8
+NDC: 0
+NP: 6
+ATFD: 2
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: handleSingles()
+		Complexity: 2
+	FuncName: handleBundles()
+		Complexity: 3
+	FuncName: handleCopyFiles()
+		Complexity: 2
+	FuncName: sortedStr()
+		Complexity: 1
+
+Package: hugolib
+StructName: contentHandlers
+Attributes:
+	s || *Site
+	rootHandler || contentHandler
+WMC: 31
+NDC: 6
+NP: 15
+ATFD: 7
+TCC: 0.400000
+God: false
+Methods:
+	FuncName: processFirstMatch()
+		Complexity: 4
+	FuncName: parsePage()
+		Complexity: 15
+	FuncName: handlePageContent()
+		Complexity: 4
+	FuncName: handleHTMLContent()
+		Complexity: 3
+	FuncName: createResource()
+		Complexity: 2
+	FuncName: copyFile()
+		Complexity: 3
+
+Package: hugolib
+StructName: handlerContext
+Attributes:
+	pages || BADRECV
+	doNotAddToSiteCollections || bool
+	currentPage || *Page
+	parentPage || *Page
+	bundle || *bundleDir
+	source || *fileInfo
+	target || string
+WMC: 15
+NDC: 1
+NP: 15
+ATFD: 0
+TCC: 0.066667
+God: false
+Methods:
+	FuncName: ext()
+		Complexity: 4
+	FuncName: targetPath()
+		Complexity: 2
+	FuncName: file()
+		Complexity: 2
+	FuncName: childCtx()
+		Complexity: 3
+	FuncName: supports()
+		Complexity: 3
+	FuncName: isContentFile()
+		Complexity: 1
+
+Package: hugolib
+StructName: handlerResult
+Attributes:
+	err || error
+	handled || bool
+	resource || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: PageCollections
+Attributes:
+	Pages || Pages
+	AllPages || Pages
+	indexPages || Pages
+	RegularPages || Pages
+	AllRegularPages || Pages
+	rawAllPages || Pages
+	headlessPages || Pages
+	pageIndex || *BADRECV
+WMC: 57
+NDC: 6
+NP: 66
+ATFD: 3
+TCC: 0.090909
+God: false
+Methods:
+	FuncName: getFromCache()
+		Complexity: 4
+	FuncName: refreshPageCaches()
+		Complexity: 10
+	FuncName: getPageOldVersion()
+		Complexity: 11
+	FuncName: getPage()
+		Complexity: 1
+	FuncName: getPageNew()
+		Complexity: 18
+	FuncName: findPagesByKind()
+		Complexity: 1
+	FuncName: addPage()
+		Complexity: 1
+	FuncName: removePageFilename()
+		Complexity: 2
+	FuncName: removePage()
+		Complexity: 2
+	FuncName: findPagesByShortcode()
+		Complexity: 4
+	FuncName: replacePage()
+		Complexity: 1
+	FuncName: clearResourceCacheForPage()
+		Complexity: 2
+
+Package: hugolib
+StructName: testCase
+Attributes:
+	kind || string
+	context || *Page
+	path || BADRECV
+	expectedTitle || string
+WMC: 4
+NDC: 0
+NP: 0
+ATFD: 1
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: check()
+		Complexity: 4
+
+Package: pagemeta
+StructName: FrontMatterHandler
+Attributes:
+	fmConfig || frontmatterConfig
+	dateHandler || frontMatterFieldHandler
+	lastModHandler || frontMatterFieldHandler
+	publishDateHandler || frontMatterFieldHandler
+	expiryDateHandler || frontMatterFieldHandler
+	allDateKeys || BADRECV
+	logger || *BADRECV
+WMC: 23
+NDC: 1
+NP: 10
+ATFD: 1
+TCC: 0.100000
+God: false
+Methods:
+	FuncName: HandleDates()
+		Complexity: 7
+	FuncName: IsDateKey()
+		Complexity: 1
+	FuncName: newChainedFrontMatterFieldHandler()
+		Complexity: 4
+	FuncName: createHandlers()
+		Complexity: 5
+	FuncName: createDateHandler()
+		Complexity: 6
+
+Package: pagemeta
+StructName: FrontMatterDescriptor
+Attributes:
+	Frontmatter || BADRECV
+	BaseFilename || string
+	ModTime || BADRECV
+	GitAuthorDate || BADRECV
+	Params || BADRECV
+	Dates || *PageDates
+	PageURLs || *URLPath
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: pagemeta
+StructName: frontmatterConfig
+Attributes:
+	date || BADRECV
+	lastmod || BADRECV
+	publishDate || BADRECV
+	expiryDate || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: pagemeta
+StructName: URLPath
+Attributes:
+	URL || string
+	Permalink || string
+	Slug || string
+	Section || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: pagemeta
+StructName: PageDates
+Attributes:
+	Date || BADRECV
+	Lastmod || BADRECV
+	PublishDate || BADRECV
+	ExpiryDate || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: pagePNTestObject
+Attributes:
+	path || string
+	weight || int
+	date || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: cachedPostingList
+Attributes:
+	p || Pages
+	postingList || *BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: relatedDocsHandler
+Attributes:
+	cfg || BADRECV
+	postingLists || BADRECV
+	mu || BADRECV
+WMC: 8
+NDC: 0
+NP: 1
+ATFD: 1
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: getIndex()
+		Complexity: 3
+	FuncName: getOrCreateIndex()
+		Complexity: 5
+
+Package: hugolib
+StructName: Pager
+Attributes:
+	number || int
+WMC: 27
+NDC: 5
+NP: 91
+ATFD: 1
+TCC: 0.054945
+God: false
+Methods:
+	FuncName: String()
+		Complexity: 1
+	FuncName: PageNumber()
+		Complexity: 1
+	FuncName: URL()
+		Complexity: 1
+	FuncName: Pages()
+		Complexity: 3
+	FuncName: PageGroups()
+		Complexity: 3
+	FuncName: element()
+		Complexity: 2
+	FuncName: page()
+		Complexity: 7
+	FuncName: NumberOfElements()
+		Complexity: 1
+	FuncName: HasPrev()
+		Complexity: 1
+	FuncName: Prev()
+		Complexity: 2
+	FuncName: HasNext()
+		Complexity: 1
+	FuncName: Next()
+		Complexity: 2
+	FuncName: First()
+		Complexity: 1
+	FuncName: Last()
+		Complexity: 1
+
+Package: hugolib
+StructName: paginator
+Attributes:
+	paginatedElements || BADRECV
+	total || int
+	size || int
+	source || BADRECV
+	options || BADRECV
+WMC: 4
+NDC: 0
+NP: 6
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Pagers()
+		Complexity: 1
+	FuncName: PageSize()
+		Complexity: 1
+	FuncName: TotalPages()
+		Complexity: 1
+	FuncName: TotalNumberOfElements()
+		Complexity: 1
+
+Package: hugolib
+StructName: keyPage
+Attributes:
+	key || BADRECV
+	page || *Page
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: paths
+StructName: BaseURL
+Attributes:
+	url || *BADRECV
+	urlStr || string
+WMC: 12
+NDC: 1
+NP: 10
+ATFD: 1
+TCC: 0.100000
+God: false
+Methods:
+	FuncName: String()
+		Complexity: 2
+	FuncName: Path()
+		Complexity: 1
+	FuncName: HostURL()
+		Complexity: 1
+	FuncName: WithProtocol()
+		Complexity: 7
+	FuncName: URL()
+		Complexity: 1
+
+Package: paths
+StructName: Paths
+Attributes:
+	Fs || *BADRECV
+	Cfg || BADRECV
+	BasePath || string
+	ContentDir || string
+	ThemesDir || string
+	WorkingDir || string
+	AbsResourcesDir || string
+	AbsPublishDir || string
+	PaginatePath || string
+	PublishDir || string
+	MultihostTargetBasePaths || BADRECV
+	DisablePathToLower || bool
+	RemovePathAccents || bool
+	UglyURLs || bool
+	CanonifyURLs || bool
+	Language || *BADRECV
+	Languages || BADRECV
+	defaultContentLanguageInSubdir || bool
+	DefaultContentLanguage || string
+	multilingual || bool
+	themes || BADRECV
+	AllThemes || BADRECV
+WMC: 21
+NDC: 3
+NP: 28
+ATFD: 0
+TCC: 0.107143
+God: false
+Methods:
+	FuncName: Lang()
+		Complexity: 3
+	FuncName: ThemeSet()
+		Complexity: 1
+	FuncName: Themes()
+		Complexity: 1
+	FuncName: GetTargetLanguageBasePath()
+		Complexity: 2
+	FuncName: GetURLLanguageBasePath()
+		Complexity: 2
+	FuncName: GetLanguagePrefix()
+		Complexity: 5
+	FuncName: GetLangSubDir()
+		Complexity: 6
+	FuncName: AbsPathify()
+		Complexity: 1
+
+Package: paths
+StructName: ThemeConfig
+Attributes:
+	Name || string
+	ConfigFilename || string
+	Cfg || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: paths
+StructName: themesCollector
+Attributes:
+	themesDir || string
+	fs || BADRECV
+	seen || BADRECV
+	themes || BADRECV
+WMC: 20
+NDC: 0
+NP: 10
+ATFD: 1
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: isSeen()
+		Complexity: 2
+	FuncName: addAndRecurse()
+		Complexity: 5
+	FuncName: add()
+		Complexity: 3
+	FuncName: getConfigFileIfProvided()
+		Complexity: 4
+	FuncName: addThemeNamesFromTheme()
+		Complexity: 6
+
+Package: hugolib
+StructName: permalinkExpandError
+Attributes:
+	pattern || pathPattern
+	section || string
+	err || error
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Error()
+		Complexity: 1
+
+Package: hugolib
+StructName: ShortcodeWithPage
+Attributes:
+	Params || BADRECV
+	Inner || BADRECV
+	Page || *PageWithoutContent
+	Parent || *ShortcodeWithPage
+	IsNamedParams || bool
+	Ordinal || int
+	scratch || *BADRECV
+WMC: 19
+NDC: 3
+NP: 10
+ATFD: 0
+TCC: 0.300000
+God: false
+Methods:
+	FuncName: Site()
+		Complexity: 1
+	FuncName: Ref()
+		Complexity: 1
+	FuncName: RelRef()
+		Complexity: 1
+	FuncName: Scratch()
+		Complexity: 2
+	FuncName: Get()
+		Complexity: 14
+
+Package: hugolib
+StructName: shortcode
+Attributes:
+	name || string
+	inner || BADRECV
+	params || BADRECV
+	ordinal || int
+	err || error
+	doMarkup || bool
+	pos || int
+WMC: 5
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: String()
+		Complexity: 5
+
+Package: hugolib
+StructName: scKey
+Attributes:
+	Lang || string
+	OutputFormat || string
+	Suffix || string
+	ShortcodePlaceholder || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: shortcodeHandler
+Attributes:
+	init || BADRECV
+	p || *PageWithoutContent
+	contentShortcodes || *orderedMap
+	contentShortcodesDelta || *orderedMap
+	renderedShortcodes || BADRECV
+	shortcodes || *orderedMap
+	nameSet || BADRECV
+	placeholderID || int
+	placeholderFunc || BADRECV
+WMC: 45
+NDC: 1
+NP: 21
+ATFD: 6
+TCC: 0.047619
+God: false
+Methods:
+	FuncName: nextPlaceholderID()
+		Complexity: 1
+	FuncName: createShortcodePlaceholder()
+		Complexity: 1
+	FuncName: updateDelta()
+		Complexity: 6
+	FuncName: clearDelta()
+		Complexity: 2
+	FuncName: contentShortcodesForOutputFormat()
+		Complexity: 6
+	FuncName: executeShortcodesForDelta()
+		Complexity: 4
+	FuncName: extractShortcode()
+		Complexity: 25
+
+Package: hugolib
+StructName: input
+Attributes:
+	in || BADRECV
+	replacements || BADRECV
+	expect || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: Site
+Attributes:
+	owner || *HugoSites
+	Taxonomies || TaxonomyList
+	taxonomiesPluralSingular || BADRECV
+	taxonomiesOrigKey || BADRECV
+	Sections || Taxonomy
+	Info || SiteInfo
+	Menus || Menus
+	timer || *BADRECV
+	layoutHandler || *BADRECV
+	draftCount || int
+	futureCount || int
+	expiredCount || int
+	Data || BADRECV
+	Language || *BADRECV
+	disabledKinds || BADRECV
+	outputFormats || BADRECV
+	outputFormatsConfig || BADRECV
+	mediaTypesConfig || BADRECV
+	siteConfig || SiteConfig
+	frontmatterHandler || BADRECV
+	rc || *siteRenderingContext
+	renderFormats || BADRECV
+	titleFunc || BADRECV
+	relatedDocsHandler || *relatedDocsHandler
+	shortcodePlaceholderFunc || BADRECV
+	publisher || BADRECV
+WMC: 349
+NDC: 41
+NP: 2346
+ATFD: 31
+TCC: 0.017477
+God: true
+Methods:
+	FuncName: writeDestAlias()
+		Complexity: 1
+	FuncName: publishDestAlias()
+		Complexity: 3
+	FuncName: withSiteTemplates()
+		Complexity: 5
+	FuncName: preparePagesForRender()
+		Complexity: 5
+	FuncName: updateBuildStats()
+		Complexity: 4
+	FuncName: multilingualEnabled()
+		Complexity: 3
+	FuncName: newPage()
+		Complexity: 1
+	FuncName: newPageFromFile()
+		Complexity: 1
+	FuncName: newPageFrom()
+		Complexity: 3
+	FuncName: NewPage()
+		Complexity: 2
+	FuncName: initRenderFormats()
+		Complexity: 4
+	FuncName: isEnabled()
+		Complexity: 2
+	FuncName: reset()
+		Complexity: 1
+	FuncName: running()
+		Complexity: 2
+	FuncName: multilingual()
+		Complexity: 1
+	FuncName: timerStep()
+		Complexity: 2
+	FuncName: RegisterMediaTypes()
+		Complexity: 3
+	FuncName: filterFileEvents()
+		Complexity: 9
+	FuncName: translateFileEvents()
+		Complexity: 8
+	FuncName: processPartial()
+		Complexity: 32
+	FuncName: loadData()
+		Complexity: 3
+	FuncName: errWithFileContext()
+		Complexity: 2
+	FuncName: handleDataFile()
+		Complexity: 18
+	FuncName: readData()
+		Complexity: 2
+	FuncName: readDataFromSourceFS()
+		Complexity: 1
+	FuncName: process()
+		Complexity: 4
+	FuncName: setupSitePages()
+		Complexity: 5
+	FuncName: render()
+		Complexity: 10
+	FuncName: Initialise()
+		Complexity: 1
+	FuncName: initialize()
+		Complexity: 1
+	FuncName: initializeSiteInfo()
+		Complexity: 12
+	FuncName: isI18nEvent()
+		Complexity: 1
+	FuncName: isDataDirEvent()
+		Complexity: 1
+	FuncName: isLayoutDirEvent()
+		Complexity: 1
+	FuncName: absContentDir()
+		Complexity: 1
+	FuncName: isContentDirEvent()
+		Complexity: 1
+	FuncName: readAndProcessContent()
+		Complexity: 7
+	FuncName: buildSiteMeta()
+		Complexity: 3
+	FuncName: getMenusFromConfig()
+		Complexity: 7
+	FuncName: assembleMenus()
+		Complexity: 17
+	FuncName: getTaxonomyKey()
+		Complexity: 2
+	FuncName: createTaxonomiesEntries()
+		Complexity: 2
+	FuncName: assembleTaxonomies()
+		Complexity: 11
+	FuncName: resetBuildState()
+		Complexity: 2
+	FuncName: kindFromSections()
+		Complexity: 4
+	FuncName: layouts()
+		Complexity: 1
+	FuncName: preparePages()
+		Complexity: 4
+	FuncName: errorCollator()
+		Complexity: 2
+	FuncName: appendThemeTemplates()
+		Complexity: 8
+	FuncName: permalinkForOutputFormat()
+		Complexity: 3
+	FuncName: permalink()
+		Complexity: 1
+	FuncName: renderAndWriteXML()
+		Complexity: 4
+	FuncName: renderAndWritePage()
+		Complexity: 13
+	FuncName: renderForLayouts()
+		Complexity: 4
+	FuncName: findFirstTemplate()
+		Complexity: 3
+	FuncName: publish()
+		Complexity: 1
+	FuncName: newNodePage()
+		Complexity: 1
+	FuncName: newHomePage()
+		Complexity: 1
+	FuncName: newTaxonomyPage()
+		Complexity: 2
+	FuncName: newSectionPage()
+		Complexity: 2
+	FuncName: newTaxonomyTermsPage()
+		Complexity: 1
+	FuncName: renderPages()
+		Complexity: 7
+	FuncName: renderPaginator()
+		Complexity: 10
+	FuncName: renderRSS()
+		Complexity: 6
+	FuncName: render404()
+		Complexity: 5
+	FuncName: renderSitemap()
+		Complexity: 8
+	FuncName: renderRobotsTXT()
+		Complexity: 6
+	FuncName: renderAliases()
+		Complexity: 16
+	FuncName: assembleSections()
+		Complexity: 29
+
+Package: hugolib
+StructName: siteRenderingContext
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: SiteInfo
+Attributes:
+	Taxonomies || TaxonomyList
+	Authors || AuthorList
+	Social || SiteSocial
+	Menus || *Menus
+	Hugo || *HugoInfo
+	Title || string
+	RSSLink || string
+	Author || BADRECV
+	LanguageCode || string
+	Copyright || string
+	LastChange || BADRECV
+	Permalinks || PermalinkOverrides
+	Params || BADRECV
+	BuildDrafts || bool
+	canonifyURLs || bool
+	relativeURLs || bool
+	uglyURLs || BADRECV
+	preserveTaxonomyNames || bool
+	Data || *BADRECV
+	owner || *HugoSites
+	s || *Site
+	Language || *BADRECV
+	LanguagePrefix || string
+	Languages || BADRECV
+	defaultContentLanguageInSubdir || bool
+	sectionPagesMenu || string
+WMC: 27
+NDC: 10
+NP: 136
+ATFD: 1
+TCC: 0.073529
+God: false
+Methods:
+	FuncName: Config()
+		Complexity: 1
+	FuncName: String()
+		Complexity: 1
+	FuncName: BaseURL()
+		Complexity: 1
+	FuncName: ServerPort()
+		Complexity: 3
+	FuncName: GoogleAnalytics()
+		Complexity: 1
+	FuncName: DisqusShortname()
+		Complexity: 1
+	FuncName: Param()
+		Complexity: 2
+	FuncName: IsMultiLingual()
+		Complexity: 1
+	FuncName: IsServer()
+		Complexity: 1
+	FuncName: Ref()
+		Complexity: 2
+	FuncName: RelRef()
+		Complexity: 2
+	FuncName: HomeAbsURL()
+		Complexity: 2
+	FuncName: SitemapAbsURL()
+		Complexity: 2
+	FuncName: createNodeMenuEntryURL()
+		Complexity: 3
+	FuncName: GetPage()
+		Complexity: 1
+	FuncName: Sections()
+		Complexity: 2
+	FuncName: Home()
+		Complexity: 1
+
+Package: hugolib
+StructName: siteRefLinker
+Attributes:
+	s || *Site
+	errorLogger || *BADRECV
+	notFoundURL || string
+WMC: 16
+NDC: 0
+NP: 1
+ATFD: 1
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: logNotFound()
+		Complexity: 2
+	FuncName: refLink()
+		Complexity: 14
+
+Package: hugolib
+StructName: whatChanged
+Attributes:
+	source || bool
+	other || bool
+	files || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: contentCaptureResultHandler
+Attributes:
+	defaultContentProcessor || *siteContentProcessor
+	contentProcessors || BADRECV
+WMC: 8
+NDC: 1
+NP: 6
+ATFD: 2
+TCC: 0.166667
+God: false
+Methods:
+	FuncName: getContentProcessor()
+		Complexity: 2
+	FuncName: handleSingles()
+		Complexity: 2
+	FuncName: handleBundles()
+		Complexity: 2
+	FuncName: handleCopyFiles()
+		Complexity: 2
+
+Package: hugolib
+StructName: twoD
+Attributes:
+	MenuName || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: siteBuildingBenchmarkConfig
+Attributes:
+	Frontmatter || string
+	NumPages || int
+	NumLangs || int
+	RootSections || int
+	Render || bool
+	Shortcodes || bool
+	NumTags || int
+	TagsPerPage || int
+WMC: 6
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: String()
+		Complexity: 6
+
+Package: hugolib
+StructName: Sitemap
+Attributes:
+	ChangeFreq || string
+	Priority || float64
+	Filename || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: hugolib
+StructName: WeightedPage
+Attributes:
+	Weight || int
+WMC: 7
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Slice()
+		Complexity: 6
+	FuncName: String()
+		Complexity: 1
+
+Package: hugolib
+StructName: OrderedTaxonomyEntry
+Attributes:
+	Name || string
+	WeightedPages || WeightedPages
+WMC: 3
+NDC: 1
+NP: 3
+ATFD: 0
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: Pages()
+		Complexity: 1
+	FuncName: Count()
+		Complexity: 1
+	FuncName: Term()
+		Complexity: 1
+
+Package: hugolib
+StructName: orderedTaxonomySorter
+Attributes:
+	taxonomy || OrderedTaxonomy
+	by || oiBy
+WMC: 3
+NDC: 1
+NP: 3
+ATFD: 0
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: Len()
+		Complexity: 1
+	FuncName: Swap()
+		Complexity: 1
+	FuncName: Less()
+		Complexity: 1
+
+Package: hugolib
+StructName: sitesBuilder
+Attributes:
+	Cfg || BADRECV
+	Fs || *BADRECV
+	T || BADRECV
+	logger || *BADRECV
+	dumper || BADRECV
+	running || bool
+	H || *HugoSites
+	theme || string
+	configFormat || string
+	workingDir || string
+	contentFilePairs || BADRECV
+	templateFilePairs || BADRECV
+	i18nFilePairs || BADRECV
+	dataFilePairs || BADRECV
+	contentFilePairsAdded || BADRECV
+	templateFilePairsAdded || BADRECV
+	i18nFilePairsAdded || BADRECV
+	dataFilePairsAdded || BADRECV
+WMC: 59
+NDC: 5
+NP: 465
+ATFD: 0
+TCC: 0.010753
+God: false
+Methods:
+	FuncName: Running()
+		Complexity: 1
+	FuncName: WithLogger()
+		Complexity: 1
+	FuncName: WithWorkingDir()
+		Complexity: 1
+	FuncName: WithConfigTemplate()
+		Complexity: 3
+	FuncName: WithViper()
+		Complexity: 1
+	FuncName: WithConfigFile()
+		Complexity: 1
+	FuncName: WithThemeConfigFile()
+		Complexity: 2
+	FuncName: WithSourceFile()
+		Complexity: 1
+	FuncName: WithSimpleConfigFile()
+		Complexity: 1
+	FuncName: WithDefaultMultiSiteConfig()
+		Complexity: 1
+	FuncName: WithContent()
+		Complexity: 1
+	FuncName: WithContentAdded()
+		Complexity: 1
+	FuncName: WithTemplates()
+		Complexity: 1
+	FuncName: WithTemplatesAdded()
+		Complexity: 1
+	FuncName: WithData()
+		Complexity: 1
+	FuncName: WithDataAdded()
+		Complexity: 1
+	FuncName: WithI18n()
+		Complexity: 1
+	FuncName: WithI18nAdded()
+		Complexity: 1
+	FuncName: writeFilePairs()
+		Complexity: 5
+	FuncName: CreateSites()
+		Complexity: 2
+	FuncName: CreateSitesE()
+		Complexity: 4
+	FuncName: BuildE()
+		Complexity: 2
+	FuncName: Build()
+		Complexity: 1
+	FuncName: BuildFail()
+		Complexity: 1
+	FuncName: build()
+		Complexity: 8
+	FuncName: addDefaults()
+		Complexity: 5
+	FuncName: Fatalf()
+		Complexity: 1
+	FuncName: AssertFileContent()
+		Complexity: 3
+	FuncName: AssertObject()
+		Complexity: 2
+	FuncName: AssertFileContentRe()
+		Complexity: 3
+	FuncName: CheckExists()
+		Complexity: 1
+
+Package: hugolib
+StructName: testHelper
+Attributes:
+	Cfg || BADRECV
+	Fs || *BADRECV
+	T || BADRECV
+WMC: 7
+NDC: 0
+NP: 6
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: assertFileContent()
+		Complexity: 2
+	FuncName: assertFileContentRegexp()
+		Complexity: 2
+	FuncName: assertFileNotExist()
+		Complexity: 1
+	FuncName: replaceDefaultContentLanguageValue()
+		Complexity: 2
+
+Package: i18n
+StructName: Translator
+Attributes:
+	translateFuncs || BADRECV
+	cfg || BADRECV
+	logger || *BADRECV
+WMC: 14
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Func()
+		Complexity: 3
+	FuncName: initFuncs()
+		Complexity: 11
+
+Package: i18n
+StructName: i18nTest
+Attributes:
+	data || BADRECV
+	args || BADRECV
+	lang || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: i18n
+StructName: TranslationProvider
+Attributes:
+	t || Translator
+WMC: 8
+NDC: 1
+NP: 1
+ATFD: 2
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: Update()
+		Complexity: 7
+	FuncName: Clone()
+		Complexity: 1
+
+Package: langs
+StructName: Language
+Attributes:
+	Lang || string
+	LanguageName || string
+	Title || string
+	Weight || int
+	Disabled || bool
+	ContentDir || string
+	Cfg || BADRECV
+	params || BADRECV
+	settings || BADRECV
+WMC: 20
+NDC: 4
+NP: 78
+ATFD: 0
+TCC: 0.051282
+God: false
+Methods:
+	FuncName: String()
+		Complexity: 1
+	FuncName: Params()
+		Complexity: 1
+	FuncName: SetParam()
+		Complexity: 1
+	FuncName: GetBool()
+		Complexity: 1
+	FuncName: GetString()
+		Complexity: 1
+	FuncName: GetInt()
+		Complexity: 1
+	FuncName: GetStringMap()
+		Complexity: 1
+	FuncName: GetStringMapString()
+		Complexity: 1
+	FuncName: GetStringSlice()
+		Complexity: 1
+	FuncName: Get()
+		Complexity: 2
+	FuncName: GetLocal()
+		Complexity: 4
+	FuncName: Set()
+		Complexity: 2
+	FuncName: IsSet()
+		Complexity: 3
+
+Package: livereload
+StructName: connection
+Attributes:
+	ws || *BADRECV
+	send || BADRECV
+	closer || BADRECV
+WMC: 8
+NDC: 0
+NP: 3
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: close()
+		Complexity: 1
+	FuncName: reader()
+		Complexity: 4
+	FuncName: writer()
+		Complexity: 3
+
+Package: livereload
+StructName: hub
+Attributes:
+	connections || BADRECV
+	broadcast || BADRECV
+	register || BADRECV
+	unregister || BADRECV
+WMC: 8
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: run()
+		Complexity: 8
+
+Package: media
+StructName: Type
+Attributes:
+	MainType || string
+	SubType || string
+	mimeSuffix || string
+	Delimiter || string
+	Suffixes || BADRECV
+	fileSuffix || string
+WMC: 11
+NDC: 0
+NP: 15
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Type()
+		Complexity: 2
+	FuncName: String()
+		Complexity: 1
+	FuncName: FullSuffix()
+		Complexity: 1
+	FuncName: Suffix()
+		Complexity: 3
+	FuncName: matchSuffix()
+		Complexity: 3
+	FuncName: MarshalJSON()
+		Complexity: 1
+
+Package: metrics
+StructName: diff
+Attributes:
+	baseline || string
+	count || int
+	simSum || int
+WMC: 2
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: add()
+		Complexity: 2
+
+Package: metrics
+StructName: Store
+Attributes:
+	calculateHints || bool
+	metrics || BADRECV
+	mu || BADRECV
+	diffs || BADRECV
+	diffmu || BADRECV
+WMC: 13
+NDC: 3
+NP: 6
+ATFD: 2
+TCC: 0.500000
+God: false
+Methods:
+	FuncName: Reset()
+		Complexity: 1
+	FuncName: TrackValue()
+		Complexity: 3
+	FuncName: MeasureSince()
+		Complexity: 1
+	FuncName: WriteMetrics()
+		Complexity: 8
+
+Package: metrics
+StructName: result
+Attributes:
+	key || string
+	count || int
+	cacheFactor || int
+	sum || BADRECV
+	max || BADRECV
+	avg || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: minifiers
+StructName: Client
+Attributes:
+	m || *BADRECV
+WMC: 3
+NDC: 1
+NP: 1
+ATFD: 0
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: Transformer()
+		Complexity: 2
+	FuncName: Minify()
+		Complexity: 1
+
+Package: output
+StructName: Example
+Attributes:
+	Example || string
+	Kind || string
+	OutputFormat || string
+	Suffix || string
+	Layouts || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: output
+StructName: LayoutDescriptor
+Attributes:
+	Type || string
+	Section || string
+	Kind || string
+	Lang || string
+	Layout || string
+	LayoutOverride || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: output
+StructName: LayoutHandler
+Attributes:
+	mu || BADRECV
+	cache || BADRECV
+WMC: 2
+NDC: 0
+NP: 0
+ATFD: 1
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: For()
+		Complexity: 2
+
+Package: output
+StructName: layoutCacheKey
+Attributes:
+	d || LayoutDescriptor
+	f || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: output
+StructName: layoutBuilder
+Attributes:
+	layoutVariations || BADRECV
+	typeVariations || BADRECV
+	d || LayoutDescriptor
+	f || Format
+WMC: 17
+NDC: 1
+NP: 10
+ATFD: 0
+TCC: 0.100000
+God: false
+Methods:
+	FuncName: addLayoutVariations()
+		Complexity: 4
+	FuncName: addTypeVariations()
+		Complexity: 3
+	FuncName: addSectionType()
+		Complexity: 2
+	FuncName: addKind()
+		Complexity: 1
+	FuncName: resolveVariations()
+		Complexity: 7
+
+Package: output
+StructName: TemplateNames
+Attributes:
+	Name || string
+	OverlayFilename || string
+	MasterFilename || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: output
+StructName: TemplateLookupDescriptor
+Attributes:
+	WorkingDir || string
+	RelPath || string
+	Prefix || string
+	OutputFormats || Formats
+	FileExists || BADRECV
+	ContainsAny || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: output
+StructName: Format
+Attributes:
+	Name || string
+	MediaType || BADRECV
+	Path || string
+	BaseName || string
+	Rel || string
+	Protocol || string
+	IsPlainText || bool
+	IsHTML || bool
+	NoUgly || bool
+	NotAlternative || bool
+WMC: 2
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: BaseFilename()
+		Complexity: 1
+	FuncName: MarshalJSON()
+		Complexity: 1
+
+Package: pageparser
+StructName: Item
+Attributes:
+	Type || ItemType
+	Pos || int
+	Val || BADRECV
+WMC: 24
+NDC: 78
+NP: 105
+ATFD: 0
+TCC: 0.742857
+God: false
+Methods:
+	FuncName: ValStr()
+		Complexity: 1
+	FuncName: IsText()
+		Complexity: 1
+	FuncName: IsNonWhitespace()
+		Complexity: 1
+	FuncName: IsShortcodeName()
+		Complexity: 1
+	FuncName: IsLeftShortcodeDelim()
+		Complexity: 2
+	FuncName: IsRightShortcodeDelim()
+		Complexity: 2
+	FuncName: IsShortcodeClose()
+		Complexity: 1
+	FuncName: IsShortcodeParam()
+		Complexity: 1
+	FuncName: IsShortcodeParamVal()
+		Complexity: 1
+	FuncName: IsShortcodeMarkupDelimiter()
+		Complexity: 2
+	FuncName: IsFrontMatter()
+		Complexity: 2
+	FuncName: IsDone()
+		Complexity: 2
+	FuncName: IsEOF()
+		Complexity: 1
+	FuncName: IsError()
+		Complexity: 1
+	FuncName: String()
+		Complexity: 5
+
+Package: pageparser
+StructName: lexerShortcodeState
+Attributes:
+	currLeftDelimItem || ItemType
+	currRightDelimItem || ItemType
+	currShortcodeName || string
+	closingState || int
+	elementStepNum || int
+	paramElements || int
+	openShortcodes || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: pageparser
+StructName: pageLexer
+Attributes:
+	input || BADRECV
+	stateStart || stateFunc
+	state || stateFunc
+	pos || int
+	start || int
+	width || int
+	summaryDivider || BADRECV
+	summaryDividerChecked || bool
+	items || Items
+WMC: 38
+NDC: 16
+NP: 231
+ATFD: 0
+TCC: 0.069264
+God: false
+Methods:
+	FuncName: Iterator()
+		Complexity: 1
+	FuncName: Input()
+		Complexity: 1
+	FuncName: newIterator()
+		Complexity: 1
+	FuncName: run()
+		Complexity: 2
+	FuncName: next()
+		Complexity: 2
+	FuncName: peek()
+		Complexity: 1
+	FuncName: backup()
+		Complexity: 1
+	FuncName: emit()
+		Complexity: 1
+	FuncName: ignoreEscapesAndEmit()
+		Complexity: 2
+	FuncName: current()
+		Complexity: 1
+	FuncName: ignore()
+		Complexity: 1
+	FuncName: errorf()
+		Complexity: 1
+	FuncName: consumeCRLF()
+		Complexity: 3
+	FuncName: isShortCodeStart()
+		Complexity: 2
+	FuncName: printCurrentInput()
+		Complexity: 1
+	FuncName: lexFrontMatterSection()
+		Complexity: 9
+	FuncName: index()
+		Complexity: 1
+	FuncName: hasPrefix()
+		Complexity: 1
+	FuncName: currentLeftShortcodeDelimItem()
+		Complexity: 1
+	FuncName: currentRightShortcodeDelimItem()
+		Complexity: 1
+	FuncName: currentLeftShortcodeDelim()
+		Complexity: 2
+	FuncName: currentRightShortcodeDelim()
+		Complexity: 2
+
+Package: pageparser
+StructName: Iterator
+Attributes:
+	l || *pageLexer
+	lastPos || int
+WMC: 17
+NDC: 7
+NP: 36
+ATFD: 2
+TCC: 0.194444
+God: false
+Methods:
+	FuncName: Next()
+		Complexity: 1
+	FuncName: Input()
+		Complexity: 1
+	FuncName: current()
+		Complexity: 2
+	FuncName: Backup()
+		Complexity: 2
+	FuncName: IsValueNext()
+		Complexity: 2
+	FuncName: Peek()
+		Complexity: 1
+	FuncName: PeekWalk()
+		Complexity: 3
+	FuncName: Consume()
+		Complexity: 4
+	FuncName: LineNumber()
+		Complexity: 1
+
+Package: pageparser
+StructName: lexerTest
+Attributes:
+	name || string
+	input || string
+	items || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: publisher
+StructName: Descriptor
+Attributes:
+	Src || BADRECV
+	OutputFormat || BADRECV
+	TargetPath || string
+	StatCounter || *uint64
+	LiveReloadPort || int
+	AddHugoGeneratorTag || bool
+	AbsURLPath || string
+	Minify || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: publisher
+StructName: DestinationPublisher
+Attributes:
+	fs || BADRECV
+	minify || bool
+	min || BADRECV
+WMC: 15
+NDC: 0
+NP: 1
+ATFD: 2
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Publish()
+		Complexity: 7
+	FuncName: createTransformerChain()
+		Complexity: 8
+
+Package: related
+StructName: Config
+Attributes:
+	Threshold || int
+	IncludeNewer || bool
+	ToLower || bool
+	Indices || IndexConfigs
+WMC: 2
+NDC: 0
+NP: 0
+ATFD: 1
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Add()
+		Complexity: 2
+
+Package: related
+StructName: IndexConfig
+Attributes:
+	Name || string
+	Pattern || string
+	Weight || int
+	ToLower || bool
+WMC: 10
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: ToKeywords()
+		Complexity: 10
+
+Package: related
+StructName: InvertedIndex
+Attributes:
+	cfg || Config
+	index || BADRECV
+	minWeight || int
+	maxWeight || int
+WMC: 37
+NDC: 6
+NP: 15
+ATFD: 6
+TCC: 0.400000
+God: false
+Methods:
+	FuncName: getIndexCfg()
+		Complexity: 3
+	FuncName: Add()
+		Complexity: 6
+	FuncName: SearchDoc()
+		Complexity: 6
+	FuncName: SearchKeyValues()
+		Complexity: 6
+	FuncName: search()
+		Complexity: 1
+	FuncName: searchDate()
+		Complexity: 15
+
+Package: related
+StructName: queryElement
+Attributes:
+	Index || string
+	Keywords || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: related
+StructName: rank
+Attributes:
+	Doc || Document
+	Weight || int
+	Matches || int
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: addWeight()
+		Complexity: 1
+
+Package: related
+StructName: testDoc
+Attributes:
+	keywords || BADRECV
+	date || BADRECV
+WMC: 8
+NDC: 3
+NP: 6
+ATFD: 1
+TCC: 0.500000
+God: false
+Methods:
+	FuncName: String()
+		Complexity: 3
+	FuncName: addKeywords()
+		Complexity: 3
+	FuncName: SearchKeywords()
+		Complexity: 1
+	FuncName: PubDate()
+		Complexity: 1
+
+Package: releaser
+StructName: changeLog
+Attributes:
+	Version || string
+	Enhancements || BADRECV
+	Fixes || BADRECV
+	Notes || gitInfos
+	All || gitInfos
+	Docs || gitInfos
+	Repo || *gitHubRepo
+	ContributorCount || int
+	ThemeCount || int
+WMC: 4
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: addGitInfo()
+		Complexity: 4
+
+Package: releaser
+StructName: gitInfo
+Attributes:
+	Hash || string
+	Author || string
+	Subject || string
+	Body || string
+	GitHubCommit || *gitHubCommit
+WMC: 3
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Issues()
+		Complexity: 1
+	FuncName: AuthorID()
+		Complexity: 2
+
+Package: releaser
+StructName: countribCount
+Attributes:
+	Author || string
+	GitHubAuthor || gitHubAuthor
+	Count || int
+WMC: 3
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: AuthorLink()
+		Complexity: 3
+
+Package: releaser
+StructName: gitHubAPI
+Attributes:
+	commitsAPITemplate || string
+	repoAPI || string
+	contributorsAPITemplate || string
+WMC: 9
+NDC: 0
+NP: 1
+ATFD: 1
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: fetchCommit()
+		Complexity: 2
+	FuncName: fetchRepo()
+		Complexity: 7
+
+Package: releaser
+StructName: gitHubCommit
+Attributes:
+	Author || gitHubAuthor
+	HTMLURL || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: releaser
+StructName: gitHubAuthor
+Attributes:
+	ID || int
+	Login || string
+	HTMLURL || string
+	AvatarURL || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: releaser
+StructName: gitHubRepo
+Attributes:
+	ID || int
+	Name || string
+	Description || string
+	HTMLURL || string
+	Stars || int
+	Contributors || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: releaser
+StructName: gitHubContributor
+Attributes:
+	ID || int
+	Login || string
+	HTMLURL || string
+	Contributions || int
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: releaser
+StructName: ReleaseHandler
+Attributes:
+	cliVersion || string
+	skipPublish || bool
+	try || bool
+	git || BADRECV
+WMC: 68
+NDC: 6
+NP: 36
+ATFD: 3
+TCC: 0.166667
+God: false
+Methods:
+	FuncName: releaseNotesState()
+		Complexity: 4
+	FuncName: writeReleaseNotesToTemp()
+		Complexity: 4
+	FuncName: writeReleaseNotesToDocs()
+		Complexity: 8
+	FuncName: calculateVersions()
+		Complexity: 2
+	FuncName: Run()
+		Complexity: 30
+	FuncName: gitPush()
+		Complexity: 3
+	FuncName: release()
+		Complexity: 4
+	FuncName: bumpVersions()
+		Complexity: 8
+	FuncName: replaceInFile()
+		Complexity: 5
+
+Package: bundler
+StructName: Client
+Attributes:
+	rs || *BADRECV
+WMC: 10
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Concat()
+		Complexity: 10
+
+Package: bundler
+StructName: multiReadSeekCloser
+Attributes:
+	mr || BADRECV
+	sources || BADRECV
+WMC: 6
+NDC: 1
+NP: 3
+ATFD: 0
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: Read()
+		Complexity: 1
+	FuncName: Seek()
+		Complexity: 3
+	FuncName: Close()
+		Complexity: 2
+
+Package: create
+StructName: Client
+Attributes:
+	rs || *BADRECV
+WMC: 2
+NDC: 1
+NP: 1
+ATFD: 0
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: Get()
+		Complexity: 1
+	FuncName: FromString()
+		Complexity: 1
+
+Package: resource
+StructName: Imaging
+Attributes:
+	Quality || int
+	ResampleFilter || string
+	Anchor || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: resource
+StructName: Image
+Attributes:
+	config || BADRECV
+	configInit || BADRECV
+	configLoaded || bool
+	copyToDestinationInit || BADRECV
+	createMu || BADRECV
+	imaging || *Imaging
+	format || BADRECV
+WMC: 52
+NDC: 0
+NP: 105
+ATFD: 7
+TCC: 0.000000
+God: true
+Methods:
+	FuncName: Width()
+		Complexity: 1
+	FuncName: Height()
+		Complexity: 1
+	FuncName: WithNewBase()
+		Complexity: 1
+	FuncName: Resize()
+		Complexity: 1
+	FuncName: Fit()
+		Complexity: 1
+	FuncName: Fill()
+		Complexity: 2
+	FuncName: isJPEG()
+		Complexity: 2
+	FuncName: doWithImageConfig()
+		Complexity: 12
+	FuncName: initConfig()
+		Complexity: 5
+	FuncName: decodeSource()
+		Complexity: 2
+	FuncName: copyToDestination()
+		Complexity: 9
+	FuncName: encodeToDestinations()
+		Complexity: 9
+	FuncName: clone()
+		Complexity: 1
+	FuncName: setBasePath()
+		Complexity: 1
+	FuncName: relTargetPathFromConfig()
+		Complexity: 4
+
+Package: resource
+StructName: imageConfig
+Attributes:
+	Action || string
+	Quality || int
+	Rotate || int
+	Width || int
+	Height || int
+	Filter || BADRECV
+	FilterStr || string
+	Anchor || BADRECV
+	AnchorStr || string
+WMC: 8
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: key()
+		Complexity: 8
+
+Package: resource
+StructName: imageCache
+Attributes:
+	cacheDir || string
+	pathSpec || *BADRECV
+	mu || BADRECV
+	store || BADRECV
+WMC: 14
+NDC: 6
+NP: 10
+ATFD: 1
+TCC: 0.600000
+God: false
+Methods:
+	FuncName: isInCache()
+		Complexity: 1
+	FuncName: deleteByPrefix()
+		Complexity: 3
+	FuncName: normalizeKey()
+		Complexity: 2
+	FuncName: clear()
+		Complexity: 1
+	FuncName: getOrCreate()
+		Complexity: 7
+
+Package: integrity
+StructName: Client
+Attributes:
+	rs || *BADRECV
+WMC: 2
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Fingerprint()
+		Complexity: 2
+
+Package: integrity
+StructName: fingerprintTransformation
+Attributes:
+	algo || string
+WMC: 7
+NDC: 1
+NP: 1
+ATFD: 1
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: Key()
+		Complexity: 1
+	FuncName: Transform()
+		Complexity: 6
+
+Package: minifier
+StructName: Client
+Attributes:
+	rs || *BADRECV
+	m || BADRECV
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Minify()
+		Complexity: 1
+
+Package: minifier
+StructName: minifyTransformation
+Attributes:
+	rs || *BADRECV
+	m || BADRECV
+WMC: 3
+NDC: 0
+NP: 1
+ATFD: 1
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Key()
+		Complexity: 1
+	FuncName: Transform()
+		Complexity: 2
+
+Package: postcss
+StructName: Options
+Attributes:
+	Config || string
+	NoMap || bool
+	Use || string
+	Parser || string
+	Stringifier || string
+	Syntax || string
+WMC: 6
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: toArgs()
+		Complexity: 6
+
+Package: postcss
+StructName: Client
+Attributes:
+	rs || *BADRECV
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Process()
+		Complexity: 1
+
+Package: postcss
+StructName: postcssTransformation
+Attributes:
+	options || Options
+	rs || *BADRECV
+WMC: 12
+NDC: 0
+NP: 1
+ATFD: 3
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Key()
+		Complexity: 1
+	FuncName: Transform()
+		Complexity: 11
+
+Package: resource
+StructName: Spec
+Attributes:
+	MediaTypes || BADRECV
+	OutputFormats || BADRECV
+	Logger || *BADRECV
+	TextTemplates || BADRECV
+	imaging || *Imaging
+	imageCache || *imageCache
+	ResourceCache || *ResourceCache
+	GenImagePath || string
+	GenAssetsPath || string
+WMC: 34
+NDC: 6
+NP: 66
+ATFD: 2
+TCC: 0.090909
+God: false
+Methods:
+	FuncName: sourceFs()
+		Complexity: 1
+	FuncName: New()
+		Complexity: 1
+	FuncName: NewForFs()
+		Complexity: 1
+	FuncName: newResourceForFs()
+		Complexity: 8
+	FuncName: newResource()
+		Complexity: 12
+	FuncName: IsInImageCache()
+		Complexity: 1
+	FuncName: DeleteCacheByPrefix()
+		Complexity: 1
+	FuncName: ClearCaches()
+		Complexity: 1
+	FuncName: CacheStats()
+		Complexity: 3
+	FuncName: newGenericResource()
+		Complexity: 1
+	FuncName: newGenericResourceWithBase()
+		Complexity: 3
+	FuncName: Transform()
+		Complexity: 1
+
+Package: resource
+StructName: ResourceSourceDescriptor
+Attributes:
+	TargetPathBuilder || BADRECV
+	SourceFile || BADRECV
+	OpenReadSeekCloser || OpenReadSeekCloser
+	SourceFilename || string
+	RelTargetFilename || string
+	URLBase || string
+	TargetBasePaths || BADRECV
+	LazyPublish || bool
+WMC: 2
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Filename()
+		Complexity: 2
+
+Package: resource
+StructName: dirFile
+Attributes:
+	dir || string
+	file || string
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: path()
+		Complexity: 1
+
+Package: resource
+StructName: resourcePathDescriptor
+Attributes:
+	relTargetDirFile || dirFile
+	targetPathBuilder || BADRECV
+	baseURLDir || string
+	baseTargetPathDirs || BADRECV
+	baseOffset || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: resource
+StructName: resourceContent
+Attributes:
+	content || string
+	contentInit || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: resource
+StructName: resourceHash
+Attributes:
+	hash || string
+	hashInit || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: resource
+StructName: publishOnce
+Attributes:
+	publisherInit || BADRECV
+	publisherErr || error
+	logger || *BADRECV
+WMC: 2
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: publish()
+		Complexity: 2
+
+Package: resource
+StructName: genericResource
+Attributes:
+	title || string
+	name || string
+	params || BADRECV
+	sourceFilename || string
+	openReadSeekerCloser || OpenReadSeekCloser
+	overriddenSourceFs || BADRECV
+	spec || *Spec
+	resourceType || string
+	mediaType || BADRECV
+	osFileInfo || BADRECV
+WMC: 60
+NDC: 5
+NP: 435
+ATFD: 0
+TCC: 0.011494
+God: false
+Methods:
+	FuncName: Data()
+		Complexity: 1
+	FuncName: Content()
+		Complexity: 2
+	FuncName: ReadSeekCloser()
+		Complexity: 3
+	FuncName: MediaType()
+		Complexity: 1
+	FuncName: WithNewBase()
+		Complexity: 1
+	FuncName: initHash()
+		Complexity: 3
+	FuncName: initContent()
+		Complexity: 3
+	FuncName: sourceFs()
+		Complexity: 2
+	FuncName: publishIfNeeded()
+		Complexity: 2
+	FuncName: Permalink()
+		Complexity: 1
+	FuncName: RelPermalink()
+		Complexity: 1
+	FuncName: relPermalinkFor()
+		Complexity: 1
+	FuncName: permalinkFor()
+		Complexity: 1
+	FuncName: relTargetPathsFor()
+		Complexity: 1
+	FuncName: relTargetPaths()
+		Complexity: 1
+	FuncName: Name()
+		Complexity: 1
+	FuncName: Title()
+		Complexity: 1
+	FuncName: Params()
+		Complexity: 1
+	FuncName: setTitle()
+		Complexity: 1
+	FuncName: setName()
+		Complexity: 1
+	FuncName: updateParams()
+		Complexity: 4
+	FuncName: relPermalinkForRel()
+		Complexity: 1
+	FuncName: relTargetPathsForRel()
+		Complexity: 3
+	FuncName: relTargetPathForRel()
+		Complexity: 5
+	FuncName: relTargetPathForRelAndBasePath()
+		Complexity: 10
+	FuncName: ResourceType()
+		Complexity: 1
+	FuncName: String()
+		Complexity: 1
+	FuncName: Publish()
+		Complexity: 3
+	FuncName: targetPath()
+		Complexity: 1
+	FuncName: targetFilenames()
+		Complexity: 2
+
+Package: resource
+StructName: commonResource
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: resource
+StructName: ResourceCache
+Attributes:
+	rs || *Spec
+	cache || BADRECV
+	nlocker || *BADRECV
+WMC: 27
+NDC: 1
+NP: 55
+ATFD: 0
+TCC: 0.018182
+God: false
+Methods:
+	FuncName: clear()
+		Complexity: 1
+	FuncName: Contains()
+		Complexity: 1
+	FuncName: cleanKey()
+		Complexity: 1
+	FuncName: get()
+		Complexity: 1
+	FuncName: GetOrCreate()
+		Complexity: 4
+	FuncName: getFilenames()
+		Complexity: 1
+	FuncName: getFromFile()
+		Complexity: 5
+	FuncName: writeMeta()
+		Complexity: 4
+	FuncName: openResourceFileForWriting()
+		Complexity: 1
+	FuncName: set()
+		Complexity: 1
+	FuncName: DeletePartitions()
+		Complexity: 7
+
+Package: resource
+StructName: imagingResizer
+Attributes:
+	filter || BADRECV
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Resize()
+		Complexity: 1
+
+Package: templates
+StructName: Client
+Attributes:
+	rs || *BADRECV
+	textTemplate || BADRECV
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: ExecuteAsTemplate()
+		Complexity: 1
+
+Package: templates
+StructName: executeAsTemplateTransform
+Attributes:
+	rs || *BADRECV
+	textTemplate || BADRECV
+	targetPath || string
+	data || BADRECV
+WMC: 3
+NDC: 0
+NP: 1
+ATFD: 1
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Key()
+		Complexity: 1
+	FuncName: Transform()
+		Complexity: 2
+
+Package: scss
+StructName: Client
+Attributes:
+	rs || *BADRECV
+	sfs || *BADRECV
+	workFs || *BADRECV
+WMC: 5
+NDC: 0
+NP: 1
+ATFD: 2
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: ToCSS()
+		Complexity: 2
+	FuncName: toCSS()
+		Complexity: 3
+
+Package: scss
+StructName: Options
+Attributes:
+	TargetPath || string
+	IncludePaths || BADRECV
+	OutputStyle || string
+	Precision || int
+	EnableSourceMap || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: scss
+StructName: options
+Attributes:
+	from || Options
+	to || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: scss
+StructName: toCSSTransformation
+Attributes:
+	c || *Client
+	options || options
+WMC: 18
+NDC: 1
+NP: 3
+ATFD: 3
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: Key()
+		Complexity: 1
+	FuncName: Transform()
+		Complexity: 16
+	FuncName: Transform()
+		Complexity: 1
+
+Package: resource
+StructName: ResourceTransformationCtx
+Attributes:
+	From || BADRECV
+	To || BADRECV
+	SourcePath || string
+	InPath || string
+	OutPath || string
+	InMediaType || BADRECV
+	OutMediaType || BADRECV
+	Data || BADRECV
+	OpenResourcePublisher || BADRECV
+WMC: 5
+NDC: 1
+NP: 6
+ATFD: 0
+TCC: 0.166667
+God: false
+Methods:
+	FuncName: AddOutPathIdentifier()
+		Complexity: 1
+	FuncName: addPathIdentifier()
+		Complexity: 1
+	FuncName: ReplaceOutPathExtension()
+		Complexity: 1
+	FuncName: PublishSourceMap()
+		Complexity: 2
+
+Package: resource
+StructName: ResourceTransformationKey
+Attributes:
+	name || string
+	elements || BADRECV
+WMC: 4
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: key()
+		Complexity: 4
+
+Package: resource
+StructName: transformedResourceMetadata
+Attributes:
+	Target || string
+	MediaTypeV || string
+	MetaData || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: resource
+StructName: transformedResource
+Attributes:
+	cache || *ResourceCache
+	sourceFilename || string
+	linker || permalinker
+	transformation || ResourceTransformation
+	transformInit || BADRECV
+	transformErr || error
+	content || string
+	contentInit || BADRECV
+WMC: 49
+NDC: 1
+NP: 55
+ATFD: 5
+TCC: 0.018182
+God: false
+Methods:
+	FuncName: ReadSeekCloser()
+		Complexity: 2
+	FuncName: transferTransformedValues()
+		Complexity: 2
+	FuncName: tryTransformedFileCache()
+		Complexity: 2
+	FuncName: Content()
+		Complexity: 3
+	FuncName: Data()
+		Complexity: 1
+	FuncName: MediaType()
+		Complexity: 2
+	FuncName: Permalink()
+		Complexity: 2
+	FuncName: RelPermalink()
+		Complexity: 2
+	FuncName: initContent()
+		Complexity: 2
+	FuncName: transform()
+		Complexity: 29
+	FuncName: initTransform()
+		Complexity: 2
+
+Package: resource
+StructName: testStruct
+Attributes:
+	Name || string
+	V1 || int64
+	V2 || int32
+	V3 || int
+	V4 || uint64
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: source
+StructName: FileInfo
+Attributes:
+	filename || string
+	sp || *SourceSpec
+	fi || BADRECV
+	ext || string
+	lang || string
+	name || string
+	dir || string
+	relDir || string
+	relPath || string
+	baseName || string
+	translationBaseName || string
+	contentBaseName || string
+	section || string
+	isLeafBundle || bool
+	uniqueID || string
+	lazyInit || BADRECV
+WMC: 21
+NDC: 0
+NP: 120
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Filename()
+		Complexity: 1
+	FuncName: Path()
+		Complexity: 1
+	FuncName: Dir()
+		Complexity: 1
+	FuncName: Extension()
+		Complexity: 1
+	FuncName: Ext()
+		Complexity: 1
+	FuncName: Lang()
+		Complexity: 1
+	FuncName: LogicalName()
+		Complexity: 1
+	FuncName: BaseFileName()
+		Complexity: 1
+	FuncName: TranslationBaseName()
+		Complexity: 1
+	FuncName: ContentBaseName()
+		Complexity: 1
+	FuncName: Section()
+		Complexity: 1
+	FuncName: UniqueID()
+		Complexity: 1
+	FuncName: FileInfo()
+		Complexity: 1
+	FuncName: String()
+		Complexity: 1
+	FuncName: Open()
+		Complexity: 1
+	FuncName: init()
+		Complexity: 6
+
+Package: source
+StructName: Filesystem
+Attributes:
+	files || BADRECV
+	filesInit || BADRECV
+	Base || string
+WMC: 17
+NDC: 0
+NP: 6
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Files()
+		Complexity: 1
+	FuncName: add()
+		Complexity: 2
+	FuncName: captureFiles()
+		Complexity: 6
+	FuncName: shouldRead()
+		Complexity: 8
+
+Package: source
+StructName: TestPath
+Attributes:
+	filename || string
+	logical || string
+	content || string
+	section || string
+	dir || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: source
+StructName: SourceSpec
+Attributes:
+	SourceFs || BADRECV
+	ignoreFilesRe || BADRECV
+	Languages || BADRECV
+	DefaultContentLanguage || string
+	DisabledLanguages || BADRECV
+WMC: 24
+NDC: 0
+NP: 6
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: NewFileInfo()
+		Complexity: 7
+	FuncName: NewFilesystem()
+		Complexity: 1
+	FuncName: IgnoreFile()
+		Complexity: 10
+	FuncName: IsRegularSourceFile()
+		Complexity: 6
+
+Package: cast
+StructName: Namespace
+Attributes:
+WMC: 3
+NDC: 0
+NP: 3
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: ToInt()
+		Complexity: 1
+	FuncName: ToString()
+		Complexity: 1
+	FuncName: ToFloat()
+		Complexity: 1
+
+Package: collections
+StructName: Namespace
+Attributes:
+	deps || *BADRECV
+WMC: 332
+NDC: 0
+NP: 351
+ATFD: 2
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Append()
+		Complexity: 2
+	FuncName: Apply()
+		Complexity: 9
+	FuncName: lookupFunc()
+		Complexity: 6
+	FuncName: After()
+		Complexity: 9
+	FuncName: Delimit()
+		Complexity: 15
+	FuncName: Dictionary()
+		Complexity: 4
+	FuncName: EchoParam()
+		Complexity: 13
+	FuncName: First()
+		Complexity: 9
+	FuncName: In()
+		Complexity: 18
+	FuncName: Intersect()
+		Complexity: 11
+	FuncName: Group()
+		Complexity: 3
+	FuncName: IsSet()
+		Complexity: 7
+	FuncName: Last()
+		Complexity: 9
+	FuncName: Querify()
+		Complexity: 3
+	FuncName: Seq()
+		Complexity: 23
+	FuncName: Shuffle()
+		Complexity: 6
+	FuncName: Slice()
+		Complexity: 2
+	FuncName: Union()
+		Complexity: 25
+	FuncName: Uniq()
+		Complexity: 9
+	FuncName: KeyVals()
+		Complexity: 1
+	FuncName: NewScratch()
+		Complexity: 1
+	FuncName: Index()
+		Complexity: 16
+	FuncName: Sort()
+		Complexity: 26
+	FuncName: Where()
+		Complexity: 7
+	FuncName: checkCondition()
+		Complexity: 77
+	FuncName: checkWhereArray()
+		Complexity: 9
+	FuncName: checkWhereMap()
+		Complexity: 12
+
+Package: collections
+StructName: intersector
+Attributes:
+	r || BADRECV
+	seen || BADRECV
+WMC: 13
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: appendIfNotSeen()
+		Complexity: 2
+	FuncName: handleValuePair()
+		Complexity: 11
+
+Package: collections
+StructName: tstNoStringer
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: collections
+StructName: tstGrouper
+Attributes:
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Group()
+		Complexity: 1
+
+Package: collections
+StructName: tstGrouper2
+Attributes:
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Group()
+		Complexity: 1
+
+Package: collections
+StructName: page
+Attributes:
+	Title || string
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: String()
+		Complexity: 1
+
+Package: collections
+StructName: TstX
+Attributes:
+	A || string
+	unexported || string
+WMC: 9
+NDC: 1
+NP: 36
+ATFD: 0
+TCC: 0.027778
+God: false
+Methods:
+	FuncName: TstRp()
+		Complexity: 1
+	FuncName: TstRv()
+		Complexity: 1
+	FuncName: unexportedMethod()
+		Complexity: 1
+	FuncName: MethodWithArg()
+		Complexity: 1
+	FuncName: MethodReturnNothing()
+		Complexity: 1
+	FuncName: MethodReturnErrorOnly()
+		Complexity: 1
+	FuncName: MethodReturnTwoValues()
+		Complexity: 1
+	FuncName: MethodReturnValueWithError()
+		Complexity: 1
+	FuncName: String()
+		Complexity: 1
+
+Package: collections
+StructName: pair
+Attributes:
+	Key || BADRECV
+	Value || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: collections
+StructName: pairList
+Attributes:
+	Pairs || BADRECV
+	SortAsc || bool
+	SliceType || BADRECV
+WMC: 9
+NDC: 3
+NP: 6
+ATFD: 1
+TCC: 0.500000
+God: false
+Methods:
+	FuncName: Swap()
+		Complexity: 1
+	FuncName: Len()
+		Complexity: 1
+	FuncName: Less()
+		Complexity: 4
+	FuncName: sort()
+		Complexity: 3
+
+Package: collections
+StructName: ts
+Attributes:
+	MyInt || int
+	MyFloat || float64
+	MyString || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: collections
+StructName: mid
+Attributes:
+	Tst || TstX
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: collections
+StructName: Mid
+Attributes:
+	Tst || TstX
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: collections
+StructName: expect
+Attributes:
+	result || bool
+	isError || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: compare
+StructName: Namespace
+Attributes:
+WMC: 7
+NDC: 0
+NP: 15
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Ne()
+		Complexity: 1
+	FuncName: Ge()
+		Complexity: 1
+	FuncName: Gt()
+		Complexity: 1
+	FuncName: Le()
+		Complexity: 1
+	FuncName: Lt()
+		Complexity: 1
+	FuncName: Conditional()
+		Complexity: 2
+
+Package: crypto
+StructName: Namespace
+Attributes:
+WMC: 6
+NDC: 0
+NP: 3
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: MD5()
+		Complexity: 2
+	FuncName: SHA1()
+		Complexity: 2
+	FuncName: SHA256()
+		Complexity: 2
+
+Package: data
+StructName: Namespace
+Attributes:
+	deps || *BADRECV
+	client || *BADRECV
+WMC: 15
+NDC: 1
+NP: 3
+ATFD: 2
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: GetCSV()
+		Complexity: 6
+	FuncName: GetJSON()
+		Complexity: 6
+	FuncName: getResource()
+		Complexity: 3
+
+Package: data
+StructName: remoteLock
+Attributes:
+	m || BADRECV
+WMC: 4
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: URLLock()
+		Complexity: 2
+	FuncName: URLUnlock()
+		Complexity: 2
+
+Package: encoding
+StructName: Namespace
+Attributes:
+WMC: 6
+NDC: 0
+NP: 3
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Base64Decode()
+		Complexity: 2
+	FuncName: Base64Encode()
+		Complexity: 2
+	FuncName: Jsonify()
+		Complexity: 2
+
+Package: encoding
+StructName: tstNoStringer
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: fmt
+StructName: Namespace
+Attributes:
+	errorLogger || *BADRECV
+WMC: 4
+NDC: 0
+NP: 6
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Print()
+		Complexity: 1
+	FuncName: Printf()
+		Complexity: 1
+	FuncName: Println()
+		Complexity: 1
+	FuncName: Errorf()
+		Complexity: 1
+
+Package: images
+StructName: Namespace
+Attributes:
+	cacheMu || BADRECV
+	cache || BADRECV
+	deps || *BADRECV
+WMC: 6
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Config()
+		Complexity: 6
+
+Package: images
+StructName: tstNoStringer
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: inflect
+StructName: Namespace
+Attributes:
+WMC: 9
+NDC: 0
+NP: 3
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Humanize()
+		Complexity: 5
+	FuncName: Pluralize()
+		Complexity: 2
+	FuncName: Singularize()
+		Complexity: 2
+
+Package: internal
+StructName: Test
+Attributes:
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: MyTestMethod()
+		Complexity: 1
+
+Package: internal
+StructName: TemplateFuncsNamespace
+Attributes:
+	Name || string
+	Context || BADRECV
+	MethodMappings || BADRECV
+WMC: 12
+NDC: 0
+NP: 1
+ATFD: 4
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: AddMethodMapping()
+		Complexity: 6
+	FuncName: toJSON()
+		Complexity: 6
+
+Package: internal
+StructName: TemplateFuncMethodMapping
+Attributes:
+	Method || BADRECV
+	Aliases || BADRECV
+	Examples || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: internal
+StructName: goDocFunc
+Attributes:
+	Name || string
+	Description || string
+	Args || BADRECV
+	Aliases || BADRECV
+	Examples || BADRECV
+WMC: 4
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: toJSON()
+		Complexity: 4
+
+Package: internal
+StructName: methodGoDocInfo
+Attributes:
+	Description || string
+	Args || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: lang
+StructName: Namespace
+Attributes:
+	deps || *BADRECV
+WMC: 25
+NDC: 0
+NP: 3
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Translate()
+		Complexity: 2
+	FuncName: NumFmt()
+		Complexity: 21
+	FuncName: Merge()
+		Complexity: 2
+
+Package: math
+StructName: Namespace
+Attributes:
+WMC: 18
+NDC: 0
+NP: 45
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Add()
+		Complexity: 1
+	FuncName: Ceil()
+		Complexity: 2
+	FuncName: Div()
+		Complexity: 1
+	FuncName: Floor()
+		Complexity: 2
+	FuncName: Log()
+		Complexity: 2
+	FuncName: Mod()
+		Complexity: 4
+	FuncName: ModBool()
+		Complexity: 2
+	FuncName: Mul()
+		Complexity: 1
+	FuncName: Round()
+		Complexity: 2
+	FuncName: Sub()
+		Complexity: 1
+
+Package: os
+StructName: Namespace
+Attributes:
+	readFileFs || BADRECV
+	deps || *BADRECV
+WMC: 15
+NDC: 3
+NP: 10
+ATFD: 0
+TCC: 0.300000
+God: false
+Methods:
+	FuncName: Getenv()
+		Complexity: 2
+	FuncName: ReadFile()
+		Complexity: 2
+	FuncName: ReadDir()
+		Complexity: 3
+	FuncName: FileExists()
+		Complexity: 4
+	FuncName: Stat()
+		Complexity: 4
+
+Package: partials
+StructName: partialCache
+Attributes:
+	p || BADRECV
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: clear()
+		Complexity: 1
+
+Package: partials
+StructName: Namespace
+Attributes:
+	deps || *BADRECV
+	cachedPartials || *partialCache
+WMC: 17
+NDC: 1
+NP: 6
+ATFD: 0
+TCC: 0.166667
+God: false
+Methods:
+	FuncName: Include()
+		Complexity: 9
+	FuncName: IncludeCached()
+		Complexity: 3
+	FuncName: getOrCreate()
+		Complexity: 4
+	FuncName: Exists()
+		Complexity: 1
+
+Package: path
+StructName: Namespace
+Attributes:
+	deps || *BADRECV
+WMC: 17
+NDC: 0
+NP: 10
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Ext()
+		Complexity: 2
+	FuncName: Dir()
+		Complexity: 2
+	FuncName: Base()
+		Complexity: 2
+	FuncName: Split()
+		Complexity: 2
+	FuncName: Join()
+		Complexity: 9
+
+Package: path
+StructName: DirFile
+Attributes:
+	Dir || string
+	File || string
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: String()
+		Complexity: 1
+
+Package: resources
+StructName: Namespace
+Attributes:
+	deps || *BADRECV
+	createClient || *BADRECV
+	bundlerClient || *BADRECV
+	scssClient || *BADRECV
+	integrityClient || *BADRECV
+	minifyClient || *BADRECV
+	postcssClient || *BADRECV
+	templatesClient || *BADRECV
+WMC: 41
+NDC: 1
+NP: 45
+ATFD: 1
+TCC: 0.022222
+God: false
+Methods:
+	FuncName: Get()
+		Complexity: 2
+	FuncName: Concat()
+		Complexity: 6
+	FuncName: FromString()
+		Complexity: 3
+	FuncName: ExecuteAsTemplate()
+		Complexity: 4
+	FuncName: Fingerprint()
+		Complexity: 6
+	FuncName: Minify()
+		Complexity: 1
+	FuncName: ToCSS()
+		Complexity: 6
+	FuncName: PostCSS()
+		Complexity: 4
+	FuncName: resolveIfFirstArgIsString()
+		Complexity: 3
+	FuncName: resolveArgs()
+		Complexity: 6
+
+Package: safe
+StructName: Namespace
+Attributes:
+WMC: 7
+NDC: 0
+NP: 21
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: CSS()
+		Complexity: 1
+	FuncName: HTML()
+		Complexity: 1
+	FuncName: HTMLAttr()
+		Complexity: 1
+	FuncName: JS()
+		Complexity: 1
+	FuncName: JSStr()
+		Complexity: 1
+	FuncName: URL()
+		Complexity: 1
+	FuncName: SanitizeURL()
+		Complexity: 1
+
+Package: safe
+StructName: tstNoStringer
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: strings
+StructName: regexpCache
+Attributes:
+	mu || BADRECV
+	re || BADRECV
+WMC: 5
+NDC: 1
+NP: 3
+ATFD: 0
+TCC: 0.333333
+God: false
+Methods:
+	FuncName: Get()
+		Complexity: 3
+	FuncName: get()
+		Complexity: 1
+	FuncName: set()
+		Complexity: 1
+
+Package: strings
+StructName: Namespace
+Attributes:
+	titleFunc || BADRECV
+	deps || *BADRECV
+WMC: 133
+NDC: 0
+NP: 300
+ATFD: 2
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: FindRE()
+		Complexity: 5
+	FuncName: ReplaceRE()
+		Complexity: 5
+	FuncName: CountRunes()
+		Complexity: 4
+	FuncName: RuneCount()
+		Complexity: 2
+	FuncName: CountWords()
+		Complexity: 4
+	FuncName: Chomp()
+		Complexity: 4
+	FuncName: Contains()
+		Complexity: 3
+	FuncName: ContainsAny()
+		Complexity: 3
+	FuncName: HasPrefix()
+		Complexity: 3
+	FuncName: HasSuffix()
+		Complexity: 3
+	FuncName: Replace()
+		Complexity: 4
+	FuncName: SliceString()
+		Complexity: 14
+	FuncName: Split()
+		Complexity: 2
+	FuncName: Substr()
+		Complexity: 19
+	FuncName: Title()
+		Complexity: 2
+	FuncName: FirstUpper()
+		Complexity: 2
+	FuncName: ToLower()
+		Complexity: 2
+	FuncName: ToUpper()
+		Complexity: 2
+	FuncName: Trim()
+		Complexity: 3
+	FuncName: TrimLeft()
+		Complexity: 3
+	FuncName: TrimPrefix()
+		Complexity: 3
+	FuncName: TrimRight()
+		Complexity: 3
+	FuncName: TrimSuffix()
+		Complexity: 3
+	FuncName: Repeat()
+		Complexity: 4
+	FuncName: Truncate()
+		Complexity: 31
+
+Package: strings
+StructName: tstNoStringer
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: strings
+StructName: htmlTag
+Attributes:
+	name || string
+	pos || int
+	openTag || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: tpl
+StructName: TemplateAdapter
+Attributes:
+	Metrics || BADRECV
+	Fs || BADRECV
+	NameBaseTemplateName || BADRECV
+WMC: 28
+NDC: 0
+NP: 15
+ATFD: 3
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Execute()
+		Complexity: 4
+	FuncName: extractIdentifiers()
+		Complexity: 2
+	FuncName: addFileContext()
+		Complexity: 11
+	FuncName: fileAndFilename()
+		Complexity: 3
+	FuncName: ExecuteToString()
+		Complexity: 2
+	FuncName: Tree()
+		Complexity: 6
+
+Package: partials
+StructName: Namespace
+Attributes:
+	deps || *BADRECV
+WMC: 17
+NDC: 1
+NP: 6
+ATFD: 0
+TCC: 0.166667
+God: false
+Methods:
+	FuncName: Include()
+		Complexity: 9
+	FuncName: IncludeCached()
+		Complexity: 3
+	FuncName: getOrCreate()
+		Complexity: 4
+	FuncName: Exists()
+		Complexity: 1
+
+Package: time
+StructName: Namespace
+Attributes:
+WMC: 11
+NDC: 0
+NP: 10
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: AsTime()
+		Complexity: 2
+	FuncName: Format()
+		Complexity: 2
+	FuncName: Now()
+		Complexity: 1
+	FuncName: ParseDuration()
+		Complexity: 2
+	FuncName: Duration()
+		Complexity: 4
+
+Package: tplimpl
+StructName: templateErr
+Attributes:
+	name || string
+	err || error
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: tplimpl
+StructName: templateHandler
+Attributes:
+	mu || BADRECV
+	text || *textTemplates
+	html || *htmlTemplates
+	extTextTemplates || BADRECV
+	amberFuncMap || BADRECV
+	errors || BADRECV
+	layoutsFs || BADRECV
+WMC: 81
+NDC: 22
+NP: 276
+ATFD: 5
+TCC: 0.079710
+God: false
+Methods:
+	FuncName: addAceTemplate()
+		Complexity: 6
+	FuncName: compileAmberWithTemplate()
+		Complexity: 4
+	FuncName: NewTextTemplate()
+		Complexity: 1
+	FuncName: Debug()
+		Complexity: 1
+	FuncName: Lookup()
+		Complexity: 3
+	FuncName: clone()
+		Complexity: 3
+	FuncName: setFuncs()
+		Complexity: 1
+	FuncName: SetFuncs()
+		Complexity: 1
+	FuncName: GetFuncs()
+		Complexity: 1
+	FuncName: LoadTemplates()
+		Complexity: 1
+	FuncName: addTemplate()
+		Complexity: 1
+	FuncName: addLateTemplate()
+		Complexity: 1
+	FuncName: AddLateTemplate()
+		Complexity: 2
+	FuncName: AddTemplate()
+		Complexity: 2
+	FuncName: MarkReady()
+		Complexity: 3
+	FuncName: RebuildClone()
+		Complexity: 5
+	FuncName: loadTemplates()
+		Complexity: 10
+	FuncName: initFuncs()
+		Complexity: 5
+	FuncName: getTemplateHandler()
+		Complexity: 2
+	FuncName: handleMaster()
+		Complexity: 1
+	FuncName: addTemplateFile()
+		Complexity: 17
+	FuncName: loadEmbedded()
+		Complexity: 6
+	FuncName: addInternalTemplate()
+		Complexity: 1
+	FuncName: checkState()
+		Complexity: 3
+
+Package: tplimpl
+StructName: templatesCommon
+Attributes:
+	handler || *templateHandler
+	funcster || *templateFuncster
+	nameBaseTemplateName || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: tplimpl
+StructName: htmlTemplates
+Attributes:
+	t || *BADRECV
+	clone || *BADRECV
+	cloneClone || *BADRECV
+	overlays || BADRECV
+WMC: 22
+NDC: 0
+NP: 28
+ATFD: 2
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: setTemplateFuncster()
+		Complexity: 1
+	FuncName: Lookup()
+		Complexity: 2
+	FuncName: lookup()
+		Complexity: 5
+	FuncName: setFuncs()
+		Complexity: 1
+	FuncName: addTemplateIn()
+		Complexity: 4
+	FuncName: addTemplate()
+		Complexity: 1
+	FuncName: addLateTemplate()
+		Complexity: 1
+	FuncName: handleMaster()
+		Complexity: 7
+
+Package: tplimpl
+StructName: textTemplates
+Attributes:
+	clone || *BADRECV
+	cloneClone || *BADRECV
+	overlays || BADRECV
+WMC: 22
+NDC: 0
+NP: 28
+ATFD: 2
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: setTemplateFuncster()
+		Complexity: 1
+	FuncName: Lookup()
+		Complexity: 2
+	FuncName: lookup()
+		Complexity: 5
+	FuncName: setFuncs()
+		Complexity: 1
+	FuncName: addTemplateIn()
+		Complexity: 4
+	FuncName: addTemplate()
+		Complexity: 1
+	FuncName: addLateTemplate()
+		Complexity: 1
+	FuncName: handleMaster()
+		Complexity: 7
+
+Package: tplimpl
+StructName: textTemplate
+Attributes:
+	t || *BADRECV
+WMC: 5
+NDC: 0
+NP: 3
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Parse()
+		Complexity: 1
+	FuncName: Lookup()
+		Complexity: 1
+	FuncName: parSeIn()
+		Complexity: 3
+
+Package: tplimpl
+StructName: templateFuncster
+Attributes:
+	funcMap || BADRECV
+WMC: 9
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: partial()
+		Complexity: 8
+	FuncName: initFuncMap()
+		Complexity: 1
+
+Package: tplimpl
+StructName: TemplateProvider
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: tplimpl
+StructName: templateContext
+Attributes:
+	decl || decl
+	visited || BADRECV
+	lookupFn || BADRECV
+WMC: 25
+NDC: 0
+NP: 6
+ATFD: 4
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: getIfNotVisited()
+		Complexity: 2
+	FuncName: paramsKeysToLower()
+		Complexity: 18
+	FuncName: paramsKeysToLowerForNodes()
+		Complexity: 2
+	FuncName: updateIdentsIfNeeded()
+		Complexity: 3
+
+Package: tplimpl
+StructName: templateInfo
+Attributes:
+	template || string
+	fs || BADRECV
+	filename || string
+	realFilename || string
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: errWithFileContext()
+		Complexity: 1
+
+Package: transform
+StructName: Namespace
+Attributes:
+	deps || *BADRECV
+WMC: 19
+NDC: 1
+NP: 21
+ATFD: 0
+TCC: 0.047619
+God: false
+Methods:
+	FuncName: Remarshal()
+		Complexity: 6
+	FuncName: Emojify()
+		Complexity: 2
+	FuncName: Highlight()
+		Complexity: 2
+	FuncName: HTMLEscape()
+		Complexity: 2
+	FuncName: HTMLUnescape()
+		Complexity: 2
+	FuncName: Markdownify()
+		Complexity: 3
+	FuncName: Plainify()
+		Complexity: 2
+
+Package: transform
+StructName: tstNoStringer
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: urls
+StructName: Namespace
+Attributes:
+	deps || *BADRECV
+	multihost || bool
+WMC: 30
+NDC: 10
+NP: 45
+ATFD: 0
+TCC: 0.222222
+God: false
+Methods:
+	FuncName: AbsURL()
+		Complexity: 2
+	FuncName: Parse()
+		Complexity: 2
+	FuncName: RelURL()
+		Complexity: 2
+	FuncName: URLize()
+		Complexity: 2
+	FuncName: Anchorize()
+		Complexity: 2
+	FuncName: Ref()
+		Complexity: 3
+	FuncName: RelRef()
+		Complexity: 3
+	FuncName: refArgsToMap()
+		Complexity: 10
+	FuncName: RelLangURL()
+		Complexity: 2
+	FuncName: AbsLangURL()
+		Complexity: 2
+
+Package: urls
+StructName: tstNoStringer
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: transform
+StructName: fromToBuffer
+Attributes:
+	from || *BADRECV
+	to || *BADRECV
+WMC: 2
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: From()
+		Complexity: 1
+	FuncName: To()
+		Complexity: 1
+
+Package: urlreplacers
+StructName: absurllexer
+Attributes:
+	content || BADRECV
+	w || BADRECV
+	path || BADRECV
+	pos || int
+	start || int
+	width || int
+	matchers || BADRECV
+	ms || matchState
+	matches || BADRECV
+	idx || int
+WMC: 25
+NDC: 1
+NP: 6
+ATFD: 1
+TCC: 0.166667
+God: false
+Methods:
+	FuncName: match()
+		Complexity: 10
+	FuncName: checkMatchState()
+		Complexity: 4
+	FuncName: emit()
+		Complexity: 1
+	FuncName: replace()
+		Complexity: 10
+
+Package: urlreplacers
+StructName: prefix
+Attributes:
+	r || BADRECV
+	f || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: urlreplacers
+StructName: absURLMatcher
+Attributes:
+	match || BADRECV
+	quote || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: urlreplacers
+StructName: absURLReplacer
+Attributes:
+	htmlMatchers || BADRECV
+	xmlMatchers || BADRECV
+WMC: 2
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: replaceInHTML()
+		Complexity: 1
+	FuncName: replaceInXML()
+		Complexity: 1
+
+Package: urlreplacers
+StructName: test
+Attributes:
+	content || string
+	expected || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: watcher
+StructName: Batcher
+Attributes:
+	interval || BADRECV
+	done || BADRECV
+	Events || BADRECV
+WMC: 7
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: run()
+		Complexity: 6
+	FuncName: Close()
+		Complexity: 1
+

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"go/ast"
 	"go/parser"
 	"go/token"
@@ -12,16 +11,16 @@ import (
 )
 
 type method struct {
-	PkgName        string
-	StructName     string
-	FuncName       string
-	Complexity     int
-	Receiver       variable
-	Parameters     []variable
-	Selectors      []selector
-	AccessedOwn    int
-	AccessedOthers int
-	Pos            token.Position
+	PkgName           string
+	StructName        string
+	FuncName          string
+	Complexity        int
+	Receiver          variable
+	Parameters        []variable
+	Selectors         []selector
+	SelfVarAccessed   []selector
+	OthersVarAccessed []selector
+	Pos               token.Position
 }
 
 func methodAnalyzeDir(dirname string, methods []method) []method {
@@ -58,6 +57,9 @@ func methodAnalyzeFile(fname string, methods []method) []method {
 			// Get parameters
 			var params []variable
 			for _, l := range fn.Type.Params.List {
+				if l.Names == nil {
+					continue
+				}
 				temp := variable{
 					name:    l.Names[0].Name,
 					varType: recvString(l.Type),
@@ -73,49 +75,48 @@ func methodAnalyzeFile(fname string, methods []method) []method {
 				varAll.selectors[i].line = findLine(fname, fset.Position(n.pos).Line)
 			}
 
-			accessOwn, accessOthers := countAccess(rcv.name, varAll.selectors)
+			structName, funcName := funcName(fn)
 
 			methods = append(methods, method{
-				PkgName:        f.Name.Name,
-				FuncName:       funcName(fn),
-				Receiver:       rcv,
-				Parameters:     params,
-				Selectors:      varAll.selectors,
-				Complexity:     complexity(fn),
-				AccessedOwn:    accessOwn,
-				AccessedOthers: accessOthers,
-				Pos:            fset.Position(fn.Pos()),
+				PkgName:    f.Name.Name,
+				StructName: structName,
+				FuncName:   funcName,
+				Receiver:   rcv,
+				Parameters: params,
+				Selectors:  varAll.selectors,
+				Complexity: complexity(fn),
+				Pos:        fset.Position(fn.Pos()),
 			})
 		}
 	}
+
 	return methods
 }
 
-func countAccess(recv string, selectors []selector) (int, int) {
-	accessOwn := 0
-	accessOthers := 0
-
-	for _, s := range selectors {
+func (m *method) separateAccessedVars() {
+	for _, s := range m.Selectors {
 		if !isVariable(s.line, s.left, s.right) {
-			break
+			continue
 		}
 
-		if s.left == recv {
-			accessOwn++
+		if s.left == m.Receiver.name {
+			m.SelfVarAccessed = append(m.SelfVarAccessed, s)
 		} else {
-			accessOthers++
+			m.OthersVarAccessed = append(m.OthersVarAccessed, s)
 		}
 	}
-
-	return accessOwn, accessOthers
 }
 
-func funcName(fn *ast.FuncDecl) string {
+func funcName(fn *ast.FuncDecl) (string, string) {
 	if fn.Recv != nil {
 		if fn.Recv.NumFields() > 0 {
 			typ := fn.Recv.List[0].Type
-			return fmt.Sprintf("(%s).%s", recvString(typ), fn.Name)
+
+			class := recvOnlyNameString(typ)
+
+			return class, fn.Name.Name
+			// return fmt.Sprintf("(%s).%s", recvString(typ), fn.Name)
 		}
 	}
-	return fn.Name.Name
+	return "", fn.Name.Name
 }

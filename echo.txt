@@ -1,0 +1,1419 @@
+Package: echo
+StructName: DefaultBinder
+Attributes:
+WMC: 36
+NDC: 0
+NP: 1
+ATFD: 4
+TCC: 0.000000
+God: false
+Methods:
+	Name: Bind()
+		Complexity: 17
+ALL Variables: c.Request req.ContentLength b.bindData err.Error ute.Type se.Offset 
+Accessed own: 
+Accessed others: req.ContentLength ute.Type se.Offset 
+	Name: bindData()
+		Complexity: 19
+ALL Variables: typ.Kind val.Field structField.CanSet typeField.Tag b.bindData slice.Index 
+Accessed own: 
+Accessed others: typeField.Tag 
+
+Package: echo
+StructName: bindTestStruct
+Attributes:
+	I || int
+	PtrI || *int
+	I8 || int8
+	PtrI8 || *int8
+	I16 || int16
+	PtrI16 || *int16
+	I32 || int32
+	PtrI32 || *int32
+	I64 || int64
+	PtrI64 || *int64
+	UI || uint
+	PtrUI || *uint
+	UI8 || uint8
+	PtrUI8 || *uint8
+	UI16 || uint16
+	PtrUI16 || *uint16
+	UI32 || uint32
+	PtrUI32 || *uint32
+	UI64 || uint64
+	PtrUI64 || *uint64
+	B || bool
+	PtrB || *bool
+	F32 || float32
+	PtrF32 || *float32
+	F64 || float64
+	PtrF64 || *float64
+	S || string
+	PtrS || *string
+	cantSet || string
+	DoesntExist || string
+	T || Timestamp
+	Tptr || *Timestamp
+	SA || StringArray
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	Name: GetCantSet()
+		Complexity: 1
+ALL Variables: t.cantSet 
+Accessed own: t.cantSet 
+Accessed others: 
+
+Package: echo
+StructName: Struct
+Attributes:
+	Foo || string
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	Name: UnmarshalParam()
+		Complexity: 1
+ALL Variables: 
+Accessed own: 
+Accessed others: 
+
+Package: echo
+StructName: foo
+Attributes:
+	Bar || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: echo
+StructName: context
+Attributes:
+	request || *BADRECV
+	response || *Response
+	path || string
+	pnames || BADRECV
+	pvalues || BADRECV
+	query || BADRECV
+	handler || HandlerFunc
+	store || Map
+	echo || *Echo
+WMC: 94
+NDC: 107
+NP: 1485
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	Name: writeContentType()
+		Complexity: 2
+ALL Variables: c.Response header.Get 
+Accessed own: 
+Accessed others: 
+	Name: Request()
+		Complexity: 1
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: SetRequest()
+		Complexity: 1
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: Response()
+		Complexity: 1
+ALL Variables: c.response 
+Accessed own: c.response 
+Accessed others: 
+	Name: IsTLS()
+		Complexity: 1
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: IsWebSocket()
+		Complexity: 2
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: Scheme()
+		Complexity: 6
+ALL Variables: c.IsTLS 
+Accessed own: 
+Accessed others: 
+	Name: RealIP()
+		Complexity: 3
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: Path()
+		Complexity: 1
+ALL Variables: c.path 
+Accessed own: c.path 
+Accessed others: 
+	Name: SetPath()
+		Complexity: 1
+ALL Variables: c.path 
+Accessed own: c.path 
+Accessed others: 
+	Name: Param()
+		Complexity: 4
+ALL Variables: c.pnames 
+Accessed own: c.pnames 
+Accessed others: 
+	Name: ParamNames()
+		Complexity: 1
+ALL Variables: c.pnames 
+Accessed own: c.pnames 
+Accessed others: 
+	Name: SetParamNames()
+		Complexity: 1
+ALL Variables: c.pnames 
+Accessed own: c.pnames 
+Accessed others: 
+	Name: ParamValues()
+		Complexity: 1
+ALL Variables: c.pvalues 
+Accessed own: c.pvalues 
+Accessed others: 
+	Name: SetParamValues()
+		Complexity: 1
+ALL Variables: c.pvalues 
+Accessed own: c.pvalues 
+Accessed others: 
+	Name: QueryParam()
+		Complexity: 2
+ALL Variables: c.query 
+Accessed own: c.query 
+Accessed others: 
+	Name: QueryParams()
+		Complexity: 2
+ALL Variables: c.query 
+Accessed own: c.query 
+Accessed others: 
+	Name: QueryString()
+		Complexity: 1
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: FormValue()
+		Complexity: 1
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: FormParams()
+		Complexity: 4
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: FormFile()
+		Complexity: 1
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: MultipartForm()
+		Complexity: 1
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: Cookie()
+		Complexity: 1
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: SetCookie()
+		Complexity: 1
+ALL Variables: c.Response 
+Accessed own: 
+Accessed others: 
+	Name: Cookies()
+		Complexity: 1
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+	Name: Get()
+		Complexity: 1
+ALL Variables: c.store 
+Accessed own: c.store 
+Accessed others: 
+	Name: Set()
+		Complexity: 2
+ALL Variables: c.store 
+Accessed own: c.store 
+Accessed others: 
+	Name: Bind()
+		Complexity: 1
+ALL Variables: c.echo 
+Accessed own: c.echo 
+Accessed others: 
+	Name: Validate()
+		Complexity: 2
+ALL Variables: c.echo 
+Accessed own: c.echo 
+Accessed others: 
+	Name: Render()
+		Complexity: 3
+ALL Variables: c.echo buf.Bytes 
+Accessed own: c.echo 
+Accessed others: 
+	Name: HTML()
+		Complexity: 1
+ALL Variables: c.HTMLBlob 
+Accessed own: 
+Accessed others: 
+	Name: HTMLBlob()
+		Complexity: 1
+ALL Variables: c.Blob 
+Accessed own: 
+Accessed others: 
+	Name: String()
+		Complexity: 1
+ALL Variables: c.Blob 
+Accessed own: 
+Accessed others: 
+	Name: JSON()
+		Complexity: 4
+ALL Variables: c.QueryParams 
+Accessed own: 
+Accessed others: 
+	Name: JSONPretty()
+		Complexity: 2
+ALL Variables: c.JSONBlob 
+Accessed own: 
+Accessed others: 
+	Name: JSONBlob()
+		Complexity: 1
+ALL Variables: c.Blob 
+Accessed own: 
+Accessed others: 
+	Name: JSONP()
+		Complexity: 2
+ALL Variables: c.JSONPBlob 
+Accessed own: 
+Accessed others: 
+	Name: JSONPBlob()
+		Complexity: 3
+ALL Variables: c.writeContentType 
+Accessed own: 
+Accessed others: 
+	Name: XML()
+		Complexity: 4
+ALL Variables: c.QueryParams 
+Accessed own: 
+Accessed others: 
+	Name: XMLPretty()
+		Complexity: 2
+ALL Variables: c.XMLBlob 
+Accessed own: 
+Accessed others: 
+	Name: XMLBlob()
+		Complexity: 2
+ALL Variables: c.writeContentType 
+Accessed own: 
+Accessed others: 
+	Name: Blob()
+		Complexity: 1
+ALL Variables: c.writeContentType 
+Accessed own: 
+Accessed others: 
+	Name: Stream()
+		Complexity: 1
+ALL Variables: c.writeContentType 
+Accessed own: 
+Accessed others: 
+	Name: File()
+		Complexity: 5
+ALL Variables: f.Close fi.IsDir c.Response 
+Accessed own: 
+Accessed others: 
+	Name: Attachment()
+		Complexity: 1
+ALL Variables: c.contentDisposition 
+Accessed own: 
+Accessed others: 
+	Name: Inline()
+		Complexity: 1
+ALL Variables: c.contentDisposition 
+Accessed own: 
+Accessed others: 
+	Name: contentDisposition()
+		Complexity: 1
+ALL Variables: c.response 
+Accessed own: c.response 
+Accessed others: 
+	Name: NoContent()
+		Complexity: 1
+ALL Variables: c.response 
+Accessed own: c.response 
+Accessed others: 
+	Name: Redirect()
+		Complexity: 3
+ALL Variables: c.response 
+Accessed own: c.response 
+Accessed others: 
+	Name: Error()
+		Complexity: 1
+ALL Variables: c.echo 
+Accessed own: c.echo 
+Accessed others: 
+	Name: Echo()
+		Complexity: 1
+ALL Variables: c.echo 
+Accessed own: c.echo 
+Accessed others: 
+	Name: Handler()
+		Complexity: 1
+ALL Variables: c.handler 
+Accessed own: c.handler 
+Accessed others: 
+	Name: SetHandler()
+		Complexity: 1
+ALL Variables: c.handler 
+Accessed own: c.handler 
+Accessed others: 
+	Name: Logger()
+		Complexity: 1
+ALL Variables: c.echo 
+Accessed own: c.echo 
+Accessed others: 
+	Name: Reset()
+		Complexity: 1
+ALL Variables: c.request 
+Accessed own: c.request 
+Accessed others: 
+
+Package: echo
+StructName: Template
+Attributes:
+	templates || *BADRECV
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	Name: Render()
+		Complexity: 1
+ALL Variables: t.templates 
+Accessed own: t.templates 
+Accessed others: 
+
+Package: echo
+StructName: Echo
+Attributes:
+	StdLogger || *BADRECV
+	colorer || *BADRECV
+	premiddleware || BADRECV
+	middleware || BADRECV
+	maxParam || *int
+	router || *Router
+	notFoundHandler || HandlerFunc
+	pool || BADRECV
+	Server || *BADRECV
+	TLSServer || *BADRECV
+	Listener || BADRECV
+	TLSListener || BADRECV
+	AutoTLSManager || BADRECV
+	DisableHTTP2 || bool
+	Debug || bool
+	HideBanner || bool
+	HidePort || bool
+	HTTPErrorHandler || HTTPErrorHandler
+	Binder || Binder
+	Validator || Validator
+	Renderer || Renderer
+	Logger || Logger
+WMC: 75
+NDC: 12
+NP: 561
+ATFD: 5
+TCC: 0.000000
+God: false
+Methods:
+	Name: NewContext()
+		Complexity: 1
+ALL Variables: e.maxParam 
+Accessed own: e.maxParam 
+Accessed others: 
+	Name: Router()
+		Complexity: 1
+ALL Variables: e.router 
+Accessed own: e.router 
+Accessed others: 
+	Name: DefaultHTTPErrorHandler()
+		Complexity: 8
+ALL Variables: he.Code e.Debug err.Error c.Response 
+Accessed own: e.Debug 
+Accessed others: he.Code 
+	Name: Pre()
+		Complexity: 1
+ALL Variables: e.premiddleware 
+Accessed own: e.premiddleware 
+Accessed others: 
+	Name: Use()
+		Complexity: 1
+ALL Variables: e.middleware 
+Accessed own: e.middleware 
+Accessed others: 
+	Name: CONNECT()
+		Complexity: 1
+ALL Variables: e.Add 
+Accessed own: 
+Accessed others: 
+	Name: DELETE()
+		Complexity: 1
+ALL Variables: e.Add 
+Accessed own: 
+Accessed others: 
+	Name: GET()
+		Complexity: 1
+ALL Variables: e.Add 
+Accessed own: 
+Accessed others: 
+	Name: HEAD()
+		Complexity: 1
+ALL Variables: e.Add 
+Accessed own: 
+Accessed others: 
+	Name: OPTIONS()
+		Complexity: 1
+ALL Variables: e.Add 
+Accessed own: 
+Accessed others: 
+	Name: PATCH()
+		Complexity: 1
+ALL Variables: e.Add 
+Accessed own: 
+Accessed others: 
+	Name: POST()
+		Complexity: 1
+ALL Variables: e.Add 
+Accessed own: 
+Accessed others: 
+	Name: PUT()
+		Complexity: 1
+ALL Variables: e.Add 
+Accessed own: 
+Accessed others: 
+	Name: TRACE()
+		Complexity: 1
+ALL Variables: e.Add 
+Accessed own: 
+Accessed others: 
+	Name: Any()
+		Complexity: 2
+ALL Variables: e.Add 
+Accessed own: 
+Accessed others: 
+	Name: Match()
+		Complexity: 2
+ALL Variables: e.Add 
+Accessed own: 
+Accessed others: 
+	Name: Static()
+		Complexity: 2
+ALL Variables: 
+Accessed own: 
+Accessed others: 
+	Name: File()
+		Complexity: 1
+ALL Variables: e.GET c.File 
+Accessed own: 
+Accessed others: 
+	Name: Add()
+		Complexity: 2
+ALL Variables: e.router 
+Accessed own: e.router 
+Accessed others: 
+	Name: Group()
+		Complexity: 1
+ALL Variables: g.Use 
+Accessed own: 
+Accessed others: 
+	Name: URI()
+		Complexity: 1
+ALL Variables: e.Reverse 
+Accessed own: 
+Accessed others: 
+	Name: URL()
+		Complexity: 1
+ALL Variables: e.URI 
+Accessed own: 
+Accessed others: 
+	Name: Reverse()
+		Complexity: 9
+ALL Variables: e.router r.Name uri.WriteString 
+Accessed own: e.router 
+Accessed others: r.Name 
+	Name: Routes()
+		Complexity: 2
+ALL Variables: e.router 
+Accessed own: 
+Accessed others: 
+	Name: AcquireContext()
+		Complexity: 1
+ALL Variables: e.pool 
+Accessed own: e.pool 
+Accessed others: 
+	Name: ReleaseContext()
+		Complexity: 1
+ALL Variables: e.pool 
+Accessed own: e.pool 
+Accessed others: 
+	Name: ServeHTTP()
+		Complexity: 6
+ALL Variables: e.pool c.Reset r.Method 
+Accessed own: e.pool 
+Accessed others: 
+	Name: Start()
+		Complexity: 1
+ALL Variables: e.Server 
+Accessed own: e.Server 
+Accessed others: 
+	Name: StartTLS()
+		Complexity: 4
+ALL Variables: e.TLSServer s.TLSConfig 
+Accessed own: e.TLSServer 
+Accessed others: s.TLSConfig 
+	Name: StartAutoTLS()
+		Complexity: 2
+ALL Variables: e.Listener s.TLSConfig 
+Accessed own: e.Listener 
+Accessed others: s.TLSConfig 
+	Name: startTLS()
+		Complexity: 2
+ALL Variables: e.TLSServer s.Addr 
+Accessed own: e.TLSServer 
+Accessed others: s.Addr 
+	Name: StartServer()
+		Complexity: 10
+ALL Variables: e.colorer s.ErrorLog 
+Accessed own: e.colorer 
+Accessed others: s.ErrorLog 
+	Name: Close()
+		Complexity: 2
+ALL Variables: e.TLSServer 
+Accessed own: e.TLSServer 
+Accessed others: 
+	Name: Shutdown()
+		Complexity: 2
+ALL Variables: e.TLSServer 
+Accessed own: e.TLSServer 
+Accessed others: 
+
+Package: echo
+StructName: Route
+Attributes:
+	Method || string
+	Path || string
+	Name || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: echo
+StructName: HTTPError
+Attributes:
+	Code || int
+	Message || BADRECV
+	Internal || error
+WMC: 2
+NDC: 0
+NP: 1
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	Name: Error()
+		Complexity: 1
+ALL Variables: he.Code 
+Accessed own: he.Code 
+Accessed others: 
+	Name: SetInternal()
+		Complexity: 1
+ALL Variables: he.Internal 
+Accessed own: he.Internal 
+Accessed others: 
+
+Package: echo
+StructName: tcpKeepAliveListener
+Attributes:
+WMC: 2
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	Name: Accept()
+		Complexity: 2
+ALL Variables: ln.AcceptTCP tc.SetKeepAlive 
+Accessed own: 
+Accessed others: 
+
+Package: echo
+StructName: user
+Attributes:
+	ID || int
+	Name || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: echo
+StructName: Group
+Attributes:
+	prefix || string
+	middleware || BADRECV
+	echo || *Echo
+WMC: 19
+NDC: 3
+NP: 120
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	Name: Use()
+		Complexity: 2
+ALL Variables: g.middleware 
+Accessed own: g.middleware 
+Accessed others: 
+	Name: CONNECT()
+		Complexity: 1
+ALL Variables: g.Add 
+Accessed own: 
+Accessed others: 
+	Name: DELETE()
+		Complexity: 1
+ALL Variables: g.Add 
+Accessed own: 
+Accessed others: 
+	Name: GET()
+		Complexity: 1
+ALL Variables: g.Add 
+Accessed own: 
+Accessed others: 
+	Name: HEAD()
+		Complexity: 1
+ALL Variables: g.Add 
+Accessed own: 
+Accessed others: 
+	Name: OPTIONS()
+		Complexity: 1
+ALL Variables: g.Add 
+Accessed own: 
+Accessed others: 
+	Name: PATCH()
+		Complexity: 1
+ALL Variables: g.Add 
+Accessed own: 
+Accessed others: 
+	Name: POST()
+		Complexity: 1
+ALL Variables: g.Add 
+Accessed own: 
+Accessed others: 
+	Name: PUT()
+		Complexity: 1
+ALL Variables: g.Add 
+Accessed own: 
+Accessed others: 
+	Name: TRACE()
+		Complexity: 1
+ALL Variables: g.Add 
+Accessed own: 
+Accessed others: 
+	Name: Any()
+		Complexity: 2
+ALL Variables: g.Add 
+Accessed own: 
+Accessed others: 
+	Name: Match()
+		Complexity: 2
+ALL Variables: g.Add 
+Accessed own: 
+Accessed others: 
+	Name: Group()
+		Complexity: 1
+ALL Variables: g.middleware 
+Accessed own: g.middleware 
+Accessed others: 
+	Name: Static()
+		Complexity: 1
+ALL Variables: 
+Accessed own: 
+Accessed others: 
+	Name: File()
+		Complexity: 1
+ALL Variables: g.echo 
+Accessed own: g.echo 
+Accessed others: 
+	Name: Add()
+		Complexity: 1
+ALL Variables: g.middleware 
+Accessed own: g.middleware 
+Accessed others: 
+
+Package: middleware
+StructName: BasicAuthConfig
+Attributes:
+	Skipper || Skipper
+	Validator || BasicAuthValidator
+	Realm || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: BodyDumpConfig
+Attributes:
+	Skipper || Skipper
+	Handler || BodyDumpHandler
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: bodyDumpResponseWriter
+Attributes:
+WMC: 5
+NDC: 6
+NP: 10
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	Name: WriteHeader()
+		Complexity: 1
+ALL Variables: w.ResponseWriter 
+Accessed own: w.ResponseWriter 
+Accessed others: 
+	Name: Write()
+		Complexity: 1
+ALL Variables: w.Writer 
+Accessed own: w.Writer 
+Accessed others: 
+	Name: Flush()
+		Complexity: 1
+ALL Variables: w.ResponseWriter 
+Accessed own: w.ResponseWriter 
+Accessed others: 
+	Name: Hijack()
+		Complexity: 1
+ALL Variables: w.ResponseWriter 
+Accessed own: w.ResponseWriter 
+Accessed others: 
+	Name: CloseNotify()
+		Complexity: 1
+ALL Variables: w.ResponseWriter 
+Accessed own: w.ResponseWriter 
+Accessed others: 
+
+Package: middleware
+StructName: BodyLimitConfig
+Attributes:
+	Skipper || Skipper
+	Limit || string
+	limit || int64
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: limitedReader
+Attributes:
+	reader || BADRECV
+	read || int64
+	context || BADRECV
+WMC: 4
+NDC: 3
+NP: 3
+ATFD: 0
+TCC: 1.000000
+God: false
+Methods:
+	Name: Read()
+		Complexity: 2
+ALL Variables: r.reader 
+Accessed own: r.reader 
+Accessed others: 
+	Name: Close()
+		Complexity: 1
+ALL Variables: r.reader 
+Accessed own: r.reader 
+Accessed others: 
+	Name: Reset()
+		Complexity: 1
+ALL Variables: r.reader 
+Accessed own: r.reader 
+Accessed others: 
+
+Package: middleware
+StructName: GzipConfig
+Attributes:
+	Skipper || Skipper
+	Level || int
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: gzipResponseWriter
+Attributes:
+WMC: 7
+NDC: 3
+NP: 10
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	Name: WriteHeader()
+		Complexity: 2
+ALL Variables: w.ResponseWriter 
+Accessed own: w.ResponseWriter 
+Accessed others: 
+	Name: Write()
+		Complexity: 2
+ALL Variables: w.Header 
+Accessed own: 
+Accessed others: 
+	Name: Flush()
+		Complexity: 1
+ALL Variables: w.Writer 
+Accessed own: w.Writer 
+Accessed others: 
+	Name: Hijack()
+		Complexity: 1
+ALL Variables: w.ResponseWriter 
+Accessed own: w.ResponseWriter 
+Accessed others: 
+	Name: CloseNotify()
+		Complexity: 1
+ALL Variables: w.ResponseWriter 
+Accessed own: w.ResponseWriter 
+Accessed others: 
+
+Package: middleware
+StructName: CORSConfig
+Attributes:
+	Skipper || Skipper
+	AllowOrigins || BADRECV
+	AllowMethods || BADRECV
+	AllowHeaders || BADRECV
+	AllowCredentials || bool
+	ExposeHeaders || BADRECV
+	MaxAge || int
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: CSRFConfig
+Attributes:
+	Skipper || Skipper
+	TokenLength || uint8
+	TokenLookup || string
+	ContextKey || string
+	CookieName || string
+	CookieDomain || string
+	CookiePath || string
+	CookieMaxAge || int
+	CookieSecure || bool
+	CookieHTTPOnly || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: JWTConfig
+Attributes:
+	Skipper || Skipper
+	BeforeFunc || BeforeFunc
+	SuccessHandler || JWTSuccessHandler
+	ErrorHandler || JWTErrorHandler
+	SigningKey || BADRECV
+	SigningMethod || string
+	ContextKey || string
+	Claims || BADRECV
+	TokenLookup || string
+	AuthScheme || string
+	keyFunc || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: jwtCustomInfo
+Attributes:
+	Name || string
+	Admin || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: jwtCustomClaims
+Attributes:
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: KeyAuthConfig
+Attributes:
+	Skipper || Skipper
+	KeyLookup || string
+	AuthScheme || string
+	Validator || KeyAuthValidator
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: LoggerConfig
+Attributes:
+	Skipper || Skipper
+	Format || string
+	CustomTimeFormat || string
+	Output || BADRECV
+	template || *BADRECV
+	colorer || *BADRECV
+	pool || *BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: MethodOverrideConfig
+Attributes:
+	Skipper || Skipper
+	Getter || MethodOverrideGetter
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: ProxyConfig
+Attributes:
+	Skipper || Skipper
+	Balancer || ProxyBalancer
+	Rewrite || BADRECV
+	ContextKey || string
+	Transport || BADRECV
+	rewriteRegex || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: ProxyTarget
+Attributes:
+	Name || string
+	URL || *BADRECV
+	Meta || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: commonBalancer
+Attributes:
+	targets || BADRECV
+	mutex || BADRECV
+WMC: 6
+NDC: 0
+NP: 1
+ATFD: 2
+TCC: 0.000000
+God: false
+Methods:
+	Name: AddTarget()
+		Complexity: 3
+ALL Variables: b.targets t.Name target.Name 
+Accessed own: b.targets 
+Accessed others: t.Name target.Name 
+	Name: RemoveTarget()
+		Complexity: 3
+ALL Variables: b.mutex t.Name 
+Accessed own: b.mutex 
+Accessed others: t.Name 
+
+Package: middleware
+StructName: randomBalancer
+Attributes:
+	random || *BADRECV
+WMC: 2
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	Name: Next()
+		Complexity: 2
+ALL Variables: b.random 
+Accessed own: b.random 
+Accessed others: 
+
+Package: middleware
+StructName: roundRobinBalancer
+Attributes:
+	i || uint32
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	Name: Next()
+		Complexity: 1
+ALL Variables: b.i 
+Accessed own: b.i 
+Accessed others: 
+
+Package: middleware
+StructName: closeNotifyRecorder
+Attributes:
+	closed || BADRECV
+WMC: 2
+NDC: 1
+NP: 1
+ATFD: 0
+TCC: 1.000000
+God: false
+Methods:
+	Name: close()
+		Complexity: 1
+ALL Variables: c.closed 
+Accessed own: c.closed 
+Accessed others: 
+	Name: CloseNotify()
+		Complexity: 1
+ALL Variables: c.closed 
+Accessed own: c.closed 
+Accessed others: 
+
+Package: middleware
+StructName: RecoverConfig
+Attributes:
+	Skipper || Skipper
+	StackSize || int
+	DisableStackAll || bool
+	DisablePrintStack || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: RedirectConfig
+Attributes:
+	Code || int
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: RequestIDConfig
+Attributes:
+	Skipper || Skipper
+	Generator || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: RewriteConfig
+Attributes:
+	Skipper || Skipper
+	Rules || BADRECV
+	rulesRegex || BADRECV
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: SecureConfig
+Attributes:
+	Skipper || Skipper
+	XSSProtection || string
+	ContentTypeNosniff || string
+	XFrameOptions || string
+	HSTSMaxAge || int
+	HSTSExcludeSubdomains || bool
+	ContentSecurityPolicy || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: TrailingSlashConfig
+Attributes:
+	Skipper || Skipper
+	RedirectCode || int
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: middleware
+StructName: StaticConfig
+Attributes:
+	Skipper || Skipper
+	Root || string
+	Index || string
+	HTML5 || bool
+	Browse || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: echo
+StructName: Response
+Attributes:
+	echo || *Echo
+	beforeFuncs || BADRECV
+	afterFuncs || BADRECV
+	Writer || BADRECV
+	Status || int
+	Size || int64
+	Committed || bool
+WMC: 13
+NDC: 8
+NP: 36
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	Name: Header()
+		Complexity: 1
+ALL Variables: r.Writer 
+Accessed own: r.Writer 
+Accessed others: 
+	Name: Before()
+		Complexity: 1
+ALL Variables: r.beforeFuncs 
+Accessed own: r.beforeFuncs 
+Accessed others: 
+	Name: After()
+		Complexity: 1
+ALL Variables: r.afterFuncs 
+Accessed own: r.afterFuncs 
+Accessed others: 
+	Name: WriteHeader()
+		Complexity: 3
+ALL Variables: r.Committed 
+Accessed own: r.Committed 
+Accessed others: 
+	Name: Write()
+		Complexity: 3
+ALL Variables: r.Committed 
+Accessed own: r.Committed 
+Accessed others: 
+	Name: Flush()
+		Complexity: 1
+ALL Variables: r.Writer 
+Accessed own: r.Writer 
+Accessed others: 
+	Name: Hijack()
+		Complexity: 1
+ALL Variables: r.Writer 
+Accessed own: r.Writer 
+Accessed others: 
+	Name: CloseNotify()
+		Complexity: 1
+ALL Variables: r.Writer 
+Accessed own: r.Writer 
+Accessed others: 
+	Name: reset()
+		Complexity: 1
+ALL Variables: r.beforeFuncs 
+Accessed own: r.beforeFuncs 
+Accessed others: 
+
+Package: echo
+StructName: Router
+Attributes:
+	tree || *node
+	routes || BADRECV
+	echo || *Echo
+WMC: 49
+NDC: 0
+NP: 3
+ATFD: 3
+TCC: 0.000000
+God: false
+Methods:
+	Name: Add()
+		Complexity: 9
+ALL Variables: r.insert 
+Accessed own: 
+Accessed others: 
+	Name: insert()
+		Complexity: 15
+ALL Variables: r.echo cn.prefix n.addHandler 
+Accessed own: r.echo 
+Accessed others: cn.prefix 
+	Name: Find()
+		Complexity: 25
+ALL Variables: ctx.path r.tree cn.label 
+Accessed own: r.tree 
+Accessed others: ctx.path cn.label 
+
+Package: echo
+StructName: node
+Attributes:
+	kind || kind
+	label || byte
+	prefix || string
+	parent || *node
+	children || children
+	ppath || string
+	pnames || BADRECV
+	methodHandler || *methodHandler
+WMC: 40
+NDC: 7
+NP: 28
+ATFD: 2
+TCC: 0.000000
+God: false
+Methods:
+	Name: addChild()
+		Complexity: 1
+ALL Variables: n.children 
+Accessed own: n.children 
+Accessed others: 
+	Name: findChild()
+		Complexity: 4
+ALL Variables: n.children c.label 
+Accessed own: n.children 
+Accessed others: c.label 
+	Name: findChildWithLabel()
+		Complexity: 3
+ALL Variables: n.children c.label 
+Accessed own: n.children 
+Accessed others: c.label 
+	Name: findChildByKind()
+		Complexity: 3
+ALL Variables: n.children c.kind 
+Accessed own: n.children 
+Accessed others: c.kind 
+	Name: addHandler()
+		Complexity: 11
+ALL Variables: n.methodHandler 
+Accessed own: n.methodHandler 
+Accessed others: 
+	Name: findHandler()
+		Complexity: 12
+ALL Variables: n.methodHandler 
+Accessed own: n.methodHandler 
+Accessed others: 
+	Name: checkMethodNotAllowed()
+		Complexity: 3
+ALL Variables: n.findHandler 
+Accessed own: 
+Accessed others: 
+	Name: printTree()
+		Complexity: 3
+ALL Variables: n.prefix 
+Accessed own: n.prefix 
+Accessed others: 
+
+Package: echo
+StructName: methodHandler
+Attributes:
+	connect || HandlerFunc
+	delete || HandlerFunc
+	get || HandlerFunc
+	head || HandlerFunc
+	options || HandlerFunc
+	patch || HandlerFunc
+	post || HandlerFunc
+	propfind || HandlerFunc
+	put || HandlerFunc
+	trace || HandlerFunc
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+

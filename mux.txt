@@ -1,0 +1,436 @@
+Package: mux_test
+StructName: authenticationMiddleware
+Attributes:
+	tokenUsers || BADRECV
+WMC: 3
+NDC: 1
+NP: 1
+ATFD: 1
+TCC: 1.000000
+God: false
+Methods:
+	FuncName: Populate()
+		Complexity: 1
+	FuncName: Middleware()
+		Complexity: 2
+
+Package: mux
+StructName: testMiddleware
+Attributes:
+	timesCalled || uint
+WMC: 1
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: Middleware()
+		Complexity: 1
+
+Package: mux
+StructName: Router
+Attributes:
+	NotFoundHandler || BADRECV
+	MethodNotAllowedHandler || BADRECV
+	parent || parentRoute
+	routes || BADRECV
+	namedRoutes || BADRECV
+	strictSlash || bool
+	skipClean || bool
+	KeepContext || bool
+	useEncodedPath || bool
+	middlewares || BADRECV
+WMC: 56
+NDC: 7
+NP: 351
+ATFD: 5
+TCC: 0.019943
+God: false
+Methods:
+	FuncName: Use()
+		Complexity: 2
+	FuncName: useInterface()
+		Complexity: 1
+	FuncName: Match()
+		Complexity: 8
+	FuncName: ServeHTTP()
+		Complexity: 9
+	FuncName: Get()
+		Complexity: 1
+	FuncName: GetRoute()
+		Complexity: 1
+	FuncName: StrictSlash()
+		Complexity: 1
+	FuncName: SkipClean()
+		Complexity: 1
+	FuncName: UseEncodedPath()
+		Complexity: 1
+	FuncName: getBuildScheme()
+		Complexity: 2
+	FuncName: getNamedRoutes()
+		Complexity: 3
+	FuncName: getRegexpGroup()
+		Complexity: 2
+	FuncName: buildVars()
+		Complexity: 2
+	FuncName: NewRoute()
+		Complexity: 1
+	FuncName: Handle()
+		Complexity: 1
+	FuncName: HandleFunc()
+		Complexity: 1
+	FuncName: Headers()
+		Complexity: 1
+	FuncName: Host()
+		Complexity: 1
+	FuncName: MatcherFunc()
+		Complexity: 1
+	FuncName: Methods()
+		Complexity: 1
+	FuncName: Path()
+		Complexity: 1
+	FuncName: PathPrefix()
+		Complexity: 1
+	FuncName: Queries()
+		Complexity: 1
+	FuncName: Schemes()
+		Complexity: 1
+	FuncName: BuildVarsFunc()
+		Complexity: 1
+	FuncName: Walk()
+		Complexity: 1
+	FuncName: walk()
+		Complexity: 9
+
+Package: mux
+StructName: RouteMatch
+Attributes:
+	Route || *Route
+	Handler || BADRECV
+	Vars || BADRECV
+	MatchErr || error
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: mux
+StructName: routeTest
+Attributes:
+	title || string
+	route || *Route
+	request || *BADRECV
+	vars || BADRECV
+	scheme || string
+	host || string
+	path || string
+	query || string
+	pathTemplate || string
+	hostTemplate || string
+	queriesTemplate || string
+	methods || BADRECV
+	pathRegexp || string
+	queriesRegexp || string
+	shouldMatch || bool
+	shouldRedirect || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: mux
+StructName: TestA301ResponseWriter
+Attributes:
+	hh || BADRECV
+	status || int
+WMC: 3
+NDC: 0
+NP: 3
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Header()
+		Complexity: 1
+	FuncName: Write()
+		Complexity: 1
+	FuncName: WriteHeader()
+		Complexity: 1
+
+Package: mux
+StructName: methodsSubrouterTest
+Attributes:
+	title || string
+	wantCode || int
+	router || *Router
+	method || string
+	path || string
+	redirectTo || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: mux
+StructName: ResponseRecorder
+Attributes:
+	Code || int
+	HeaderMap || BADRECV
+	Body || *BADRECV
+	Flushed || bool
+WMC: 6
+NDC: 0
+NP: 6
+ATFD: 0
+TCC: 0.000000
+God: false
+Methods:
+	FuncName: Header()
+		Complexity: 1
+	FuncName: Write()
+		Complexity: 3
+	FuncName: WriteHeader()
+		Complexity: 1
+	FuncName: Flush()
+		Complexity: 1
+
+Package: mux
+StructName: headerMatcherTest
+Attributes:
+	matcher || headerMatcher
+	headers || BADRECV
+	result || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: mux
+StructName: hostMatcherTest
+Attributes:
+	matcher || *Route
+	url || string
+	vars || BADRECV
+	result || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: mux
+StructName: methodMatcherTest
+Attributes:
+	matcher || methodMatcher
+	method || string
+	result || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: mux
+StructName: pathMatcherTest
+Attributes:
+	matcher || *Route
+	url || string
+	vars || BADRECV
+	result || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: mux
+StructName: schemeMatcherTest
+Attributes:
+	matcher || schemeMatcher
+	url || string
+	result || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: mux
+StructName: urlBuildingTest
+Attributes:
+	route || *Route
+	vars || BADRECV
+	url || string
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: mux
+StructName: routeRegexpOptions
+Attributes:
+	strictSlash || bool
+	useEncodedPath || bool
+WMC: 0
+NDC: 0
+NP: 0
+ATFD: 0
+TCC: 99999.000000
+God: false
+
+Package: mux
+StructName: routeRegexp
+Attributes:
+	template || string
+	regexpType || regexpType
+	options || routeRegexpOptions
+	regexp || *BADRECV
+	reverse || string
+	varsN || BADRECV
+	varsR || BADRECV
+WMC: 18
+NDC: 1
+NP: 10
+ATFD: 1
+TCC: 0.100000
+God: false
+Methods:
+	FuncName: GoString()
+		Complexity: 1
+	FuncName: Match()
+		Complexity: 4
+	FuncName: url()
+		Complexity: 7
+	FuncName: getURLQuery()
+		Complexity: 5
+	FuncName: matchQueryString()
+		Complexity: 1
+
+Package: mux
+StructName: routeRegexpGroup
+Attributes:
+	host || *routeRegexp
+	path || *routeRegexp
+	queries || BADRECV
+WMC: 11
+NDC: 0
+NP: 0
+ATFD: 4
+TCC: 99999.000000
+God: false
+Methods:
+	FuncName: setMatch()
+		Complexity: 11
+
+Package: mux
+StructName: Route
+Attributes:
+	parent || parentRoute
+	handler || BADRECV
+	matchers || BADRECV
+	regexp || *routeRegexpGroup
+	strictSlash || bool
+	skipClean || bool
+	useEncodedPath || bool
+	buildScheme || string
+	buildOnly || bool
+	name || string
+	err || error
+	buildVarsFunc || BuildVarsFunc
+WMC: 127
+NDC: 175
+NP: 666
+ATFD: 7
+TCC: 0.262763
+God: true
+Methods:
+	FuncName: GoString()
+		Complexity: 2
+	FuncName: SkipClean()
+		Complexity: 1
+	FuncName: Match()
+		Complexity: 12
+	FuncName: GetError()
+		Complexity: 1
+	FuncName: BuildOnly()
+		Complexity: 1
+	FuncName: Handler()
+		Complexity: 2
+	FuncName: HandlerFunc()
+		Complexity: 1
+	FuncName: GetHandler()
+		Complexity: 1
+	FuncName: Name()
+		Complexity: 3
+	FuncName: GetName()
+		Complexity: 1
+	FuncName: addMatcher()
+		Complexity: 2
+	FuncName: addRegexpMatcher()
+		Complexity: 16
+	FuncName: Headers()
+		Complexity: 2
+	FuncName: HeadersRegexp()
+		Complexity: 2
+	FuncName: Host()
+		Complexity: 1
+	FuncName: MatcherFunc()
+		Complexity: 1
+	FuncName: Methods()
+		Complexity: 2
+	FuncName: Path()
+		Complexity: 1
+	FuncName: PathPrefix()
+		Complexity: 1
+	FuncName: Queries()
+		Complexity: 4
+	FuncName: Schemes()
+		Complexity: 4
+	FuncName: BuildVarsFunc()
+		Complexity: 1
+	FuncName: Subrouter()
+		Complexity: 1
+	FuncName: URL()
+		Complexity: 11
+	FuncName: URLHost()
+		Complexity: 7
+	FuncName: URLPath()
+		Complexity: 6
+	FuncName: GetPathTemplate()
+		Complexity: 4
+	FuncName: GetPathRegexp()
+		Complexity: 4
+	FuncName: GetQueriesRegexp()
+		Complexity: 5
+	FuncName: GetQueriesTemplates()
+		Complexity: 5
+	FuncName: GetMethods()
+		Complexity: 4
+	FuncName: GetHostTemplate()
+		Complexity: 4
+	FuncName: prepareVars()
+		Complexity: 2
+	FuncName: buildVars()
+		Complexity: 3
+	FuncName: getBuildScheme()
+		Complexity: 3
+	FuncName: getNamedRoutes()
+		Complexity: 2
+	FuncName: getRegexpGroup()
+		Complexity: 4
+

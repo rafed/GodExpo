@@ -28,6 +28,16 @@ func recvString(recv ast.Expr) string {
 	return "BADRECV"
 }
 
+func recvOnlyNameString(recv ast.Expr) string {
+	switch t := recv.(type) {
+	case *ast.Ident:
+		return t.Name
+	case *ast.StarExpr:
+		return recvOnlyNameString(t.X)
+	}
+	return "BADRECV"
+}
+
 func isAlphaNumeric(c byte) bool {
 	s := "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	b := []byte(s)
@@ -62,7 +72,7 @@ func findLine(file string, pos int) string {
 }
 
 func isVariable(line string, leftVar string, rightVar string) bool {
-	for len(line) > len(leftVar) {
+	for len(line) > len(leftVar)+len(rightVar) {
 		pos := strings.Index(line, leftVar)
 
 		if pos == -1 {
@@ -97,4 +107,22 @@ func isVariable(line string, leftVar string, rightVar string) bool {
 	}
 
 	return false
+}
+
+type uniqeSelectors struct {
+	selectors []selector
+}
+
+func (u *uniqeSelectors) exists(s selector) bool {
+	for _, v := range u.selectors {
+		// println("WKAALAKLKA", v.toString(), s.toString)
+		if v.toString() == s.toString() {
+			return true
+		}
+	}
+	return false
+}
+
+func (u *uniqeSelectors) add(s selector) {
+	u.selectors = append(u.selectors, s)
 }

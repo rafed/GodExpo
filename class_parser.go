@@ -16,6 +16,16 @@ type class struct {
 	Attributes []variable
 	Methods    []method
 	Pos        token.Position
+	WMC        int
+	NDC        int
+	NP         int
+	ATFD       int
+	TCC        float32
+	God        bool
+}
+
+func (c *class) addMethod(m method) {
+	c.Methods = append(c.Methods, m)
 }
 
 func classAnalyzeDir(dirname string, classes []class) []class {
