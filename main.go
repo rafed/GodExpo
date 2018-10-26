@@ -58,14 +58,13 @@ func analyze(paths []string) {
 
 	// Finding the metrics
 	for i, c := range classes {
-		classes[i].WMC = WMC(c)
-		classes[i].NP = NP(c)
-		classes[i].NDC = NDC(c)
-		classes[i].ATFD = ATFD(c)
-
-		// array index needed below
-		classes[i].TCC = TCC(classes[i])
-		classes[i].God = GodStruct(classes[i])
+		c.WMC = WMC(c)
+		c.NP = NP(c)
+		c.NDC = NDC(c)
+		c.ATFD = ATFD(c)
+		c.TCC = TCC(c)
+		c.God = GodStruct(c)
+		classes[i] = c
 	}
 
 	for _, class := range classes {
