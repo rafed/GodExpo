@@ -68,11 +68,14 @@ func classAnalyzeFile(fname string, classes []class) []class {
 				continue
 			}
 
-			a := variable{
-				name:    i.Names[0].Name,
-				varType: recvString(i.Type),
+			for j := 0; j < len(i.Names); j++ {
+				a := variable{
+					name:    i.Names[j].Name,
+					varType: recvString(i.Type),
+				}
+
+				attributes = append(attributes, a)
 			}
-			attributes = append(attributes, a)
 		}
 
 		c := class{

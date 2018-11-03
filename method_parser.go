@@ -48,6 +48,9 @@ func methodAnalyzeFile(fname string, methods []method) []method {
 				continue
 			}
 
+			// Struct and function names
+			structName, funcName := funcName(fn)
+
 			// Get receivers
 			rcv := variable{
 				name:    fn.Recv.List[0].Names[0].Name,
@@ -74,8 +77,6 @@ func methodAnalyzeFile(fname string, methods []method) []method {
 			for i, n := range varAll.selectors {
 				varAll.selectors[i].line = findLine(fname, fset.Position(n.pos).Line)
 			}
-
-			structName, funcName := funcName(fn)
 
 			methods = append(methods, method{
 				PkgName:    f.Name.Name,

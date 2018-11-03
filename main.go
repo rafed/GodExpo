@@ -67,6 +67,8 @@ func analyze(paths []string) {
 		classes[i] = c
 	}
 
+	godCount := 0
+
 	for _, class := range classes {
 		fmt.Printf("Package: %s\n", class.PkgName)
 		fmt.Printf("StructName: %s\n", class.StructName)
@@ -76,17 +78,6 @@ func analyze(paths []string) {
 		for _, a := range class.Attributes {
 			fmt.Printf("\t%s || %s\n", a.name, a.varType)
 		}
-
-		fmt.Printf("WMC: %d\n", class.WMC)
-		fmt.Printf("NDC: %d\n", class.NDC)
-		fmt.Printf("NP: %d\n", class.NP)
-		fmt.Printf("ATFD: %d\n", class.ATFD)
-		if class.TCC == 99999 {
-			fmt.Printf("TCC: --\n")
-		} else {
-			fmt.Printf("TCC: %f\n", class.TCC)
-		}
-		fmt.Printf("God: %v\n", class.God)
 
 		if len(class.Methods) > 0 {
 			fmt.Printf("Methods:\n")
@@ -113,8 +104,28 @@ func analyze(paths []string) {
 				// fmt.Println()
 			}
 		}
+
+		fmt.Println("Metrics:")
+		fmt.Printf("\tWMC: %d\n", class.WMC)
+		fmt.Printf("\tNDC: %d\n", class.NDC)
+		fmt.Printf("\tNP: %d\n", class.NP)
+		fmt.Printf("\tATFD: %d\n", class.ATFD)
+		if class.TCC == 99999 {
+			fmt.Printf("\tTCC: --\n")
+		} else {
+			fmt.Printf("\tTCC: %f\n", class.TCC)
+		}
+		fmt.Printf("\tGod: %v\n", class.God)
+
+		if class.God == true {
+			godCount++
+		}
+
 		fmt.Println()
 	}
 
-	println("Num of classes:", len(classes))
+	fmt.Println(paths[0])
+	fmt.Println("Num of structs:", len(classes))
+	fmt.Println("God structs:", godCount)
+	fmt.Printf("God percentage: %f\n", float32(godCount)/float32(len(classes)))
 }

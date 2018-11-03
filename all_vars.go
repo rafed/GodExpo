@@ -32,6 +32,7 @@ func (v *allSelectorVisitor) Visit(n ast.Node) ast.Visitor {
 			}
 
 			if va.Obj.Kind.String() == "var" {
+
 				newSelector := selector{
 					left:  va.Name,
 					right: selectorExp.Sel.Name,
@@ -45,14 +46,14 @@ func (v *allSelectorVisitor) Visit(n ast.Node) ast.Visitor {
 }
 
 func (v *allSelectorVisitor) add(s selector) {
-	if !v.exists(s.left) {
+	if !v.exists(s) {
 		v.selectors = append(v.selectors, s)
 	}
 }
 
-func (v *allSelectorVisitor) exists(name string) bool {
+func (v *allSelectorVisitor) exists(s selector) bool {
 	for _, n := range v.selectors {
-		if n.left == name {
+		if n.left == s.left && n.right == s.right {
 			return true
 		}
 	}
