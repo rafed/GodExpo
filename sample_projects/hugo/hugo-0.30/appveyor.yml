@@ -1,0 +1,18 @@
+init:
+  - set PATH=%PATH%;C:\MinGW\bin;%GOPATH%\bin
+  - go version
+  - go env
+
+# clones and cd's to path
+clone_folder: C:\GOPATH\src\github.com\gohugoio\hugo
+
+install:
+  - gem install asciidoctor
+  - pip install docutils
+  - go get github.com/magefile/mage
+
+build_script:
+  - mage hugoRace
+  - mage -v check
+  - hugo -s docs/
+  - hugo --renderToMemory -s docs/

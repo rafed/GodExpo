@@ -1,0 +1,39 @@
+caddy-0.11.0/
+Num of structs: 3589
+God structs: 26
+God percentage: 0.007244
+
+caddy-0.10.14
+Num of structs: 3582
+God structs: 26
+God percentage: 0.007259
+
+caddy-0.10.13/
+Num of structs: 3582
+God structs: 26
+God percentage: 0.007259
+
+caddy-0.10.12/
+Num of structs: 3577
+God structs: 26
+God percentage: 0.007269
+
+caddy-0.10.11/
+Num of structs: 3578
+God structs: 30
+God percentage: 0.008385
+
+caddy-0.10.10
+Num of structs: 3335
+God structs: 24
+God percentage: 0.007196
+
+caddy-0.10.9
+Num of structs: 3332
+God structs: 24
+God percentage: 0.007203
+
+caddy-0.10.8/
+Num of structs: 3331
+God structs: 24
+God percentage: 0.007205
