@@ -64,10 +64,12 @@ func analyze(paths []string) {
 		c.ATFD = ATFD(c)
 		c.TCC = TCC(c)
 		c.God = GodStruct(c)
+		c.DemiGod = DemiGodStruct(c)
 		classes[i] = c
 	}
 
 	godCount := 0
+	demiGodCount := 0
 
 	for _, class := range classes {
 		fmt.Printf("Package: %s\n", class.PkgName)
@@ -82,8 +84,10 @@ func analyze(paths []string) {
 		if len(class.Methods) > 0 {
 			fmt.Printf("Methods:\n")
 			for _, m := range class.Methods {
+				// fmt.Print("ALL methods and its complexities: ")
 				fmt.Printf("\tFuncName: %s()\n", m.FuncName)
 				fmt.Printf("\t\tComplexity: %d\n", m.Complexity)
+				// fmt.Println()
 
 				// fmt.Print("ALL Variables: ")
 				// for _, v := range m.Selectors {
@@ -116,9 +120,14 @@ func analyze(paths []string) {
 			fmt.Printf("\tTCC: %f\n", class.TCC)
 		}
 		fmt.Printf("\tGod: %v\n", class.God)
+		fmt.Printf("\tDemiGod: %v\n", class.DemiGod)
 
 		if class.God == true {
 			godCount++
+		}
+
+		if class.DemiGod == true {
+			demiGodCount++
 		}
 
 		fmt.Println()
@@ -128,4 +137,6 @@ func analyze(paths []string) {
 	fmt.Println("Num of structs:", len(classes))
 	fmt.Println("God structs:", godCount)
 	fmt.Printf("God percentage: %f\n", float32(godCount)/float32(len(classes)))
+	fmt.Println("DemiGod structs:", demiGodCount)
+
 }

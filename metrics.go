@@ -69,3 +69,29 @@ func GodStruct(c class) bool {
 
 	return false
 }
+
+func DemiGodStruct(c class) bool {
+	if GodStruct(c) {
+		return false
+	}
+
+	demiGodEligibleCounter := 0
+
+	if c.WMC > 47 {
+		demiGodEligibleCounter++
+	}
+
+	if c.TCC < 0.3 {
+		demiGodEligibleCounter++
+	}
+
+	if c.ATFD > 5 {
+		demiGodEligibleCounter++
+	}
+
+	if demiGodEligibleCounter == 2 {
+		return true
+	}
+
+	return false
+}

@@ -22,6 +22,7 @@ type class struct {
 	ATFD       int
 	TCC        float32
 	God        bool
+	DemiGod    bool
 }
 
 func (c *class) addMethod(m method) {
