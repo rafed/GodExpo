@@ -76,38 +76,38 @@ func analyze(paths []string) {
 		fmt.Printf("StructName: %s\n", class.StructName)
 		fmt.Printf("Position: %s\n", class.Pos)
 
-		fmt.Printf("Attributes:\n")
-		for _, a := range class.Attributes {
-			fmt.Printf("\t%s || %s\n", a.name, a.varType)
-		}
+		// fmt.Printf("Attributes:\n")
+		// for _, a := range class.Attributes {
+		// 	fmt.Printf("\t%s || %s\n", a.name, a.varType)
+		// }
 
-		if len(class.Methods) > 0 {
-			fmt.Printf("Methods:\n")
-			for _, m := range class.Methods {
-				// fmt.Print("ALL methods and its complexities: ")
-				fmt.Printf("\tFuncName: %s()\n", m.FuncName)
-				fmt.Printf("\t\tComplexity: %d\n", m.Complexity)
-				// fmt.Println()
+		// if len(class.Methods) > 0 {
+		// 	fmt.Printf("Methods:\n")
+		// 	for _, m := range class.Methods {
+		// 		// fmt.Print("ALL methods and its complexities: ")
+		// 		// fmt.Printf("\tFuncName: %s()\n", m.FuncName)
+		// 		// fmt.Printf("\t\tComplexity: %d\n", m.Complexity)
+		// 		// fmt.Println()
 
-				// fmt.Print("ALL Variables: ")
-				// for _, v := range m.Selectors {
-				// 	fmt.Printf("%s.%s ", v.left, v.right)
-				// }
-				// fmt.Println()
+		// 		// fmt.Print("ALL Variables: ")
+		// 		// for _, v := range m.Selectors {
+		// 		// 	fmt.Printf("%s.%s ", v.left, v.right)
+		// 		// }
+		// 		// fmt.Println()
 
-				// fmt.Print("Accessed own: ")
-				// for _, v := range m.SelfVarAccessed {
-				// 	fmt.Printf("%s.%s ", v.left, v.right)
-				// }
-				// fmt.Println()
+		// 		// fmt.Print("Accessed own: ")
+		// 		// for _, v := range m.SelfVarAccessed {
+		// 		// 	fmt.Printf("%s.%s ", v.left, v.right)
+		// 		// }
+		// 		// fmt.Println()
 
-				// fmt.Print("Accessed others: ")
-				// for _, v := range m.OthersVarAccessed {
-				// 	fmt.Printf("%s.%s ", v.left, v.right)
-				// }
-				// fmt.Println()
-			}
-		}
+		// 		// fmt.Print("Accessed others: ")
+		// 		// for _, v := range m.OthersVarAccessed {
+		// 		// 	fmt.Printf("%s.%s ", v.left, v.right)
+		// 		// }
+		// 		// fmt.Println()
+		// 	}
+		// }
 
 		fmt.Println("Metrics:")
 		fmt.Printf("\tWMC: %d\n", class.WMC)
@@ -135,8 +135,10 @@ func analyze(paths []string) {
 
 	fmt.Println(paths[0])
 	fmt.Println("Num of structs:", len(classes))
+
 	fmt.Println("God structs:", godCount)
 	fmt.Printf("God percentage: %f\n", float32(godCount)/float32(len(classes)))
-	fmt.Println("DemiGod structs:", demiGodCount)
 
+	fmt.Println("DemiGod structs:", demiGodCount)
+	fmt.Printf("DemiGod percentage: %f\n", float32(demiGodCount)/float32(len(classes)))
 }
