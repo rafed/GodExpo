@@ -72,9 +72,9 @@ func analyze(paths []string) {
 	demiGodCount := 0
 
 	for _, class := range classes {
-		fmt.Printf("Package: %s\n", class.PkgName)
-		fmt.Printf("StructName: %s\n", class.StructName)
-		fmt.Printf("Position: %s\n", class.Pos)
+		// fmt.Printf("Package: %s\n", class.PkgName)
+		// fmt.Printf("StructName: %s\n", class.StructName)
+		// fmt.Printf("Position: %s\n", class.Pos)
 
 		// fmt.Printf("Attributes:\n")
 		// for _, a := range class.Attributes {
@@ -109,30 +109,39 @@ func analyze(paths []string) {
 		// 	}
 		// }
 
-		fmt.Println("Metrics:")
-		fmt.Printf("\tWMC: %d\n", class.WMC)
-		fmt.Printf("\tNDC: %d\n", class.NDC)
-		fmt.Printf("\tNP: %d\n", class.NP)
-		fmt.Printf("\tATFD: %d\n", class.ATFD)
-		if class.TCC == 99999 {
-			fmt.Printf("\tTCC: --\n")
-		} else {
-			fmt.Printf("\tTCC: %f\n", class.TCC)
-		}
-		fmt.Printf("\tGod: %v\n", class.God)
-		fmt.Printf("\tDemiGod: %v\n", class.DemiGod)
+		// fmt.Println("Metrics:")
+		// fmt.Printf("\tWMC: %d\n", class.WMC)
+		// fmt.Printf("\tNDC: %d\n", class.NDC)
+		// fmt.Printf("\tNP: %d\n", class.NP)
+		// fmt.Printf("\tATFD: %d\n", class.ATFD)
+		// if class.TCC == 99999 {
+		// 	fmt.Printf("\tTCC: --\n")
+		// } else {
+		// 	fmt.Printf("\tTCC: %f\n", class.TCC)
+		// }
+
+		
+		// fmt.Printf("\tGod: %v\n", class.God)
+		// fmt.Printf("\tDemiGod: %v\n", class.DemiGod)
+
+		classificationString := "none"
 
 		if class.God == true {
 			godCount++
-		}
-
-		if class.DemiGod == true {
+			classificationString = "god"
+		} else if class.DemiGod == true {
 			demiGodCount++
+			classificationString = "demigod"
 		}
 
-		fmt.Println()
+		if classificationString == "none"{
+			continue
+		}
+
+		fmt.Printf("%-15v | %-25v: %s\n", class.PkgName, class.StructName, classificationString)
 	}
 
+	fmt.Println()	
 	fmt.Println(paths[0])
 	fmt.Println("Num of structs:", len(classes))
 
