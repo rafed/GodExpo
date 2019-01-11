@@ -2,19 +2,14 @@ package main
 
 import (
 	"go/ast"
-	"go/parser"
 	"go/token"
-	"log"
-	"os"
-	"path/filepath"
-	"strings"
 )
 
-type class struct {
+type Struct struct {
 	PkgName    string
 	StructName string
 	Attributes []variable
-	Methods    []method
+	Methods    []Method
 	Pos        token.Position
 	WMC        int
 	NDC        int
@@ -25,27 +20,12 @@ type class struct {
 	DemiGod    bool
 }
 
-func (c *class) addMethod(m method) {
+func (c *Struct) addMethod(m Method) {
 	c.Methods = append(c.Methods, m)
 }
 
-func classAnalyzeDir(dirname string, classes []class) []class {
-	filepath.Walk(dirname, func(path string, info os.FileInfo, err error) error {
-		if err == nil && !info.IsDir() && strings.HasSuffix(path, ".go") {
-			classes = classAnalyzeFile(path, classes)
-		}
-		return err
-	})
-	return classes
-}
-
-func classAnalyzeFile(fname string, classes []class) []class {
-	fset := token.NewFileSet()
-	f, err := parser.ParseFile(fset, fname, nil, 0)
-
-	if err != nil {
-		log.Fatal(err)
-	}
+func findStructsFromFile(fset *token.FileSet, f *ast.File) []Struct {
+	var structs []Struct
 
 	pkgName := f.Name.Name
 
@@ -79,18 +59,18 @@ func classAnalyzeFile(fname string, classes []class) []class {
 			}
 		}
 
-		c := class{
+		c := Struct{
 			PkgName:    pkgName,
 			StructName: structName,
 			Attributes: attributes,
 			Pos:        fset.Position(t.Pos()),
 		}
 
-		classes = append(classes, c)
+		structs = append(structs, c)
 		return true
 	}
 
 	ast.Inspect(f, findStructs)
 
-	return classes
+	return structs
 }

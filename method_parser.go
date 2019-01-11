@@ -2,15 +2,10 @@ package main
 
 import (
 	"go/ast"
-	"go/parser"
 	"go/token"
-	"log"
-	"os"
-	"path/filepath"
-	"strings"
 )
 
-type method struct {
+type Method struct {
 	PkgName           string
 	StructName        string
 	FuncName          string
@@ -23,23 +18,8 @@ type method struct {
 	Pos               token.Position
 }
 
-func methodAnalyzeDir(dirname string, methods []method) []method {
-	filepath.Walk(dirname, func(path string, info os.FileInfo, err error) error {
-		if err == nil && !info.IsDir() && strings.HasSuffix(path, ".go") {
-			methods = methodAnalyzeFile(path, methods)
-		}
-		return err
-	})
-	return methods
-}
-
-func methodAnalyzeFile(fname string, methods []method) []method {
-	fset := token.NewFileSet()
-	f, err := parser.ParseFile(fset, fname, nil, 0)
-
-	if err != nil {
-		log.Fatal(err)
-	}
+func findMethodsFromFile(fset *token.FileSet, f *ast.File, fname string) []Method {
+	var methods []Method
 
 	for _, decl := range f.Decls {
 		if fn, ok := decl.(*ast.FuncDecl); ok {
@@ -78,7 +58,7 @@ func methodAnalyzeFile(fname string, methods []method) []method {
 				varAll.selectors[i].line = findLine(fname, fset.Position(n.pos).Line)
 			}
 
-			methods = append(methods, method{
+			methods = append(methods, Method{
 				PkgName:    f.Name.Name,
 				StructName: structName,
 				FuncName:   funcName,
@@ -94,7 +74,7 @@ func methodAnalyzeFile(fname string, methods []method) []method {
 	return methods
 }
 
-func (m *method) separateAccessedVars() {
+func (m *Method) separateAccessedVars() {
 	for _, s := range m.Selectors {
 		if !isVariable(s.line, s.left, s.right) {
 			continue

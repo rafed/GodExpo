@@ -1,26 +1,26 @@
 package main
 
-func WMC(c class) int {
+func WMC(s Struct) int {
 	wmc := 0
-	for _, m := range c.Methods {
+	for _, m := range s.Methods {
 		wmc += m.Complexity
 	}
 	return wmc
 }
 
-func NP(c class) int {
-	n := len(c.Methods)
+func NP(s Struct) int {
+	n := len(s.Methods)
 	if n <= 1 {
 		return 0
 	}
 	return n * (n - 1) / 2
 }
 
-func NDC(c class) int {
+func NDC(s Struct) int {
 	ndc := 0
-	for j := 0; j < len(c.Methods)-1; j++ {
-		for k := j + 1; k < len(c.Methods); k++ {
-			if commonAttributeAccessExists(c.Methods[j], c.Methods[k]) {
+	for j := 0; j < len(s.Methods)-1; j++ {
+		for k := j + 1; k < len(s.Methods); k++ {
+			if commonAttributeAccessExists(s.Methods[j], s.Methods[k]) {
 				ndc++
 			}
 		}
@@ -28,7 +28,7 @@ func NDC(c class) int {
 	return ndc
 }
 
-func commonAttributeAccessExists(m1 method, m2 method) bool {
+func commonAttributeAccessExists(m1 Method, m2 Method) bool {
 	for _, v1 := range m1.SelfVarAccessed {
 		for _, v2 := range m2.SelfVarAccessed {
 			if v1.right == v2.right {
@@ -40,10 +40,10 @@ func commonAttributeAccessExists(m1 method, m2 method) bool {
 	return false
 }
 
-func ATFD(c class) int {
+func ATFD(s Struct) int {
 	uniqList := uniqeSelectors{}
 
-	for _, m := range c.Methods {
+	for _, m := range s.Methods {
 		for _, v := range m.OthersVarAccessed {
 			if !uniqList.exists(v) {
 				uniqList.add(v)
@@ -55,41 +55,55 @@ func ATFD(c class) int {
 	return atfd
 }
 
-func TCC(c class) float32 {
-	if c.NP == 0 {
+func TCC(s Struct) float32 {
+	if s.NP == 0 {
 		return 99999
 	}
-	return float32(c.NDC) / float32(c.NP)
+	return float32(s.NDC) / float32(s.NP)
 }
 
-func GodStruct(c class) bool {
-	if c.WMC > 47 && c.TCC < 0.3 && c.ATFD > 5 {
+func GodStruct(s Struct) bool {
+	if s.WMC > 47 && s.TCC < 0.3 && s.ATFD > 5 {
 		return true
 	}
 
 	return false
 }
 
-func DemiGodStruct(c class) bool {
-	if GodStruct(c) {
+func DemiGodStruct(s Struct) bool {
+	if GodStruct(s) {
 		return false
 	}
 
-	demiGodEligibleCounter := 0
+	// demiGodEligibleCounter := 0
 
-	if c.WMC > 47 {
-		demiGodEligibleCounter++
+	// if s.WMC > 47 {
+	// 	demiGodEligibleCounter++
+	// }
+
+	// if s.TCC < 0.3 {
+	// 	demiGodEligibleCounter++
+	// }
+
+	// if s.ATFD > 5 {
+	// 	demiGodEligibleCounter++
+	// }
+
+	// if demiGodEligibleCounter == 2 {
+	// 	return true
+	// }
+
+	// return false
+
+	if s.WMC > 47 && s.TCC >= 0.3 && s.TCC != 99999 && s.ATFD <= 5 {
+		return true
 	}
 
-	if c.TCC < 0.3 {
-		demiGodEligibleCounter++
+	if s.WMC <= 47 && s.TCC < 0.3 && s.ATFD <= 5 {
+		return true
 	}
 
-	if c.ATFD > 5 {
-		demiGodEligibleCounter++
-	}
-
-	if demiGodEligibleCounter == 2 {
+	if s.WMC <= 47 && s.TCC >= 0.3 && s.TCC != 99999 && s.ATFD > 5 {
 		return true
 	}
 
