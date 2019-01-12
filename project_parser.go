@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"go/parser"
 	"go/token"
 	"log"
@@ -26,7 +27,7 @@ func parsePaths(file string) ([]Struct, []Method) {
 					log.Fatal(err)
 				}
 
-				println("Analyzing:", path)
+				fmt.Fprintf(os.Stderr, "[*] Analyzing: %s\n", path)
 
 				structs = append(structs, findStructsFromFile(fset, f)...)
 				methods = append(methods, findMethodsFromFile(fset, f, path)...)

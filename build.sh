@@ -1,2 +1,9 @@
-go build main.go project_parser.go class_parser.go method_parser.go utils.go all_vars.go complexity.go metrics.go
-#./main class_parser.go
+go build -o gometrics \
+    main.go \
+    project_parser.go \
+    struct_parser.go \
+    method_parser.go \
+    selector_analyzer.go \
+    complexity.go \
+    metrics.go \
+    utils.go \
