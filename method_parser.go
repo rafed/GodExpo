@@ -58,7 +58,7 @@ func findMethodsFromFile(fset *token.FileSet, f *ast.File, fname string) []Metho
 				varAll.selectors[i].line = findLine(fname, fset.Position(n.pos).Line)
 			}
 
-			methods = append(methods, Method{
+			method := Method{
 				PkgName:    f.Name.Name,
 				StructName: structName,
 				FuncName:   funcName,
@@ -67,7 +67,10 @@ func findMethodsFromFile(fset *token.FileSet, f *ast.File, fname string) []Metho
 				Selectors:  varAll.selectors,
 				Complexity: complexity(fn),
 				Pos:        fset.Position(fn.Pos()),
-			})
+			}
+			method.separateAccessedVars()
+
+			methods = append(methods, method)
 		}
 	}
 

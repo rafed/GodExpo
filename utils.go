@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+const TCC_Null = 99999
+
 type variable struct {
 	name    string
 	varType string

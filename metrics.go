@@ -57,7 +57,7 @@ func ATFD(s Struct) int {
 
 func TCC(s Struct) float32 {
 	if s.NP == 0 {
-		return 99999
+		return TCC_Null
 	}
 	return float32(s.NDC) / float32(s.NP)
 }
@@ -95,7 +95,7 @@ func DemiGodStruct(s Struct) bool {
 
 	// return false
 
-	if s.WMC > 47 && s.TCC >= 0.3 && s.TCC != 99999 && s.ATFD <= 5 {
+	if s.WMC > 47 && s.TCC >= 0.3 && s.TCC != TCC_Null && s.ATFD <= 5 {
 		return true
 	}
 
@@ -103,7 +103,7 @@ func DemiGodStruct(s Struct) bool {
 		return true
 	}
 
-	if s.WMC <= 47 && s.TCC >= 0.3 && s.TCC != 99999 && s.ATFD > 5 {
+	if s.WMC <= 47 && s.TCC >= 0.3 && s.TCC != TCC_Null && s.ATFD > 5 {
 		return true
 	}
 

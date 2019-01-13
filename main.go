@@ -8,13 +8,16 @@ import (
 
 func main() {
 	args := os.Args[1:]
-
 	if len(args) == 0 {
 		usage()
 	}
 
+	var structs []Struct
+
 	start := time.Now()
-	analyze(args)
+
+	structs = analyze(args)
+	showMetrics(structs)
 
 	elapsed := time.Since(start)
 	fmt.Fprintf(os.Stderr, "Execution time: %s\n", elapsed)
@@ -26,7 +29,7 @@ func usage() {
 	fmt.Println("gometrics [directory]")
 }
 
-func analyze(paths []string) {
+func analyze(paths []string) []Struct {
 	var structs []Struct
 	var methods []Method
 
@@ -35,11 +38,6 @@ func analyze(paths []string) {
 		newStructs, newMethods := parsePaths(path)
 		structs = append(structs, newStructs...)
 		methods = append(methods, newMethods...)
-	}
-
-	// Separate all selectors
-	for i := range methods {
-		methods[i].separateAccessedVars()
 	}
 
 	// Assign the methods to structs
@@ -51,79 +49,78 @@ func analyze(paths []string) {
 		}
 	}
 
-	// Finding the metrics
-	for i, c := range structs {
-		c.WMC = WMC(c)
-		c.NP = NP(c)
-		c.NDC = NDC(c)
-		c.ATFD = ATFD(c)
-		c.TCC = TCC(c)
-		c.God = GodStruct(c)
-		c.DemiGod = DemiGodStruct(c)
-		structs[i] = c
+	// Calculate metrics
+	for i, s := range structs {
+		s.WMC = WMC(s)
+		s.NP = NP(s)
+		s.NDC = NDC(s)
+		s.ATFD = ATFD(s)
+		s.TCC = TCC(s)
+		s.God = GodStruct(s)
+		s.DemiGod = DemiGodStruct(s)
+		structs[i] = s
 	}
 
+	return structs
+}
+
+func showMetrics(structs []Struct) {
 	godCount := 0
 	demiGodCount := 0
 
-	for _, class := range structs {
-		fmt.Printf("Package: %s\n", class.PkgName)
-		fmt.Printf("StructName: %s\n", class.StructName)
-		fmt.Printf("Position: %s\n", class.Pos)
+	for _, _struct := range structs {
+		// fmt.Printf("Package: %s | Struct: %s\n", _struct.StructName, _struct.PkgName)
+		// fmt.Printf("Position: %s\n", _struct.Pos)
 
 		// fmt.Printf("Attributes:\n")
-		// for _, a := range class.Attributes {
+		// for _, a := range _struct.Attributes {
 		// 	fmt.Printf("\t%s || %s\n", a.name, a.varType)
 		// }
 
-		if len(class.Methods) > 0 {
-			fmt.Printf("Methods:\n")
-			for _, m := range class.Methods {
-				// fmt.Print("ALL methods and its complexities: ")
-				fmt.Printf("\tFuncName: %s()\n", m.FuncName)
-				fmt.Printf("\t\tComplexity: %d\n", m.Complexity)
-				fmt.Println()
+		// if len(_struct.Methods) > 0 {
+		// 	fmt.Printf("Methods:\n")
+		// 	for _, m := range _struct.Methods {
+		// 		// fmt.Print("ALL methods and its complexities: ")
+		// 		fmt.Printf("\t%-20v | Complexity: %d\n", m.FuncName+"()", m.Complexity)
 
-				// fmt.Print("ALL accesed Variables: ")
-				// for _, v := range m.Selectors {
-				// 	fmt.Printf("%s.%s ", v.left, v.right)
-				// }
-				// fmt.Println()
+		// 		// fmt.Print("ALL accesed Variables: ")
+		// 		// for _, v := range m.Selectors {
+		// 		// 	fmt.Printf("%s.%s ", v.left, v.right)
+		// 		// }
+		// 		// fmt.Println()
 
-				// fmt.Print("Accessed own: ")
-				// for _, v := range m.SelfVarAccessed {
-				// 	fmt.Printf("%s.%s ", v.left, v.right)
-				// }
-				// fmt.Println()
+		// 		// fmt.Print("Accessed own: ")
+		// 		// for _, v := range m.SelfVarAccessed {
+		// 		// 	fmt.Printf("%s.%s ", v.left, v.right)
+		// 		// }
+		// 		// fmt.Println()
 
-				// fmt.Print("Accessed others: ")
-				// for _, v := range m.OthersVarAccessed {
-				// 	fmt.Printf("%s.%s ", v.left, v.right)
-				// }
-				// fmt.Println()
-			}
-		}
+		// 		// fmt.Print("Accessed others: ")
+		// 		// for _, v := range m.OthersVarAccessed {
+		// 		// 	fmt.Printf("%s.%s ", v.left, v.right)
+		// 		// }
+		// 		// fmt.Println()
+		// 	}
+		// }
 
-		fmt.Println("Metrics:")
-		fmt.Printf("\tWMC: %d\n", class.WMC)
-		fmt.Printf("\tNDC: %d\n", class.NDC)
-		fmt.Printf("\tNP: %d\n", class.NP)
-		fmt.Printf("\tATFD: %d\n", class.ATFD)
-		if class.TCC == 99999 {
-			fmt.Printf("\tTCC: --\n")
-		} else {
-			fmt.Printf("\tTCC: %f\n", class.TCC)
-		}
+		// fmt.Printf("\tWMC: %d\n", _struct.WMC)
+		// fmt.Printf("\tNDC: %d\n", _struct.NDC)
+		// fmt.Printf("\tNP: %d\n", _struct.NP)
+		// fmt.Printf("\tATFD: %d\n", _struct.ATFD)
 
-		// fmt.Printf("\tGod: %v\n", class.God)
-		// fmt.Printf("\tDemiGod: %v\n", class.DemiGod)
+		// if _struct.TCC == TCC_Null {
+		// 	fmt.Printf("\tTCC: --\n")
+		// } else {
+		// 	fmt.Printf("\tTCC: %f\n", _struct.TCC)
+		// }
 
 		classificationString := "none"
 
-		if class.God == true {
+		if _struct.God == true {
 			godCount++
 			classificationString = "god"
-		} else if class.DemiGod == true {
+		} else if _struct.DemiGod == true {
+			continue
 			demiGodCount++
 			classificationString = "demigod"
 		}
@@ -132,12 +129,20 @@ func analyze(paths []string) {
 			continue
 		}
 
-		fmt.Printf("Position: %s\n", class.Pos)
-		fmt.Printf("%-15v | %-25v: %s\n", class.PkgName, class.StructName, classificationString)
+		fmt.Printf("[%s] %s: %s\n", _struct.PkgName, _struct.StructName, classificationString)
+		fmt.Printf("\tWMC: %d\n", _struct.WMC)
+		fmt.Printf("\tNDC: %d\n", _struct.NDC)
+		fmt.Printf("\tNP: %d\n", _struct.NP)
+		fmt.Printf("\tATFD: %d\n", _struct.ATFD)
+
+		if _struct.TCC == TCC_Null {
+			fmt.Printf("\tTCC: --\n")
+		} else {
+			fmt.Printf("\tTCC: %f\n", _struct.TCC)
+		}
 	}
 
 	fmt.Println()
-	fmt.Println(paths[0])
 	fmt.Println("Num of structs:", len(structs))
 
 	fmt.Println("God structs:", godCount)
