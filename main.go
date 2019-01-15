@@ -130,6 +130,8 @@ func showMetrics(structs []Struct) {
 		}
 
 		fmt.Printf("[%s] %s: %s\n", _struct.PkgName, _struct.StructName, classificationString)
+		fmt.Printf("Position: %s\n", _struct.Pos)
+
 		fmt.Printf("\tWMC: %d\n", _struct.WMC)
 		fmt.Printf("\tNDC: %d\n", _struct.NDC)
 		fmt.Printf("\tNP: %d\n", _struct.NP)
