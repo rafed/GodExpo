@@ -1,32 +1,40 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-	"os"
-	"time"
 )
 
 func main() {
-	args := os.Args[1:]
-	if len(args) == 0 {
-		usage()
+
+	wmc := flag.Int("wmc", 47, "Weighted method complexity")
+	atfd := flag.Int("atfd", 5, "Access to foreign data")
+	tcc := flag.Float64("tcc", 0.3, "Tight class cohesion")
+
+	d := flag.String("d", "", "find god structs in a project direcotry")
+	e := flag.String("e", "", "evolution of god structs with in each release")
+
+	flag.Parse()
+
+	WMC = *wmc
+	ATFD = *atfd
+	TCC = *tcc
+
+	if (*e == "" && *d == "") || (*e != "" && *d != "") {
+		flag.PrintDefaults()
 	}
 
-	var structs []Struct
+	// fmt.Println(flag.Args())
 
-	start := time.Now()
+	// var structs []Struct
 
-	structs = analyze(args)
-	showMetrics(structs)
+	// start := time.Now()
 
-	elapsed := time.Since(start)
-	fmt.Fprintf(os.Stderr, "Execution time: %s\n", elapsed)
-}
+	// structs = analyze(args)
+	// showMetrics(structs)
 
-func usage() {
-	fmt.Println("Usage:")
-	fmt.Println("gometrics [file.go]")
-	fmt.Println("gometrics [directory]")
+	// elapsed := time.Since(start)
+	// fmt.Fprintf(os.Stderr, "Execution time: %s\n", elapsed)
 }
 
 func analyze(paths []string) []Struct {
@@ -51,11 +59,11 @@ func analyze(paths []string) []Struct {
 
 	// Calculate metrics
 	for i, s := range structs {
-		s.WMC = WMC(s)
+		s.WMC = calc_WMC(s)
 		s.NP = NP(s)
 		s.NDC = NDC(s)
-		s.ATFD = ATFD(s)
-		s.TCC = TCC(s)
+		s.ATFD = calc_ATFD(s)
+		s.TCC = calc_TCC(s)
 		s.God = GodStruct(s)
 		s.DemiGod = DemiGodStruct(s)
 		structs[i] = s

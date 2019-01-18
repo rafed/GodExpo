@@ -15,7 +15,7 @@ type Struct struct {
 	NDC        int
 	NP         int
 	ATFD       int
-	TCC        float32
+	TCC        float64
 	God        bool
 	DemiGod    bool
 }

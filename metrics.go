@@ -1,6 +1,10 @@
 package main
 
-func WMC(s Struct) int {
+var WMC int = 47
+var ATFD int = 5
+var TCC float64 = 0.3
+
+func calc_WMC(s Struct) int {
 	wmc := 0
 	for _, m := range s.Methods {
 		wmc += m.Complexity
@@ -40,7 +44,7 @@ func commonAttributeAccessExists(m1 Method, m2 Method) bool {
 	return false
 }
 
-func ATFD(s Struct) int {
+func calc_ATFD(s Struct) int {
 	uniqList := uniqeSelectors{}
 
 	for _, m := range s.Methods {
@@ -55,11 +59,11 @@ func ATFD(s Struct) int {
 	return atfd
 }
 
-func TCC(s Struct) float32 {
+func calc_TCC(s Struct) float64 {
 	if s.NP == 0 {
 		return TCC_Null
 	}
-	return float32(s.NDC) / float32(s.NP)
+	return float64(s.NDC) / float64(s.NP)
 }
 
 func GodStruct(s Struct) bool {
