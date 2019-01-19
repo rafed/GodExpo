@@ -10,14 +10,11 @@ import (
 	"strings"
 )
 
-func parsePaths(file string) ([]Struct, []Method) {
+func parsePath(file string) ([]Struct, []Method) {
 	var structs []Struct
 	var methods []Method
 
-	println("wadafaq")
-
 	if isDir(file) {
-		println("faqala", file)
 		filepath.Walk(file, func(path string, info os.FileInfo, err error) error {
 			if err == nil && !info.IsDir() && strings.HasSuffix(path, ".go") {
 				fset := token.NewFileSet()

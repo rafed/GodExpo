@@ -67,7 +67,7 @@ func calc_TCC(s Struct) float64 {
 }
 
 func GodStruct(s Struct) bool {
-	if s.WMC > 47 && s.TCC < 0.3 && s.ATFD > 5 {
+	if s.WMC > WMC && s.TCC < TCC && s.ATFD > ATFD {
 		return true
 	}
 
@@ -79,37 +79,37 @@ func DemiGodStruct(s Struct) bool {
 		return false
 	}
 
-	// demiGodEligibleCounter := 0
+	demiGodEligibleCounter := 0
 
-	// if s.WMC > 47 {
-	// 	demiGodEligibleCounter++
-	// }
-
-	// if s.TCC < 0.3 {
-	// 	demiGodEligibleCounter++
-	// }
-
-	// if s.ATFD > 5 {
-	// 	demiGodEligibleCounter++
-	// }
-
-	// if demiGodEligibleCounter == 2 {
-	// 	return true
-	// }
-
-	// return false
-
-	if s.WMC > 47 && s.TCC >= 0.3 && s.TCC != TCC_Null && s.ATFD <= 5 {
-		return true
+	if s.WMC > WMC {
+		demiGodEligibleCounter++
 	}
 
-	if s.WMC <= 47 && s.TCC < 0.3 && s.ATFD <= 5 {
-		return true
+	if s.TCC < TCC {
+		demiGodEligibleCounter++
 	}
 
-	if s.WMC <= 47 && s.TCC >= 0.3 && s.TCC != TCC_Null && s.ATFD > 5 {
+	if s.ATFD > ATFD {
+		demiGodEligibleCounter++
+	}
+
+	if demiGodEligibleCounter == 2 {
 		return true
 	}
 
 	return false
+
+	// if s.WMC > 47 && s.TCC >= 0.3 && s.TCC != TCC_Null && s.ATFD <= 5 {
+	// 	return true
+	// }
+
+	// if s.WMC <= 47 && s.TCC < 0.3 && s.ATFD <= 5 {
+	// 	return true
+	// }
+
+	// if s.WMC <= 47 && s.TCC >= 0.3 && s.TCC != TCC_Null && s.ATFD > 5 {
+	// 	return true
+	// }
+
+	// return false
 }
