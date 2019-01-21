@@ -31,6 +31,8 @@ func parsePath(file string) ([]Struct, []Method) {
 			}
 			return err
 		})
+
+		fmt.Println()
 	} else {
 		fset := token.NewFileSet()
 		f, err := parser.ParseFile(fset, file, nil, 0)

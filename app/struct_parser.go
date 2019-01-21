@@ -46,6 +46,17 @@ func findStructsFromFile(fset *token.FileSet, f *ast.File) []Struct {
 
 		for _, i := range x.Fields.List {
 			if i.Names == nil {
+				// println("zzzzzzzzzzzzz:", recvString(i.Type))
+				// switch t := i.Type.(type) {
+				// case *ast.Ident:
+				// 	println("doom ", t.Name)
+				// 	println("doom ", t.Obj.Name)
+				// case *ast.StarExpr:
+				// 	println("doom2 *" + recvString(t.X))
+				// case *ast.StructType:
+				// 	println("doom3 ", t.Name)
+				// }
+
 				continue
 			}
 
