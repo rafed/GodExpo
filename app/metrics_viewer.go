@@ -20,7 +20,8 @@ func (a PackageSorter) Less(i, j int) bool {
 }
 
 func structNameLocation(s Struct) {
-	fmt.Printf("[%s] %s\n", s.PkgName, s.StructName)
+	fmt.Printf("Package: %s\n", s.PkgName)
+	fmt.Printf("Struct: %s\n", s.StructName)
 	fmt.Printf("Location: %s\n", s.Pos)
 }
 

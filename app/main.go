@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 	"time"
 )
 
@@ -19,7 +20,9 @@ func main() {
 
 	f := flag.String("f", "", "show metrics of a file")
 	d := flag.String("d", "", "find god structs in a project direcotry")
+
 	e := flag.String("e", "", "evolution of god structs with each release")
+	// csv := flag.Bool("csv", false, )
 
 	flag.Parse()
 
@@ -82,22 +85,24 @@ func main() {
 
 		releases := 0
 		var versions []string
+		var versionPaths []string
 
 		for _, d := range dirs {
 			if d.IsDir() {
-				versions = append(versions, filepath.Join(*e, d.Name()))
+				versions = append(versions, d.Name())
+				versionPaths = append(versionPaths, filepath.Join(*e, d.Name()))
 				releases++
 			}
 		}
 
 		table := map[string]map[string]string{}
 
-		for _, r := range versions {
+		for _, r := range versionPaths {
 			structs := analyze(r)
 
 			for _, s := range structs {
 				if s.God {
-					structIdentifier := fmt.Sprintf("[%s] %s", s.PkgName, s.StructName)
+					structIdentifier := fmt.Sprintf("%s|%s", s.PkgName, s.StructName)
 
 					if _, ok := table[structIdentifier]; !ok {
 						table[structIdentifier] = map[string]string{}
@@ -108,7 +113,7 @@ func main() {
 			}
 		}
 
-		// Get all god structs as keys
+		// Get all god structs as keys # CSV
 		var keys []string
 		for key := range table {
 			keys = append(keys, key)
@@ -116,12 +121,32 @@ func main() {
 		sort.Strings(keys)
 
 		for _, key := range keys {
-			fmt.Printf("%-20v ", key)
-			for _, v := range versions {
-				fmt.Printf("%s ", table[key][v])
+			s := strings.Split(key, "|")
+			fmt.Printf("Package: %s\n", s[0])
+			fmt.Printf("Struct: %s\n", s[1])
+
+			for i, v := range versionPaths {
+				if _, ok := table[key][v]; !ok {
+					continue
+				}
+
+				s := strings.Split(table[key][v], ",")
+				fmt.Printf("%10s: WMC: %3s | ATFD: %2s | TCC: %3s \n", versions[i], s[0], s[1], s[2])
 			}
 			fmt.Println()
 		}
+
+		// CSVVVV
+		// for _, key := range keys {
+		// 	fmt.Printf("%-20v ", key)
+		// 	for _, v := range versions {
+		// 		var wmc, atfd, tcc string
+
+		// 		fmt.Sscanf(table[key][v], "%s,%s,%s", &wmc, &atfd, &tcc)
+		// 		fmt.Printf("\tWMC: %3s | ATFD: %2s | TCC: %3s \n", table[key][v])
+		// 	}
+		// 	fmt.Println()
+		// }
 	}
 
 	fmt.Fprintf(os.Stderr, "Execution time: %s\n", time.Since(start))

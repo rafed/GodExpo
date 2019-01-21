@@ -1,4 +1,4 @@
-go build -o gometrics \
+go build -o godExpo \
     main.go \
     project_parser.go \
     struct_parser.go \
@@ -7,3 +7,4 @@ go build -o gometrics \
     complexity.go \
     metrics.go \
     utils.go \
+    metrics_viewer.go\
