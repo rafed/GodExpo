@@ -34,7 +34,7 @@ Build the project with
 ./build.sh
 ```
 
-or
+or (Project must be in $GOPATH)
 
 ```
 go build -o godExpo
