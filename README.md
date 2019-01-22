@@ -75,7 +75,7 @@ Sample output-
 
 Sample output-
 
-![God evolution](img/evolution_big.png)
+![God evolution](img/evolution_small.png)
 
 
 ### 4. Set Custom Thresholds for Metric Calculations
