@@ -31,10 +31,10 @@ func viewFileMetrics(structs []Struct) {
 	for _, _struct := range structs {
 		structNameLocation(_struct)
 
-		fmt.Printf("Attributes:\n")
-		for _, a := range _struct.Attributes {
-			fmt.Printf("\t%s || %s\n", a.name, a.varType)
-		}
+		// fmt.Printf("Attributes:\n")
+		// for _, a := range _struct.Attributes {
+		// 	fmt.Printf("\t%s || %s\n", a.name, a.varType)
+		// }
 
 		if len(_struct.Methods) > 0 {
 			fmt.Printf("Methods:\n")
