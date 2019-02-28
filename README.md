@@ -1,6 +1,6 @@
 # GodExpo
 
-GodExpo ia God Struct smell detector for Golang.
+GodExpo is a God Struct smell detector for Golang.
 
 ## Getting Started
 
